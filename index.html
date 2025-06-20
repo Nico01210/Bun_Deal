@@ -14,34 +14,20 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-transparent">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/index.html"> <img src="images/logo.png" alt="Logo Bun'Deal" class="logo-navbar" width="120" height="auto"></a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="/index.html">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/menu.html">Menu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/Contact.html">Commander en ligne</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/index.html">Contact</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+<nav class="menu">
+  <div class="navbar-container">
+    <a href="/index.html" class="logo">
+      <img src="images/logo.png" alt="Logo Bun'Deal" class="logo-navbar">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Accueil</a></li>
+      <li><a href="/menu.html">Menu</a></li>
+      <li><a href="/Contact.html">Commander en ligne</a></li>
+      <li><a href="/index.html">Contact</a></li>
+    </ul>
   </div>
 </nav>
+
 
 <!-- HERO SECTION -->
 <section class="hero">
@@ -53,15 +39,104 @@
 </section>
 
 <!-- CONTENU PRINCIPAL -->
-<div class="main-content container my-5">
-  <h1 class="text-center">Bienvenue sur le site de Bun'Deal</h1>
-  <p class="mt-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt inventore laborum voluptatibus quis exercitationem fugit delectus, pariatur officia veritatis natus animi obcaecati aspernatur nesciunt. Temporibus numquam sit tempore magnam quo!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, libero. Beatae cum minima rerum. Quas blanditiis repellat obcaecati. Assumenda officia alias laborum nesciunt cum voluptatem totam iusto facilis nam enim.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugiat id ipsum rem consectetur. Numquam, soluta dolor mollitia error neque blanditiis eligendi tenetur tempora quaerat rerum consectetur veniam suscipit animi.
-  </p>
-  <img src="images/téléchargement.jpg" alt="burger Image" class="img-fluid my-4 burger-image">
+<div class="container my-5">
+  <h2 class="text-center mb-4">Nos Best-Sellers</h2>
+  <div class="row g-4">
+    <!-- Carte 1 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="images/burger.jpg" class="card-img-top" alt="Burger Spécial">
+        <div class="card-body text-center">
+          <h5 class="card-title">Burger Spécial</h5>
+          <p class="card-text">Un steak savoureux, du fromage fondant et notre sauce maison.</p>
+          <p class="fw-bold text-success">7,90 €</p>
+          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+        </div>
+      </div>
+    </div>
+    <!-- Carte 2 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="images/tacos.jpg" class="card-img-top" alt="Tacos">
+        <div class="card-body text-center">
+          <h5 class="card-title">Tacos</h5>
+          <p class="card-text">Garniture au choix, sauce fromagère et frites incluses.</p>
+          <p class="fw-bold text-success">6,50 €</p>
+          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+        </div>
+      </div>
+    </div>
+    <!-- Carte 3 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="images/menu_enfant.png" class="card-img-top" alt="Menu Enfant">
+        <div class="card-body text-center">
+          <h5 class="card-title">Menu Enfant</h5>
+          <p class="card-text">Mini burger, frites et jus de fruits. Jouet offert !</p>
+          <p class="fw-bold text-success">5,00 €</p>
+          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+        </div>
+      </div>
+    </div>
+     <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="images/tapas.webp" class="card-img-top" alt="Tapas">
+        <div class="card-body text-center">
+          <h5 class="card-title">Assiette Tapas</h5>
+          <p class="card-text">Gazpacho de tomate, jambon cuit affiné, brochettes mozza/jambon cru, comté, saucisson local et Toast houmous/sardine !</p>
+          <p class="fw-bold text-success">5,00 €</p>
+          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+        </div>
+      </div>
+    </div>
+     <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="images/tenders.jpg" class="card-img-top" alt="Tenders">
+        <div class="card-body text-center">
+          <h5 class="card-title">Tenders de poulet</h5>
+          <p class="card-text">Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
+          <p class="fw-bold text-success">5,00 €</p>
+          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<article class="container"> 
+    <img src="images/produits.jpg" alt="Produits locaux" class="product-img">
+    <h2> POURQUOI NOUS ?</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae illum facere provident sed reprehenderit. Maiores asperiores, sed fugit ex sit rem hic rerum quas tenetur at, nihil, iure perspiciatis repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ab est voluptas facere nesciunt commodi voluptatem quia recusandae dolor odit, temporibus sequi a autem debitis reiciendis illum iure saepe ducimus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat consequuntur minima est illo saepe praesentium. Tenetur delectus quasi corporis accusamus ex iure, fuga fugit blanditiis eos placeat, est provident sunt? </p>
+</article>
+
+
+ <div class="container my-5">
+  <h2 class="text-center mb-4">Ce que nos clients disent de nous</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Les burgers sont incroyables ! Le pain est moelleux, la viande est juteuse et la sauce maison... un délice !"</p>
+        <p class="author">— Camille R.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="testimonial-card">
+        <div class="stars">★★★★☆</div>
+        <p class="quote">"Livraison rapide et super chaude à l’arrivée. Les frites sont croustillantes, rien à redire."</p>
+        <p class="author">— Mehdi L.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Le menu enfant est parfait pour mes petits. Ils adorent et moi aussi ! Et en plus, le jouet est trop mignon."</p>
+        <p class="author">— Sarah D.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Footer -->
 <div class="footer-clean bg-light pt-4">

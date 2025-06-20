@@ -151,6 +151,7 @@ h1 {
   width: auto;  /* Pour garder les proportions */
   padding: 0;
   margin: 0;
+  margin-right: 100px;
 }
 .navbar-transparent {
   background: transparent !important;
@@ -159,6 +160,7 @@ h1 {
   left: 0;
   width: 100%;
   z-index: 10;
+  box-shadow: none !important;
 }
  .hero {
       height: 100vh;
@@ -219,3 +221,135 @@ h1 {
         font-size: 1rem;
       }
     }
+
+    .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 10;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.logo-navbar {
+    width: 100px;
+  height: 100px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 150px;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
+  
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff9900;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-form input {
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-form button {
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #ff9900;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: #e68200;
+}
+
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stars {
+  font-size: 1.2rem;
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.author {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #333;
+}
+.container {
+  max-width: 600px;
+    margin: 0 auto; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px    rgba(0, 0, 0, 0.3);
+}
+.container h2 {
+    margin-bottom: 10px;
+}
+.container p {
+    line-height: 1.4;
+}
+.product-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    float: left;
+    shape-outside: margin-box;
+    margin: 0 20px 5px 0;
+}
