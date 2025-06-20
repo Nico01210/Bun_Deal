@@ -1,7 +1,9 @@
+/* Footer */
+
 .footer-clean {
   padding:50px 0;
-  background-color:#fff;
-  color:#4b4c4d;
+  background-color: #f8f9fa;
+  color:#020202;
 }
 
 .footer-clean h3 {
@@ -47,18 +49,18 @@
 }
 
 .footer-clean .item.social > a {
-  font-size:24px;
-  width:40px;
-  height:40px;
-  line-height:40px;
-  display:inline-block;
-  text-align:center;
-  border-radius:50%;
-  border:1px solid #ccc;
-  margin-left:10px;
-  margin-top:22px;
-  color:inherit;
-  opacity:0.75;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  margin-top: 22px;
+  background: #fff;
+  overflow: hidden;
+  padding: 0;
 }
 
 .footer-clean .item.social > a:hover {
@@ -82,4 +84,59 @@
   margin-bottom:0;
   font-size:13px;
   opacity:0.6;
+}
+
+.footer-social-logo {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 0;
+    display: block;
+}
+
+
+/* Image de fond */
+.hero-section {
+    background-image: url('/images/burger1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5); /* effet assombrissant */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* au-dessus de l'image + filtre */
+    background: rgba(0,0,0,0.5);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;;
+}
+
+.hero-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
 }
