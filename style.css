@@ -465,6 +465,26 @@ body.other-page {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 60px; /* Réduit l'espacement entre les rubriques du footer */
+}
+
+.footer-clean .footer-social-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.footer-clean .item.social {
+  text-align: center !important;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.footer-clean .item.social > a {
+  display: inline-flex;
+  margin: 0 10px;
 }
 
 @media (max-width: 767px) {
@@ -478,3 +498,30 @@ body.other-page {
     padding-bottom: 20px;
   }
 }
+
+.footer-clean .container {
+  margin: 0;
+  max-width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.row justify-content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.other-page .footer-clean .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px !important;
+}
+
+.other-page .footer-clean .item {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
