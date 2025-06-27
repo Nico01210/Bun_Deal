@@ -524,4 +524,6 @@ body.other-page {
   padding: 0 !important;
   text-align: center;
 }
-
+h5 {
+  font-weight: bold;
+}
