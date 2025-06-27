@@ -45,11 +45,11 @@
     <!-- Carte 1 -->
     <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/burger.jpg" class="card-img-top" alt="Burger Spécial">
+        <img src="images/burger.jpg" width=400px height=350px class="card-img-top" alt="Burger Spécial">
         <div class="card-body text-center">
           <h5 class="card-title">Burger Spécial</h5>
           <p class="card-text">Un steak savoureux, du fromage fondant et notre sauce maison.</p>
-          <p class="fw-bold text-success">7,90 €</p>
+          <p class="fw-bold text-success">11,90 €</p>
           <a href="/Contact.html" class="btn btn-primary">Commander</a>
         </div>
       </div>
@@ -57,11 +57,11 @@
     <!-- Carte 2 -->
     <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/tacos.jpg" class="card-img-top" alt="Tacos">
+        <img src="images/tacos.jpg" width=400px height=350px class="card-img-top" alt="Tacos">
         <div class="card-body text-center">
           <h5 class="card-title">Tacos</h5>
           <p class="card-text">Garniture au choix, sauce fromagère et frites incluses.</p>
-          <p class="fw-bold text-success">6,50 €</p>
+          <p class="fw-bold text-success">10,50 €</p>
           <a href="/Contact.html" class="btn btn-primary">Commander</a>
         </div>
       </div>
@@ -69,33 +69,33 @@
     <!-- Carte 3 -->
     <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/menu_enfant.png" class="card-img-top" alt="Menu Enfant">
+        <img src="images/menu_enfant.png" width=400px height=350px class="card-img-top" alt="Menu Enfant">
         <div class="card-body text-center">
           <h5 class="card-title">Menu Enfant</h5>
           <p class="card-text">Mini burger, frites et jus de fruits. Jouet offert !</p>
-          <p class="fw-bold text-success">5,00 €</p>
+          <p class="fw-bold text-success">6,50 €</p>
           <a href="/Contact.html" class="btn btn-primary">Commander</a>
         </div>
       </div>
     </div>
      <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/tapas.webp" class="card-img-top" alt="Tapas">
+        <img src="images/tapas.webp" width=400px height=350px class="card-img-top" alt="Tapas">
         <div class="card-body text-center">
           <h5 class="card-title">Assiette Tapas</h5>
           <p class="card-text">Gazpacho de tomate, jambon cuit affiné, brochettes mozza/jambon cru, comté, saucisson local et Toast houmous/sardine !</p>
-          <p class="fw-bold text-success">5,00 €</p>
+          <p class="fw-bold text-success">12,00 €</p>
           <a href="/Contact.html" class="btn btn-primary">Commander</a>
         </div>
       </div>
     </div>
      <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/tenders.jpg" class="card-img-top" alt="Tenders">
+        <img src="images/tenders.jpg" width=400px height=350px class="card-img-top" alt="Tenders">
         <div class="card-body text-center">
           <h5 class="card-title">Tenders de poulet</h5>
-          <p class="card-text">Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
-          <p class="fw-bold text-success">5,00 €</p>
+          <p class="card-text">4 Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
+          <p class="fw-bold text-success">5,80 €</p>
           <a href="/Contact.html" class="btn btn-primary">Commander</a>
         </div>
       </div>
@@ -195,6 +195,18 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-
+<script>
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.menu');
+  const hero = document.querySelector('.hero');
+  if (!navbar || !hero) return;
+  const heroBottom = hero.offsetTop + hero.offsetHeight;
+  if (window.scrollY > heroBottom - 80) {
+    navbar.classList.add('navbar-colored');
+  } else {
+    navbar.classList.remove('navbar-colored');
+  }
+});
+</script>
 </body>
 </html>
