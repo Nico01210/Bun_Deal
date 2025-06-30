@@ -261,7 +261,7 @@ h1 {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 150px;
+  gap: 100px;
   margin: 0;
   padding: 0;
   justify-content: flex-start;
