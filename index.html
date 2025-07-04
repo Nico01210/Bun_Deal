@@ -25,6 +25,7 @@
       <li><a href="/menu.html">Menu</a></li>
       <li><a href="/Commandes.html">Commander en ligne</a></li>
       <li><a href="/Contact.html">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
     </ul>
   </div>
 </nav>
@@ -51,7 +52,10 @@
           <h5 class="card-title">Burger Spécial</h5>
           <p class="card-text">Un steak savoureux, du fromage fondant et notre sauce maison.</p>
           <p class="fw-bold text-success">11,90 €</p>
-          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+          <a href="#" class="btn btn-primary add-to-cart" 
+             data-name="Burger Spécial" 
+             data-price="11.90" 
+             data-img="images/burger.jpg">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -63,7 +67,10 @@
           <h5 class="card-title">Tacos</h5>
           <p class="card-text">Garniture au choix, sauce fromagère et frites incluses.</p>
           <p class="fw-bold text-success">10,50 €</p>
-          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+          <a href="#" class="btn btn-primary add-to-cart" 
+             data-name="Tacos" 
+             data-price="10.50" 
+             data-img="images/tacos.jpg">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -75,7 +82,10 @@
           <h5 class="card-title">Menu Enfant</h5>
           <p class="card-text">Mini burger, frites et jus de fruits. Jouet offert !</p>
           <p class="fw-bold text-success">6,50 €</p>
-          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+          <a href="#" class="btn btn-primary add-to-cart" 
+             data-name="Menu Enfant" 
+             data-price="6.50" 
+             data-img="images/Menu-enfant.jpg">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -86,7 +96,10 @@
           <h5 class="card-title">Assiette Tapas</h5>
           <p class="card-text">Formule pour vos soirées ou apéros. Choix de 7 Tacos parmis notre séléction de tacos !</p>
           <p class="fw-bold text-success">12,00 €</p>
-          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+          <a href="#" class="btn btn-primary add-to-cart" 
+             data-name="Assiette Tapas" 
+             data-price="12.00" 
+             data-img="images/mixed-tacos.jpg">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -97,7 +110,10 @@
           <h5 class="card-title">Tenders de poulet</h5>
           <p class="card-text">4 Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
           <p class="fw-bold text-success">5,80 €</p>
-          <a href="/Contact.html" class="btn btn-primary">Commander</a>
+          <a href="#" class="btn btn-primary add-to-cart" 
+             data-name="Tenders de poulet" 
+             data-price="5.80" 
+             data-img="images/tenders.jpg">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -186,20 +202,78 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
   </footer>
 </div>
 
+<div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div style="background:#fff; margin:5% auto; padding:20px; max-width:500px; border-radius:8px; position:relative;">
+    <h4>Votre panier</h4>
+    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <button class="btn btn-danger" id="clear-cart">Vider le panier</button>
+    <button class="btn btn-secondary" id="close-cart" style="float:right;">Fermer</button>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <script>
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.menu');
-  const hero = document.querySelector('.hero');
-  if (!navbar || !hero) return;
-  const heroBottom = hero.offsetTop + hero.offsetHeight;
-  if (window.scrollY > heroBottom - 80) {
-    navbar.classList.add('navbar-colored');
-  } else {
-    navbar.classList.remove('navbar-colored');
-  }
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+function setCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+function updateCartCount() {
+  const cart = getCart();
+  document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+}
+function renderCart() {
+  const cart = getCart();
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, idx) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <img src="${item.img}" width="40" style="vertical-align:middle;"> 
+      ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
+      <button class="btn btn-sm btn-danger" onclick="removeFromCart(${idx})">Supprimer</button>
+    `;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+function removeFromCart(idx) {
+  const cart = getCart();
+  cart.splice(idx, 1);
+  setCart(cart);
+  renderCart();
+}
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const name = this.dataset.name;
+    const price = parseFloat(this.dataset.price);
+    const img = this.dataset.img;
+    let cart = getCart();
+    const found = cart.find(item => item.name === name);
+    if (found) found.qty += 1;
+    else cart.push({name, price, img, qty:1});
+    setCart(cart);
+  });
 });
+document.getElementById('open-cart').onclick = function(e) {
+  e.preventDefault();
+  document.getElementById('cart-modal').style.display = 'block';
+  renderCart();
+};
+document.getElementById('close-cart').onclick = function() {
+  document.getElementById('cart-modal').style.display = 'none';
+};
+document.getElementById('clear-cart').onclick = function() {
+  setCart([]);
+  renderCart();
+};
+updateCartCount();
 </script>
-</body>
-</html>
+<!-- ... -->
