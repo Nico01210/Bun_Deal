@@ -276,4 +276,15 @@ document.getElementById('clear-cart').onclick = function() {
 };
 updateCartCount();
 </script>
+<script>
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.menu');
+  // Change ici la valeur (ex: 80) selon la hauteur de ton hero ou du scroll souhaité
+  if(window.scrollY > 80) {
+    navbar.classList.add('navbar-colored');
+  } else {
+    navbar.classList.remove('navbar-colored');
+  }
+});
+</script>
 <!-- ... -->
