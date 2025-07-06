@@ -207,8 +207,11 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
     <h4>Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
     <p>Total : <span id="cart-total">0.00</span> €</p>
-    <button class="btn btn-danger" id="clear-cart">Vider le panier</button>
-    <button class="btn btn-secondary" id="close-cart" style="float:right;">Fermer</button>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+    </div>
   </div>
 </div>
 
@@ -274,6 +277,12 @@ document.getElementById('clear-cart').onclick = function() {
   setCart([]);
   renderCart();
 };
+const validateCartBtn = document.getElementById('validate-cart');
+if (validateCartBtn) {
+  validateCartBtn.onclick = function() {
+    window.location.href = 'Commandes.html';
+  };
+}
 updateCartCount();
 </script>
 <script>
