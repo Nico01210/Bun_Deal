@@ -21,14 +21,162 @@
       <li><a href="/menu.html">Menu</a></li>
       <li><a href="/Commandes.html">Commander en ligne</a></li>
       <li><a href="/Contact.html">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
     </ul>
   </div>
 </nav>
 
-<h1> Commandes</h1>
-<br>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam atque itaque, ut ea illum, aspernatur nesciunt consectetur recusandae incidunt ab asperiores ad et reiciendis magnam, quaerat eveniet. Magnam, quis dignissimos. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, itaque sed repellat corrupti illum doloribus animi assumenda id aspernatur ipsam quo excepturi quos dolor libero maiores. Provident pariatur blanditiis facere?  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi tempora cum incidunt ipsa nemo natus reiciendis quis. Doloribus debitis iure commodi? Cumque hic placeat voluptatibus odit magnam maxime dolore architecto!     Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim provident veniam eum dolore optio necessitatibus modi ipsam dolores doloribus, quod voluptatem, dignissimos in iste. Ut repellat nemo consequatur sint ducimus!
+<div style="height:140px;"></div>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Commander en ligne</title>
+</head>
+<body>
+
+  <!-- Ta structure HTML ici -->
+  <h2>Finalisation de la commande</h2>
+
+  <div id="contenu-commande">
+    <p>Voici le récapitulatif de votre commande :</p>
+    <div id="panier-container"></div>
+    <div id="panier-total" style="font-weight:bold; margin:10px 0;"></div>
+    <button id="confirmer-commande">Confirmer ma commande</button>
+  </div>
+
+  <div id="confirmation" style="display: none; margin-top: 30px; color: green;"></div>
+
+  <!-- 🔽 Ton script JS directement dans la page -->
+  <script>
+    // Récupération du panier (clé 'cart' pour cohérence avec les autres pages)
+    const panier = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("panier-container");
+    const totalDiv = document.getElementById("panier-total");
+
+    if (panier.length === 0) {
+      container.innerHTML = "<p>Votre panier est vide.</p>";
+      document.getElementById("confirmer-commande").style.display = "none";
+      totalDiv.innerHTML = "";
+    } else {
+      let total = 0;
+      container.innerHTML = `
+        <table class='table table-bordered'>
+          <thead><tr><th>Produit</th><th>Quantité</th><th>Prix unitaire</th><th>Sous-total</th></tr></thead>
+          <tbody>
+            ${panier.map(p => {
+              const sousTotal = (p.price * p.qty).toFixed(2);
+              total += parseFloat(sousTotal);
+              return `<tr><td>${p.name}</td><td>${p.qty}</td><td>${p.price.toFixed(2)}€</td><td>${sousTotal}€</td></tr>`;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
+      totalDiv.innerHTML = `Total : <span style='color:#198754;'>${total.toFixed(2)}€</span>`;
+    }
+
+    document.getElementById("confirmer-commande").addEventListener("click", function () {
+      const numeroCommande = "CMD" + Math.floor(100000 + Math.random() * 900000);
+      const heureActuelle = new Date();
+      const tempsPreparation = 35;
+      const heureRetrait = new Date(heureActuelle.getTime() + tempsPreparation * 60000);
+      const heureStr = heureRetrait.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      const confirmation = `
+        <h3>🛒 Merci pour votre commande !</h3>
+        <p>Numéro de commande : <strong>${numeroCommande}</strong></p>
+        <p>Votre commande sera prête aux alentours de <strong>${heureStr}</strong>.</p>
+        <p>Conservez bien ce numéro pour le retrait.</p>
+        <a href="index.html">Retour à l'accueil</a>
+      `;
+
+      document.getElementById("contenu-commande").style.display = "none";
+      document.getElementById("confirmation").innerHTML = confirmation;
+      document.getElementById("confirmation").style.display = "block";
+
+      localStorage.removeItem("cart");
+    });
+  </script>
+
+<!-- Ajout du modal panier et du script panier comme sur index/menu -->
+<div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content">
+    <h4>Votre panier</h4>
+    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+    </div>
+  </div>
+</div>
+<script>
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+function setCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+function updateCartCount() {
+  const cart = getCart();
+  const el = document.getElementById('cart-count');
+  if (el) el.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+}
+function renderCart() {
+  const cart = getCart();
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, idx) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <img src="${item.img}" width="40" style="vertical-align:middle;"> 
+      ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
+      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">Supprimer</button>
+    `;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+function removeFromCart(idx) {
+  const cart = getCart();
+  cart.splice(idx, 1);
+  setCart(cart);
+  renderCart();
+}
+const openCartBtn = document.getElementById('open-cart');
+if (openCartBtn) {
+  openCartBtn.onclick = function(e) {
+    e.preventDefault();
+    document.getElementById('cart-modal').style.display = 'block';
+    renderCart();
+  };
+}
+const closeCartBtn = document.getElementById('close-cart');
+if (closeCartBtn) {
+  closeCartBtn.onclick = function() {
+    document.getElementById('cart-modal').style.display = 'none';
+  };
+}
+const clearCartBtn = document.getElementById('clear-cart');
+if (clearCartBtn) {
+  clearCartBtn.onclick = function() {
+    setCart([]);
+    renderCart();
+  };
+}
+const validateCartBtn = document.getElementById('validate-cart');
+if (validateCartBtn) {
+  validateCartBtn.onclick = function() {
+    window.location.href = 'Commandes.html';
+  };
+}
+updateCartCount();
+</script>
 
 <!-- Footer -->
 <div class="footer-clean bg-light pt-4">
