@@ -941,63 +941,7 @@
 </div>
 
 <script>
-const parfumsGlace = [
-  'Fraise', 'Pistache', 'Chocolat', 'Mangue', 'Melon', 'Vanille', 'Rhubarbe', 'Lavande', 'Noix de coco', 'Citron'
-];
-
-// Gestion des boutons Boules de Glaces
-Array.from(document.querySelectorAll('.add-to-cart')).forEach(btn => {
-  if (btn.dataset.name && btn.dataset.name.startsWith('Boules de Glaces')) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      let nbBoules = 1;
-      if (btn.dataset.name.includes('2 boules')) nbBoules = 2;
-      if (btn.dataset.name.includes('3 boules')) nbBoules = 3;
-      // Affiche la modale
-      document.getElementById('glace-choice-modal').style.display = 'block';
-      // Génère les sélecteurs de parfums
-      const container = document.getElementById('glace-parfums-container');
-      container.innerHTML = '';
-      for (let i = 1; i <= nbBoules; i++) {
-        const div = document.createElement('div');
-        div.className = 'mb-2';
-        div.innerHTML = `<label class='form-label'>Parfum ${i}</label><select class='form-select glace-parfum-choice' required><option value=''>Sélectionnez un parfum</option>${parfumsGlace.map(p => `<option>${p}</option>`).join('')}</select>`;
-        container.appendChild(div);
-      }
-      // Stocke l'info du produit
-      window.selectedGlace = {
-        name: btn.dataset.name,
-        price: parseFloat(btn.dataset.price),
-        img: btn.dataset.img
-      };
-    });
-  }
-});
-document.getElementById('close-glace-choice').onclick = function() {
-  document.getElementById('glace-choice-modal').style.display = 'none';
-};
-document.getElementById('glace-choice-form').onsubmit = function(e) {
-  e.preventDefault();
-  const selects = document.querySelectorAll('.glace-parfum-choice');
-  let parfums = [];
-  let valid = true;
-  selects.forEach(sel => {
-    if (!sel.value) valid = false;
-    parfums.push(sel.value);
-  });
-  if (!valid) return;
-  let cart = getCart();
-  cart.push({
-    name: window.selectedGlace.name + ' (' + parfums.join(', ') + ')',
-    price: window.selectedGlace.price,
-    img: window.selectedGlace.img,
-    qty: 1
-  });
-  setCart(cart);
-  document.getElementById('glace-choice-modal').style.display = 'none';
-};
-</script>
-<script>
+// Gestion du panier et des modales (clean code)
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
@@ -1033,30 +977,54 @@ function removeFromCart(idx) {
   setCart(cart);
   renderCart();
 }
-// Sélectionne tous les boutons "Ajouter au panier" des menus
-// On retire l'ancien eventListener global pour éviter le double ajout
-// On cible chaque bouton individuellement selon le menu
-
+// Boules de Glaces : gestion modale et ajout au panier uniquement après choix parfums
+const parfumsGlace = [
+  'Fraise', 'Pistache', 'Chocolat', 'Mangue', 'Melon', 'Vanille', 'Rhubarbe', 'Lavande', 'Noix de coco', 'Citron'
+];
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
     const menuName = this.dataset.name;
-    // Empêche l'ajout direct pour Boules de Glaces (géré par la modale)
+    // Boules de Glaces : ouverture modale, pas d'ajout direct
     if (menuName && menuName.startsWith('Boules de Glaces')) {
+      e.preventDefault();
+      let nbBoules = 1;
+      if (menuName.includes('2 boules')) nbBoules = 2;
+      if (menuName.includes('3 boules')) nbBoules = 3;
+      document.getElementById('glace-choice-modal').style.display = 'block';
+      const container = document.getElementById('glace-parfums-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= nbBoules; i++) {
+        const div = document.createElement('div');
+        div.className = 'mb-2';
+        div.innerHTML = `<label class='form-label'>Parfum ${i}</label><select class='form-select glace-parfum-choice' required><option value=''>Sélectionnez un parfum</option>${parfumsGlace.map(p => `<option>${p}</option>`).join('')}</select>`;
+        container.appendChild(div);
+      }
+      window.selectedGlace = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
       return;
     }
+    // Menu enfant : ouverture modale
     if (menuName === 'Menu enfant') {
       e.preventDefault();
-      // Affiche une modale spécifique pour le menu enfant
       document.getElementById('menu-choice-modal').style.display = 'block';
-      // Affiche uniquement les choix nuggets/cheeseburger pour le menu enfant
       document.getElementById('burger-choice').innerHTML = `
         <option value="">Sélectionnez un plat</option>
         <option>Cheeseburger de boeuf</option>
         <option>6 Nuggets de poulet</option>
       `;
-    } else if (menuName && menuName.startsWith('Menu')) {
+      window.selectedMenu = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Menus classiques : ouverture modale
+    if (menuName && menuName.startsWith('Menu')) {
       e.preventDefault();
-      // Affiche la modale avec tous les burgers pour les autres menus
       document.getElementById('menu-choice-modal').style.display = 'block';
       document.getElementById('burger-choice').innerHTML = `
         <option value="">Sélectionnez un burger</option>
@@ -1069,39 +1037,75 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
         <option>Burger Végétarien</option>
         <option>Smash Burger</option>
       `;
-    } else {
-      // ... comportement normal pour les autres produits ...
-      e.preventDefault();
-      const name = this.dataset.name;
-      const price = parseFloat(this.dataset.price);
-      const img = this.dataset.img;
-      let cart = getCart();
-      const found = cart.find(item => item.name === name);
-      if (found) found.qty += 1;
-      else cart.push({name, price, img, qty:1});
-      setCart(cart);
-    }
-    // Stocke les infos du menu sélectionné
-    if (menuName && (menuName === 'Menu enfant' || menuName.startsWith('Menu'))) {
       window.selectedMenu = {
         name: this.dataset.name,
         price: parseFloat(this.dataset.price),
         img: this.dataset.img
       };
+      return;
     }
+    // Tacos Mixed : ouverture modale
+    if (menuName === 'Tacos Mixed') {
+      e.preventDefault();
+      document.getElementById('tacos-mixed-modal').style.display = 'block';
+      window.selectedTacosMixed = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Autres produits : ajout direct au panier
+    e.preventDefault();
+    const name = this.dataset.name;
+    const price = parseFloat(this.dataset.price);
+    const img = this.dataset.img;
+    let cart = getCart();
+    const found = cart.find(item => item.name === name);
+    if (found) found.qty += 1;
+    else cart.push({name, price, img, qty:1});
+    setCart(cart);
   });
 });
-
-// Gestion de la modale de choix
-document.getElementById('close-menu-choice').onclick = function() {
-  document.getElementById('menu-choice-modal').style.display = 'none';
+// Gestion modale Boules de Glaces
+const closeGlaceBtn = document.getElementById('close-glace-choice');
+if (closeGlaceBtn) {
+  closeGlaceBtn.onclick = function() {
+    document.getElementById('glace-choice-modal').style.display = 'none';
+  };
+}
+document.getElementById('glace-choice-form').onsubmit = function(e) {
+  e.preventDefault();
+  const selects = document.querySelectorAll('.glace-parfum-choice');
+  let parfums = [];
+  let valid = true;
+  selects.forEach(sel => {
+    if (!sel.value) valid = false;
+    parfums.push(sel.value);
+  });
+  if (!valid) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedGlace.name + ' (' + parfums.join(', ') + ')',
+    price: window.selectedGlace.price,
+    img: window.selectedGlace.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('glace-choice-modal').style.display = 'none';
 };
+// Gestion modale Menu
+const closeMenuBtn = document.getElementById('close-menu-choice');
+if (closeMenuBtn) {
+  closeMenuBtn.onclick = function() {
+    document.getElementById('menu-choice-modal').style.display = 'none';
+  };
+}
 document.getElementById('menu-choice-form').onsubmit = function(e) {
   e.preventDefault();
   const burger = document.getElementById('burger-choice').value;
   const boisson = document.getElementById('boisson-choice').value;
   if (!burger || !boisson) return;
-  // Ajoute le menu avec les choix dans le panier
   let cart = getCart();
   cart.push({
     name: window.selectedMenu.name + ' (' + burger + ', ' + boisson + ')',
@@ -1112,7 +1116,34 @@ document.getElementById('menu-choice-form').onsubmit = function(e) {
   setCart(cart);
   document.getElementById('menu-choice-modal').style.display = 'none';
 };
-
+// Gestion modale Tacos Mixed
+const closeTacosBtn = document.getElementById('close-tacos-mixed');
+if (closeTacosBtn) {
+  closeTacosBtn.onclick = function() {
+    document.getElementById('tacos-mixed-modal').style.display = 'none';
+  };
+}
+document.getElementById('tacos-mixed-form').onsubmit = function(e) {
+  e.preventDefault();
+  const selects = document.querySelectorAll('.tacos-mixed-choice');
+  let choices = [];
+  let valid = true;
+  selects.forEach(sel => {
+    if (!sel.value) valid = false;
+    choices.push(sel.value);
+  });
+  if (!valid) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedTacosMixed.name + ' (' + choices.join(', ') + ')',
+    price: window.selectedTacosMixed.price,
+    img: window.selectedTacosMixed.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('tacos-mixed-modal').style.display = 'none';
+};
+// Gestion modale panier
 const openCartBtn = document.getElementById('open-cart');
 if (openCartBtn) {
   openCartBtn.onclick = function(e) {
@@ -1140,46 +1171,6 @@ if (validateCartBtn) {
     window.location.href = 'Commandes.html';
   };
 }
-
-// Ajout gestion modale Tacos Mixed
-const tacosMixedBtn = Array.from(document.querySelectorAll('.add-to-cart')).find(btn => btn.dataset.name === 'Tacos Mixed');
-if (tacosMixedBtn) {
-  tacosMixedBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('tacos-mixed-modal').style.display = 'block';
-    // Stocke les infos du produit
-    window.selectedTacosMixed = {
-      name: this.dataset.name,
-      price: parseFloat(this.dataset.price),
-      img: this.dataset.img
-    };
-  });
-}
-document.getElementById('close-tacos-mixed').onclick = function() {
-  document.getElementById('tacos-mixed-modal').style.display = 'none';
-};
-document.getElementById('tacos-mixed-form').onsubmit = function(e) {
-  e.preventDefault();
-  const selects = document.querySelectorAll('.tacos-mixed-choice');
-  let choices = [];
-  let valid = true;
-  selects.forEach(sel => {
-    if (!sel.value) valid = false;
-    choices.push(sel.value);
-  });
-  if (!valid) return;
-  // Ajoute le Tacos Mixed avec les 7 choix dans le panier
-  let cart = getCart();
-  cart.push({
-    name: window.selectedTacosMixed.name + ' (' + choices.join(', ') + ')',
-    price: window.selectedTacosMixed.price,
-    img: window.selectedTacosMixed.img,
-    qty: 1
-  });
-  setCart(cart);
-  document.getElementById('tacos-mixed-modal').style.display = 'none';
-};
-
 updateCartCount();
 </script>
 </body>

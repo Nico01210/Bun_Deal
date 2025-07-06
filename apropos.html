@@ -135,7 +135,7 @@ Chez Bun’Deal, on ne vend pas juste des burgers, on partage des valeurs.
   </footer>
 </div>
 
-<!-- Ajout du modal panier et du script panier comme sur index/menu -->
+<!-- Modal Panier et script clean -->
 <div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div class="cart-modal-content">
     <h4>Votre panier</h4>
@@ -149,6 +149,7 @@ Chez Bun’Deal, on ne vend pas juste des burgers, on partage des valeurs.
   </div>
 </div>
 <script>
+// Gestion du panier clean code
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
@@ -184,6 +185,7 @@ function removeFromCart(idx) {
   setCart(cart);
   renderCart();
 }
+// Listeners modaux panier
 const openCartBtn = document.getElementById('open-cart');
 if (openCartBtn) {
   openCartBtn.onclick = function(e) {

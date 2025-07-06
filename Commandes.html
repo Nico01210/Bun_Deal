@@ -94,71 +94,50 @@
 
 <!-- Ton script JS directement dans la page -->
 <script>
-    // Récupération du panier (clé 'cart' pour cohérence avec les autres pages)
-    const panier = JSON.parse(localStorage.getItem("cart")) || [];
-    const container = document.getElementById("panier-container");
-    const totalDiv = document.getElementById("panier-total");
-
-    if (panier.length === 0) {
-      container.innerHTML = "<p>Votre panier est vide.</p>";
-      document.getElementById("confirmer-commande").style.display = "none";
-      totalDiv.innerHTML = "";
-    } else {
-      let total = 0;
-      container.innerHTML = `
-        <table class='table table-bordered'>
-          <thead><tr><th>Produit</th><th>Quantité</th><th>Prix unitaire</th><th>Sous-total</th></tr></thead>
-          <tbody>
-            ${panier.map(p => {
-              const sousTotal = (p.price * p.qty).toFixed(2);
-              total += parseFloat(sousTotal);
-              return `<tr><td>${p.name}</td><td>${p.qty}</td><td>${p.price.toFixed(2)}€</td><td>${sousTotal}€</td></tr>`;
-            }).join("")}
-          </tbody>
-        </table>
-      `;
-      totalDiv.innerHTML = `Total : <span style='color:#10222e;'>${total.toFixed(2)}€</span>`;
-    }
-
-    document.getElementById("confirmer-commande").addEventListener("click", function () {
-      const numeroCommande = "CMD" + Math.floor(100000 + Math.random() * 900000);
-      const heureActuelle = new Date();
-      const tempsPreparation = 35;
-      const heureRetrait = new Date(heureActuelle.getTime() + tempsPreparation * 60000);
-      const heureStr = heureRetrait.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-      const confirmation = `
-        <div class='card shadow p-4 mb-4 text-center' style='max-width: 500px; margin: 40px auto; border: 2px solid #198754;'>
-          <h3 class='mb-3' style='color:#198754;'>🛒 Merci pour votre commande !</h3>
-          <p class='mb-2'>Numéro de commande : <strong style='color:#10222e; font-size:1.2em;'>${numeroCommande}</strong></p>
-          <p class='mb-2'>Votre commande sera prête aux alentours de <strong style='color:#10222e;'>${heureStr}</strong>.</p>
-          <p class='mb-3'>Conservez bien ce numéro pour le retrait.</p>
-          <a href="index.html" class="btn btn-outline-success mt-2">Retour à l'accueil</a>
-        </div>
-      `;
-
-      document.getElementById("contenu-commande").style.display = "none";
-      document.getElementById("confirmation").innerHTML = confirmation;
-      document.getElementById("confirmation").style.display = "block";
-
-      localStorage.removeItem("cart");
-    });
-  </script>
-
-<!-- Ajout du modal panier et du script panier comme sur index/menu -->
-<div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
-  <div class="cart-modal-content">
-    <h4>Votre panier</h4>
-    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
-    <p>Total : <span id="cart-total">0.00</span> €</p>
-    <div class="d-flex justify-content-between gap-2 mt-3">
-      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
-      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
-      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+// Gestion du récapitulatif commande
+const panier = JSON.parse(localStorage.getItem("cart")) || [];
+const container = document.getElementById("panier-container");
+const totalDiv = document.getElementById("panier-total");
+if (panier.length === 0) {
+  container.innerHTML = "<p>Votre panier est vide.</p>";
+  document.getElementById("confirmer-commande").style.display = "none";
+  totalDiv.innerHTML = "";
+} else {
+  let total = 0;
+  container.innerHTML = `
+    <table class='table table-bordered'>
+      <thead><tr><th>Produit</th><th>Quantité</th><th>Prix unitaire</th><th>Sous-total</th></tr></thead>
+      <tbody>
+        ${panier.map(p => {
+          const sousTotal = (p.price * p.qty).toFixed(2);
+          total += parseFloat(sousTotal);
+          return `<tr><td>${p.name}</td><td>${p.qty}</td><td>${p.price.toFixed(2)}€</td><td>${sousTotal}€</td></tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+  `;
+  totalDiv.innerHTML = `Total : <span style='color:#10222e;'>${total.toFixed(2)}€</span>`;
+}
+document.getElementById("confirmer-commande").onclick = function () {
+  const numeroCommande = "CMD" + Math.floor(100000 + Math.random() * 900000);
+  const heureActuelle = new Date();
+  const tempsPreparation = 35;
+  const heureRetrait = new Date(heureActuelle.getTime() + tempsPreparation * 60000);
+  const heureStr = heureRetrait.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  document.getElementById("contenu-commande").style.display = "none";
+  document.getElementById("confirmation").innerHTML = `
+    <div class='card shadow p-4 mb-4 text-center' style='max-width: 500px; margin: 40px auto; border: 2px solid #198754;'>
+      <h3 class='mb-3' style='color:#198754;'>🛒 Merci pour votre commande !</h3>
+      <p class='mb-2'>Numéro de commande : <strong style='color:#10222e; font-size:1.2em;'>${numeroCommande}</strong></p>
+      <p class='mb-2'>Votre commande sera prête aux alentours de <strong style='color:#10222e;'>${heureStr}</strong>.</p>
+      <p class='mb-3'>Conservez bien ce numéro pour le retrait.</p>
+      <a href="index.html" class="btn btn-outline-success mt-2">Retour à l'accueil</a>
     </div>
-  </div>
-</div>
-<script>
+  `;
+  document.getElementById("confirmation").style.display = "block";
+  localStorage.removeItem("cart");
+};
+// Gestion du modal panier clean code
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
