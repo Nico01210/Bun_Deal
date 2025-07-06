@@ -28,28 +28,73 @@
 
 <div style="height:140px;"></div>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Commander en ligne</title>
-</head>
-<body>
-
-  <!-- Ta structure HTML ici -->
-  <h2>Finalisation de la commande</h2>
-
-  <div id="contenu-commande">
-    <p>Voici le récapitulatif de votre commande :</p>
-    <div id="panier-container"></div>
-    <div id="panier-total" style="font-weight:bold; margin:10px 0;"></div>
-    <button id="confirmer-commande">Confirmer ma commande</button>
+<div class="commande-bg py-5">
+  <div class="container" style="max-width: 700px;">
+    <h2 class="commande-title text-center mb-4">Finalisation de la commande</h2>
+    <div id="contenu-commande" class="commande-card p-4 rounded-4 shadow-lg bg-white">
+      <p class="mb-3 fs-5">Voici le <span class="fw-bold text-primary">récapitulatif</span> de votre commande :</p>
+      <div id="panier-container"></div>
+      <div id="panier-total" class="fw-bold my-3 fs-5"></div>
+      <button id="confirmer-commande" class="btn btn-success w-100 py-2 fs-5 mt-2">Confirmer ma commande</button>
+    </div>
+    <div id="confirmation" style="display: none; margin-top: 30px;"></div>
   </div>
+</div>
 
-  <div id="confirmation" style="display: none; margin-top: 30px; color: green;"></div>
+<style>
+/* Style spécifique à la page Commandes */
+.commande-bg {
+  background: linear-gradient(120deg, #f8fafc 60%, #e6f0fa 100%);
+  min-height: 100vh;
+}
+.commande-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  color: #10222e;
+  letter-spacing: 1px;
+}
+.commande-card {
+  border: 2px solid #10222e;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(16,34,46,0.08);
+}
+#panier-container table {
+  background: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#panier-container th {
+  background: #10222e;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+#panier-container td {
+  text-align: center;
+  vertical-align: middle;
+}
+#panier-total span {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+#confirmer-commande {
+  box-shadow: 0 2px 8px rgba(25,135,84,0.08);
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+#confirmation .card {
+  border-radius: 18px;
+  border-width: 2.5px;
+}
+@media (max-width: 600px) {
+  .commande-card, .container { padding: 10px !important; }
+  .commande-title { font-size: 1.3rem; }
+  #panier-container table { font-size: 0.95em; }
+}
+</style>
 
-  <!-- 🔽 Ton script JS directement dans la page -->
-  <script>
+<!-- Ton script JS directement dans la page -->
+<script>
     // Récupération du panier (clé 'cart' pour cohérence avec les autres pages)
     const panier = JSON.parse(localStorage.getItem("cart")) || [];
     const container = document.getElementById("panier-container");
@@ -73,7 +118,7 @@
           </tbody>
         </table>
       `;
-      totalDiv.innerHTML = `Total : <span style='color:#198754;'>${total.toFixed(2)}€</span>`;
+      totalDiv.innerHTML = `Total : <span style='color:#10222e;'>${total.toFixed(2)}€</span>`;
     }
 
     document.getElementById("confirmer-commande").addEventListener("click", function () {
@@ -84,11 +129,13 @@
       const heureStr = heureRetrait.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
       const confirmation = `
-        <h3>🛒 Merci pour votre commande !</h3>
-        <p>Numéro de commande : <strong>${numeroCommande}</strong></p>
-        <p>Votre commande sera prête aux alentours de <strong>${heureStr}</strong>.</p>
-        <p>Conservez bien ce numéro pour le retrait.</p>
-        <a href="index.html">Retour à l'accueil</a>
+        <div class='card shadow p-4 mb-4 text-center' style='max-width: 500px; margin: 40px auto; border: 2px solid #198754;'>
+          <h3 class='mb-3' style='color:#198754;'>🛒 Merci pour votre commande !</h3>
+          <p class='mb-2'>Numéro de commande : <strong style='color:#10222e; font-size:1.2em;'>${numeroCommande}</strong></p>
+          <p class='mb-2'>Votre commande sera prête aux alentours de <strong style='color:#198754;'>${heureStr}</strong>.</p>
+          <p class='mb-3'>Conservez bien ce numéro pour le retrait.</p>
+          <a href="index.html" class="btn btn-outline-success mt-2">Retour à l'accueil</a>
+        </div>
       `;
 
       document.getElementById("contenu-commande").style.display = "none";

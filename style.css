@@ -528,3 +528,75 @@ padding: 100px;
   padding-left: 0;
   padding-right: 0;
 }
+
+/* Ajout de style spécifique à la page Commandes */
+.commandes-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.commandes-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #10222e;
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.commandes-recap-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(16,34,46,0.08);
+  padding: 32px 24px 24px 24px;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  border: 2px solid #10222e; /* bleu foncé */
+}
+.commandes-table th {
+  background: #ecca06;
+  color: #10222e;
+  font-weight: bold;
+  text-align: center;
+}
+.commandes-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+#panier-total {
+  font-size: 1.2rem;
+  color: #10222e;
+  text-align: right;
+  margin-bottom: 10px;
+}
+#confirmer-commande {
+  display: block;
+  margin: 30px auto 0 auto;
+  background: #10222e; /* bleu foncé */
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  border: none;
+  transition: background 0.2s;
+}
+#confirmer-commande:hover {
+  background: #0a1620; /* bleu foncé plus sombre */
+}
+#confirmation .card {
+  border-radius: 18px;
+  border: 2px solid #10222e; /* bleu foncé */
+}
+@media (max-width: 600px) {
+  .commandes-recap-card {
+    padding: 18px 6px 18px 6px;
+  }
+  .commandes-title {
+    font-size: 1.3rem;
+  }
+  .commandes-table th, .commandes-table td {
+    font-size: 0.95rem;
+    padding: 6px;
+  }
+}
