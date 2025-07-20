@@ -49,12 +49,25 @@
 
 </head>
 <body class="other-page bg-light">
-                <!-- Navbar -->
+
+<!-- Overlay pour fermer le menu mobile -->
+<div class="nav-overlay"></div>
+
+<!-- Navbar avec menu burger -->
 <nav class="menu">
   <div class="navbar-container">
     <a href="/index.html" class="logo">
       <img src="images/Logo.png" alt="Logo Bun'Deal" class="logo-navbar">
     </a>
+    
+    <!-- Menu burger (visible sur mobile/tablette) -->
+    <div class="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="/index.html">Accueil</a></li>
       <li><a href="apropos.html">A propos</a></li>
@@ -1262,5 +1275,6 @@ if (validateCartBtn) {
 }
 updateCartCount();
 </script>
+<script src="burger-menu.js"></script>
 </body>
 </html>
