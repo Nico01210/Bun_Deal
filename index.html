@@ -8,7 +8,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
-   
+       .card-img-top {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
   </style>
 </head>
 <body class="home-page">
@@ -46,14 +52,14 @@
     <!-- Carte 1 -->
     <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/burger.jpg" width=400px height=350px class="card-img-top" alt="Burger Spécial">
+        <img src="images/Special-burger.png" width=400px height=350px class="card-img-top" alt="Burger Spécial">
         <div class="card-body text-center">
           <h5 class="card-title">Burger Spécial</h5>
           <p class="card-text">Un steak savoureux, du fromage fondant et notre sauce maison.</p>
-          <p class="fw-bold text-success">11,90 €</p>
+          <p class="fw-bold text-success">9,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Burger Spécial" 
-             data-price="11.90" 
+             data-price="9.50" 
              data-img="images/burger.jpg">Ajouter au panier</a>
         </div>
       </div>
@@ -63,12 +69,12 @@
       <div class="card h-100 shadow">
         <img src="images/tacos.jpg" width=400px height=350px class="card-img-top" alt="Tacos">
         <div class="card-body text-center">
-          <h5 class="card-title">Tacos</h5>
-          <p class="card-text">Garniture au choix, sauce fromagère et frites incluses.</p>
-          <p class="fw-bold text-success">10,50 €</p>
+          <h5 class="card-title">Tacos D'agneau</h5>
+          <p class="card-text">Galette de maîs, agneau 100% français cuit à l'étouffé à basse température pendant 12heures, garniture au choix(haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre) sauce yaourt aux herbe ou guacamole.</p>
+          <p class="fw-bold text-success">9,00 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
-             data-name="Tacos" 
-             data-price="10.50" 
+             data-name="Tacos d'Agnneau" 
+             data-price="9.00" 
              data-img="images/tacos.jpg">Ajouter au panier</a>
         </div>
       </div>
@@ -91,14 +97,14 @@
      <!-- Correction du bouton Tacos Mixed -->
      <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/mixed-tacos.jpg" width=400px height=350px class="card-img-top" alt="Tapas">
+        <img src="images/mixed-tacos.jpg" width=400px height=350px class="card-img-top" alt="Tacos-Mixed">
         <div class="card-body text-center">
           <h5 class="card-title">Tacos Mixed</h5>
           <p class="card-text">Formule pour vos soirées ou apéros. Choix de 7 Tacos parmis notre séléction de tacos !</p>
-          <p class="fw-bold text-success">12,00 €</p>
+          <p class="fw-bold text-success">45,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Tacos Mixed" 
-             data-price="12.00" 
+             data-price="45.50" 
              data-img="images/mixed-tacos.jpg">Ajouter au panier</a>
         </div>
       </div>
@@ -109,10 +115,10 @@
         <div class="card-body text-center">
           <h5 class="card-title">Tenders de poulet</h5>
           <p class="card-text">4 Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
-          <p class="fw-bold text-success">5,80 €</p>
+          <p class="fw-bold text-success">3,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Tenders de poulet" 
-             data-price="5.80" 
+             data-price="3.50" 
              data-img="images/tenders.jpg">Ajouter au panier</a>
         </div>
       </div>
@@ -120,7 +126,7 @@
   </div>
 </div>
 
-<article class="container" id="pourquoi-nous">> 
+<article class="container" id="pourquoi-nous"> 
     <img src="images/produits.jpg" alt="Produits locaux" class="product-img">
     <h2> POURQUOI NOUS ?</h2>
     <p>Chez Bun'deal, on ne fait pas de compromis entre goût, qualité et engagement.

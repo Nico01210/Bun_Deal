@@ -37,6 +37,14 @@
       border-top: none;
       border-radius: 0 0 5px 5px;
     }
+
+    .card-img-top {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
   </style>
 
 </head>
@@ -812,9 +820,9 @@
     <h4>Choisissez votre burger et boisson</h4>
     <form id="menu-choice-form">
       <div class="mb-3">
-        <label for="burger-choice" class="form-label">Burger</label>
+        <label for="burger-choice" class="form-label">Burger/Tacos</label>
         <select id="burger-choice" class="form-select" required>
-          <option value="">Sélectionnez un burger</option>
+          <option value="">Sélectionnez un burger/tacos</option>
           <option>Burger Boeuf</option>
           <option>Burger Poulet</option>
           <option>Burger Poisson</option>
@@ -822,7 +830,11 @@
           <option>Burger Montagnard</option>
           <option>Burger Pulled-pork</option>
           <option>Burger Végétarien</option>
-          <option>Smash Burger</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+
         </select>
       </div>
       <div class="mb-3">
@@ -1022,7 +1034,33 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
       };
       return;
     }
-    // Menus classiques : ouverture modale
+    // Menus Small/XL : ouverture modale avec burgers ET tacos
+    if (menuName === 'Menu Small' || menuName === 'Menu XL') {
+      e.preventDefault();
+      document.getElementById('menu-choice-modal').style.display = 'block';
+      document.getElementById('burger-choice').innerHTML = `
+        <option value="">Sélectionnez un burger/tacos</option>
+        <option>Burger Boeuf</option>
+        <option>Burger Poulet</option>
+        <option>Burger Poisson</option>
+        <option>Burger Spécial</option>
+        <option>Burger Montagnard</option>
+        <option>Burger Pulled-pork</option>
+        <option>Burger Végétarien</option>
+        <option>Smash Burger</option>
+        <option>Tacos de Boeuf</option>
+        <option>Tacos de Poulet</option>
+        <option>Tacos de Poisson</option>
+        <option>Tacos d'Agneau</option>
+      `;
+      window.selectedMenu = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Autres menus (si besoin, à adapter)
     if (menuName && menuName.startsWith('Menu')) {
       e.preventDefault();
       document.getElementById('menu-choice-modal').style.display = 'block';
