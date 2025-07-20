@@ -141,7 +141,7 @@
               <img src="images/menu-XL.jpg" width="250" height="400" class="card-img-top" alt="Menu XL">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Menu XL</strong></h5>
-                <p class="card-text">Burger ou Tacos au choix avec boissons ainsi que 250g de frites et sauce maison.</p>
+                <p class="card-text">Burger ou Tacos au choix avec boisson ainsi que 250g de frites et sauce maison.</p>
                 <p class="fw-bold text-success">13,80 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Menu XL"
@@ -322,7 +322,7 @@
               <img src="images/fish-tacos.jpg" width="250" height="400" class="card-img-top" alt="Tacos de Poisson">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Tacos de Poisson</strong></h5>
-                <p class="card-text">Galette de maîs, filet de colin pané par nos soins, garniture au choix(haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce vierge ou guacamole</p>
+                <p class="card-text">Galette de maîs, filet de colin pané par nos soins, garniture au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce vierge ou guacamole</p>
                 <p class="fw-bold text-success">7,80 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Tacos de Poisson"
@@ -337,7 +337,7 @@
               <img src="images/tacos.jpg" width="250" height="400" class="card-img-top" alt="Tacos d'agneau">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Tacos d'Agneau</strong></h5>
-                <p class="card-text">Galette de maîs, agneau 100% français cuit à l'étouffé à basse température pendant 12heures, garniture au choix(haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre) sauce yaourt aux herbe ou guacamole.</p>
+                <p class="card-text">Galette de maîs, agneau 100% français cuit à l'étouffé à basse température pendant 12heures, garniture au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre) sauce yaourt aux herbes ou guacamole.</p>
                 <p class="fw-bold text-success">9,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Tacos d'Agneau"
@@ -435,7 +435,7 @@
               <img src="images/chicken-wings.jpg" width="250" height="400" class="card-img-top" alt="Chicken Wings">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Chicken Wings</strong></h5>
-                <p class="card-text">4 Chicken Wings. Ailes de poulets marinés et frits. Poulet 100% français.Une sauce incluse.</p>
+                <p class="card-text">4 Chicken Wings. Ailes de poulets marinés et frits. Poulet 100% français. Une sauce incluse.</p>
                 <p class="fw-bold text-success">4,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Chicken Wings"
@@ -940,7 +940,6 @@
   </div>
 </div>
 
-<!-- Modale de choix pour les boules de glaces -->
 <div class="modal" tabindex="-1" id="glace-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div class="cart-modal-content" style="max-width:400px;">
     <h4>Choisissez vos parfum(s) de glace</h4>
@@ -948,6 +947,26 @@
       <div id="glace-parfums-container"></div>
       <button type="submit" class="btn btn-primary w-100 mt-3">Ajouter au panier</button>
       <button type="button" class="btn btn-secondary w-100 mt-2" id="close-glace-choice">Annuler</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modale de choix pour Yaourt à boire -->
+<div class="modal" tabindex="-1" id="yaourt-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content" style="max-width:400px;">
+    <h4>Choisissez le parfum du yaourt à boire</h4>
+    <form id="yaourt-choice-form">
+      <div class="mb-3">
+        <label for="yaourt-parfum-choice" class="form-label">Parfum</label>
+        <select id="yaourt-parfum-choice" class="form-select" required>
+          <option value="">Sélectionnez un parfum</option>
+          <option>Original</option>
+          <option>Banane</option>
+          <option>Green Tea</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-yaourt-choice">Annuler</button>
     </form>
   </div>
 </div>
@@ -1012,6 +1031,17 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
         container.appendChild(div);
       }
       window.selectedGlace = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Yaourt à boire : ouverture modale parfum
+    if (menuName === 'Yaourt à Boire') {
+      e.preventDefault();
+      document.getElementById('yaourt-choice-modal').style.display = 'block';
+      window.selectedYaourt = {
         name: this.dataset.name,
         price: parseFloat(this.dataset.price),
         img: this.dataset.img
@@ -1105,6 +1135,27 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     setCart(cart);
   });
 });
+// Gestion modale Yaourt à boire
+const closeYaourtBtn = document.getElementById('close-yaourt-choice');
+if (closeYaourtBtn) {
+  closeYaourtBtn.onclick = function() {
+    document.getElementById('yaourt-choice-modal').style.display = 'none';
+  };
+}
+document.getElementById('yaourt-choice-form').onsubmit = function(e) {
+  e.preventDefault();
+  const parfum = document.getElementById('yaourt-parfum-choice').value;
+  if (!parfum) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedYaourt.name + ' (' + parfum + ')',
+    price: window.selectedYaourt.price,
+    img: window.selectedYaourt.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('yaourt-choice-modal').style.display = 'none';
+};
 // Gestion modale Boules de Glaces
 const closeGlaceBtn = document.getElementById('close-glace-choice');
 if (closeGlaceBtn) {
