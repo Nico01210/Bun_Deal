@@ -9,26 +9,212 @@
 
 </head>
 <body class="other-page">
-<!-- Navbar -->
+
+<!-- Overlay pour fermer le menu mobile -->
+<div class="nav-overlay"></div>
+
+<!-- Navbar avec menu burger -->
 <nav class="menu">
   <div class="navbar-container">
     <a href="/index.html" class="logo">
       <img src="images/Logo.png" alt="Logo Bun'Deal" class="logo-navbar">
     </a>
+    
+    <!-- Menu burger (visible sur mobile/tablette) -->
+    <div class="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="/index.html">Accueil</a></li>
       <li><a href="apropos.html">A propos</a></li>
       <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Commandes.html">Commander en ligne</a></li>
       <li><a href="/Contact.html">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
     </ul>
   </div>
 </nav>
 
-<h1> Commandes</h1>
-<br>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam atque itaque, ut ea illum, aspernatur nesciunt consectetur recusandae incidunt ab asperiores ad et reiciendis magnam, quaerat eveniet. Magnam, quis dignissimos. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, itaque sed repellat corrupti illum doloribus animi assumenda id aspernatur ipsam quo excepturi quos dolor libero maiores. Provident pariatur blanditiis facere?  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi tempora cum incidunt ipsa nemo natus reiciendis quis. Doloribus debitis iure commodi? Cumque hic placeat voluptatibus odit magnam maxime dolore architecto!     Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim provident veniam eum dolore optio necessitatibus modi ipsam dolores doloribus, quod voluptatem, dignissimos in iste. Ut repellat nemo consequatur sint ducimus!
+<div style="height:140px;"></div>
 
+<div class="commande-bg py-5">
+  <div class="container" style="max-width: 700px;">
+    <h2 class="commande-title text-center mb-4">Finalisation de la commande</h2>
+    <div id="contenu-commande" class="commande-card p-4 rounded-4 shadow-lg bg-white">
+      <p class="mb-3 fs-5">Voici le <span class="fw-bold text-primary">récapitulatif</span> de votre commande :</p>
+      <div id="panier-container"></div>
+      <div id="panier-total" class="fw-bold my-3 fs-5"></div>
+      <button id="confirmer-commande" class="btn btn-success w-100 py-2 fs-5 mt-2">Confirmer ma commande</button>
+    </div>
+    <div id="confirmation" style="display: none; margin-top: 30px;"></div>
+  </div>
+</div>
+
+<style>
+/* Style spécifique à la page Commandes */
+.commande-bg {
+  background: linear-gradient(120deg, #f8fafc 60%, #e6f0fa 100%);
+  min-height: 100vh;
+}
+.commande-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  color: #10222e;
+  letter-spacing: 1px;
+}
+.commande-card {
+  border: 2px solid #10222e;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(16,34,46,0.08);
+}
+#panier-container table {
+  background: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#panier-container th {
+  background: #10222e;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+#panier-container td {
+  text-align: center;
+  vertical-align: middle;
+}
+#panier-total span {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+#confirmer-commande {
+  box-shadow: 0 2px 8px rgba(25,135,84,0.08);
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+#confirmation .card {
+  border-radius: 18px;
+  border-width: 2.5px;
+}
+@media (max-width: 600px) {
+  .commande-card, .container { padding: 10px !important; }
+  .commande-title { font-size: 1.3rem; }
+  #panier-container table { font-size: 0.95em; }
+}
+</style>
+
+<!-- Ton script JS directement dans la page -->
+<script>
+// Gestion du récapitulatif commande
+const panier = JSON.parse(localStorage.getItem("cart")) || [];
+const container = document.getElementById("panier-container");
+const totalDiv = document.getElementById("panier-total");
+if (panier.length === 0) {
+  container.innerHTML = "<p>Votre panier est vide.</p>";
+  document.getElementById("confirmer-commande").style.display = "none";
+  totalDiv.innerHTML = "";
+} else {
+  let total = 0;
+  container.innerHTML = `
+    <table class='table table-bordered'>
+      <thead><tr><th>Produit</th><th>Quantité</th><th>Prix unitaire</th><th>Sous-total</th></tr></thead>
+      <tbody>
+        ${panier.map(p => {
+          const sousTotal = (p.price * p.qty).toFixed(2);
+          total += parseFloat(sousTotal);
+          return `<tr><td>${p.name}</td><td>${p.qty}</td><td>${p.price.toFixed(2)}€</td><td>${sousTotal}€</td></tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+  `;
+  totalDiv.innerHTML = `Total : <span style='color:#10222e;'>${total.toFixed(2)}€</span>`;
+}
+document.getElementById("confirmer-commande").onclick = function () {
+  const numeroCommande = "CMD" + Math.floor(100000 + Math.random() * 900000);
+  const heureActuelle = new Date();
+  const tempsPreparation = 35;
+  const heureRetrait = new Date(heureActuelle.getTime() + tempsPreparation * 60000);
+  const heureStr = heureRetrait.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  document.getElementById("contenu-commande").style.display = "none";
+  document.getElementById("confirmation").innerHTML = `
+    <div class='card shadow p-4 mb-4 text-center' style='max-width: 500px; margin: 40px auto; border: 2px solid #198754;'>
+      <h3 class='mb-3' style='color:#198754;'>🛒 Merci pour votre commande !</h3>
+      <p class='mb-2'>Numéro de commande : <strong style='color:#10222e; font-size:1.2em;'>${numeroCommande}</strong></p>
+      <p class='mb-2'>Votre commande sera prête aux alentours de <strong style='color:#10222e;'>${heureStr}</strong>.</p>
+      <p class='mb-3'>Conservez bien ce numéro pour le retrait.</p>
+      <a href="index.html" class="btn btn-outline-success mt-2">Retour à l'accueil</a>
+    </div>
+  `;
+  document.getElementById("confirmation").style.display = "block";
+  localStorage.removeItem("cart");
+};
+// Gestion du modal panier clean code
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+function setCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+function updateCartCount() {
+  const cart = getCart();
+  const el = document.getElementById('cart-count');
+  if (el) el.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+}
+function renderCart() {
+  const cart = getCart();
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, idx) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <img src="${item.img}" width="40" style="vertical-align:middle;"> 
+      ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
+      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">Supprimer</button>
+    `;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+function removeFromCart(idx) {
+  const cart = getCart();
+  cart.splice(idx, 1);
+  setCart(cart);
+  renderCart();
+}
+const openCartBtn = document.getElementById('open-cart');
+if (openCartBtn) {
+  openCartBtn.onclick = function(e) {
+    e.preventDefault();
+    document.getElementById('cart-modal').style.display = 'block';
+    renderCart();
+  };
+}
+const closeCartBtn = document.getElementById('close-cart');
+if (closeCartBtn) {
+  closeCartBtn.onclick = function() {
+    document.getElementById('cart-modal').style.display = 'none';
+  };
+}
+const clearCartBtn = document.getElementById('clear-cart');
+if (clearCartBtn) {
+  clearCartBtn.onclick = function() {
+    setCart([]);
+    renderCart();
+  };
+}
+const validateCartBtn = document.getElementById('validate-cart');
+if (validateCartBtn) {
+  validateCartBtn.onclick = function() {
+    window.location.href = 'Commandes.html';
+  };
+}
+updateCartCount();
+</script>
 
 <!-- Footer -->
 <div class="footer-clean bg-light pt-4">
@@ -73,5 +259,7 @@
     </div>
   </footer>
 </div>
+<script src="burger-menu.js"></script>
 </body>
+</html>
 </html>

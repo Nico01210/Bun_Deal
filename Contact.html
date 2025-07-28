@@ -9,18 +9,30 @@
 </head>
 <body class="other-page">
 
-<!-- Navbar -->
+<!-- Overlay pour fermer le menu mobile -->
+<div class="nav-overlay"></div>
+
+<!-- Navbar avec menu burger -->
 <nav class="menu">
   <div class="navbar-container">
     <a href="/index.html" class="logo">
       <img src="images/Logo.png" alt="Logo Bun'Deal" class="logo-navbar">
     </a>
+    
+    <!-- Menu burger (visible sur mobile/tablette) -->
+    <div class="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="/index.html">Accueil</a></li>
       <li><a href="apropos.html">A propos</a></li>
       <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Commandes.html">Commander en ligne</a></li>
       <li><a href="/Contact.html">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
     </ul>
   </div>
 </nav>
@@ -29,7 +41,7 @@
 <br>
 <br>
 
-      <h1 class="title-contact"> Contactez moi</h1>
+      <h1 class="title-contact"> Contactez nous</h1>
 
       <form name="contact" class="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="https://formspree.io/f/xanjaqwd">
         <input type="hidden" name="form-name" value="contact">
@@ -114,5 +126,87 @@
     </div>
   </footer>
 </div>
+
+<!-- Modal panier et script clean code -->
+<div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content">
+    <h4>Votre panier</h4>
+    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+    </div>
+  </div>
+</div>
+<script>
+// Gestion du panier clean code
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+function setCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+function updateCartCount() {
+  const cart = getCart();
+  const el = document.getElementById('cart-count');
+  if (el) el.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+}
+function renderCart() {
+  const cart = getCart();
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, idx) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <img src="${item.img}" width="40" style="vertical-align:middle;"> 
+      ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
+      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">Supprimer</button>
+    `;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+function removeFromCart(idx) {
+  const cart = getCart();
+  cart.splice(idx, 1);
+  setCart(cart);
+  renderCart();
+}
+// Listeners modaux panier
+const openCartBtn = document.getElementById('open-cart');
+if (openCartBtn) {
+  openCartBtn.onclick = function(e) {
+    e.preventDefault();
+    document.getElementById('cart-modal').style.display = 'block';
+    renderCart();
+  };
+}
+const closeCartBtn = document.getElementById('close-cart');
+if (closeCartBtn) {
+  closeCartBtn.onclick = function() {
+    document.getElementById('cart-modal').style.display = 'none';
+  };
+}
+const clearCartBtn = document.getElementById('clear-cart');
+if (clearCartBtn) {
+  clearCartBtn.onclick = function() {
+    setCart([]);
+    renderCart();
+  };
+}
+const validateCartBtn = document.getElementById('validate-cart');
+if (validateCartBtn) {
+  validateCartBtn.onclick = function() {
+    window.location.href = 'Commandes.html';
+  };
+}
+updateCartCount();
+</script>
+<script src="burger-menu.js"></script>
 </body>
 </html>

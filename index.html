@@ -8,22 +8,39 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
-   
+       .card-img-top {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
   </style>
 </head>
 <body class="home-page">
 
-<!-- Navbar -->
+<!-- Overlay pour fermer le menu mobile -->
+<div class="nav-overlay"></div>
+
+<!-- Navbar avec menu burger -->
 <nav class="menu">
   <div class="navbar-container">
     <a href="/index.html" class="logo">
       <img src="images/Logo.png" alt="Logo Bun'Deal" class="logo-navbar">
     </a>
+    
+    <!-- Menu burger (visible sur mobile/tablette) -->
+    <div class="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="/index.html">Accueil</a></li>
       <li><a href="apropos.html">A propos</a></li>
       <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Commandes.html">Commander en ligne</a></li>
       <li><a href="/Contact.html">Contact</a></li>
       <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
     </ul>
@@ -54,7 +71,7 @@
           <p class="fw-bold text-success">9,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Burger Spécial" 
-             data-price="11.90" 
+             data-price="9.50" 
              data-img="images/burger.jpg">Ajouter au panier</a>
         </div>
       </div>
@@ -83,9 +100,10 @@
         </div>
       </div>
     </div>
+     <!-- Correction du bouton Tacos Mixed -->
      <div class="col-md-4">
       <div class="card h-100 shadow">
-        <img src="images/mixed-tacos.jpg" width=400px height=350px class="card-img-top" alt="Tapas">
+        <img src="images/mixed-tacos.jpg" width=400px height=350px class="card-img-top" alt="Tacos-Mixed">
         <div class="card-body text-center">
           <h5 class="card-title">Assiette Tapas</h5>
           <p class="card-text">Formule pour vos soirées ou apéros. Choix de 7 Tacos parmi notre sélection de tacos !</p>
@@ -103,7 +121,7 @@
           <p class="fw-bold text-success">3,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Tenders de poulet" 
-             data-price="5.80" 
+             data-price="3.50" 
              data-img="images/tenders.jpg">Ajouter au panier</a>
         </div>
       </div>
@@ -198,8 +216,127 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
     <h4>Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
     <p>Total : <span id="cart-total">0.00</span> €</p>
-    <button class="btn btn-danger" id="clear-cart">Vider le panier</button>
-    <button class="btn btn-secondary" id="close-cart" style="float:right;">Fermer</button>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modale de choix pour le menu enfant -->
+<div class="modal" tabindex="-1" id="menu-enfant-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div style="background:#fff; margin:5% auto; padding:20px; max-width:400px; border-radius:8px; position:relative;">
+    <h4>Choisissez le plat et la boisson</h4>
+    <form id="menu-enfant-choice-form">
+      <div class="mb-3">
+        <label for="menu-enfant-plat" class="form-label">Plat</label>
+        <select id="menu-enfant-plat" class="form-select" required>
+          <option value="">Sélectionnez un plat</option>
+          <option>Cheeseburger de boeuf</option>
+          <option>6 Nuggets de poulet</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="menu-enfant-boisson" class="form-label">Boisson</label>
+        <select id="menu-enfant-boisson" class="form-select" required>
+          <option value="">Sélectionnez une boisson</option>
+          <option>Coca-Cola</option>
+          <option>Oasis</option>
+          <option>Lipton Ice Tea pêche</option>
+          <option>Sprite</option>
+          <option>Fanta</option>
+          <option>Eau minéral</option>
+          <option>Eau gazeuse</option>
+          <option>Coca-Cola Zéro</option>
+          <option>Jus d'orange</option>
+          <option>Jus de Pomme</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-menu-enfant-choice">Annuler</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modale de choix pour Tacos Mixed (si absente) -->
+<div class="modal" tabindex="-1" id="tacos-mixed-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div style="background:#fff; margin:5% auto; padding:20px; max-width:500px; border-radius:8px; position:relative;">
+    <h4>Choisissez vos 7 tacos</h4>
+    <form id="tacos-mixed-form">
+      <div class="mb-3">
+        <label class="form-label">Tacos 1</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 2</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 3</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 4</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 5</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 6</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 7</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-tacos-mixed">Annuler</button>
+    </form>
   </div>
 </div>
 
@@ -352,6 +489,7 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <script>
+// Gestion du panier et des modales
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
@@ -361,7 +499,8 @@ function setCart(cart) {
 }
 function updateCartCount() {
   const cart = getCart();
-  document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+  const el = document.getElementById('cart-count');
+  if (el) el.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
 }
 function renderCart() {
   const cart = getCart();
@@ -386,10 +525,34 @@ function removeFromCart(idx) {
   setCart(cart);
   renderCart();
 }
+// Event listeners pour les boutons "Ajouter au panier"
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
-    e.preventDefault();
     const name = this.dataset.name;
+    // Gestion Menu Enfant (modale)
+    if (name === 'Menu Enfant') {
+      e.preventDefault();
+      window.selectedMenuEnfant = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      document.getElementById('menu-enfant-choice-modal').style.display = 'block';
+      return;
+    }
+    // Gestion Tacos Mixed (modale)
+    if (name === 'Tacos Mixed') {
+      e.preventDefault();
+      window.selectedTacosMixed = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      document.getElementById('tacos-mixed-modal').style.display = 'block';
+      return;
+    }
+    // Ajout direct au panier pour les autres produits
+    e.preventDefault();
     const price = parseFloat(this.dataset.price);
     const img = this.dataset.img;
     let cart = getCart();
@@ -550,4 +713,6 @@ window.addEventListener('scroll', function() {
   }
 });
 </script>
-<!-- ... -->
+<script src="burger-menu.js"></script>
+</body>
+</html>

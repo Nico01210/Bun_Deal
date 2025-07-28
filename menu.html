@@ -37,21 +37,41 @@
       border-top: none;
       border-radius: 0 0 5px 5px;
     }
+
+    .card-img-top {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
   </style>
 
 </head>
 <body class="other-page bg-light">
-                <!-- Navbar -->
+
+<!-- Overlay pour fermer le menu mobile -->
+<div class="nav-overlay"></div>
+
+<!-- Navbar avec menu burger -->
 <nav class="menu">
   <div class="navbar-container">
     <a href="/index.html" class="logo">
       <img src="images/Logo.png" alt="Logo Bun'Deal" class="logo-navbar">
     </a>
+    
+    <!-- Menu burger (visible sur mobile/tablette) -->
+    <div class="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="/index.html">Accueil</a></li>
       <li><a href="apropos.html">A propos</a></li>
       <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Commandes.html">Commander en ligne</a></li>
       <li><a href="/Contact.html">Contact</a></li>
       <li>
         <a href="#" id="open-cart" style="font-weight:bold;">
@@ -134,7 +154,7 @@
               <img src="images/menu-XL.jpg" width="250" height="400" class="card-img-top" alt="Menu XL">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Menu XL</strong></h5>
-                <p class="card-text">Burger ou Tacos au choix avec boissons ainsi que 250g de frites et sauce maison.</p>
+                <p class="card-text">Burger ou Tacos au choix avec boisson ainsi que 250g de frites et sauce maison.</p>
                 <p class="fw-bold text-success">13,80 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Menu XL"
@@ -315,7 +335,7 @@
               <img src="images/fish-tacos.jpg" width="250" height="400" class="card-img-top" alt="Tacos de Poisson">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Tacos de Poisson</strong></h5>
-                <p class="card-text">Galette de maîs, filet de colin pané par nos soins, garniture au choix(haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce vierge ou guacamole</p>
+                <p class="card-text">Galette de maîs, filet de colin pané par nos soins, garniture au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce vierge ou guacamole</p>
                 <p class="fw-bold text-success">7,80 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Tacos de Poisson"
@@ -330,7 +350,7 @@
               <img src="images/tacos.jpg" width="250" height="400" class="card-img-top" alt="Tacos d'agneau">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Tacos d'Agneau</strong></h5>
-                <p class="card-text">Galette de maîs, agneau 100% français cuit à l'étouffé à basse température pendant 12heures, garniture au choix(haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre) sauce yaourt aux herbe ou guacamole.</p>
+                <p class="card-text">Galette de maîs, agneau 100% français cuit à l'étouffé à basse température pendant 12heures, garniture au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre) sauce yaourt aux herbes ou guacamole.</p>
                 <p class="fw-bold text-success">9,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Tacos d'Agneau"
@@ -428,7 +448,7 @@
               <img src="images/chicken-wings.jpg" width="250" height="400" class="card-img-top" alt="Chicken Wings">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Chicken Wings</strong></h5>
-                <p class="card-text">4 Chicken Wings. Ailes de poulets marinés et frits. Poulet 100% français.Une sauce incluse.</p>
+                <p class="card-text">4 Chicken Wings. Ailes de poulets marinés et frits. Poulet 100% français. Une sauce incluse.</p>
                 <p class="fw-bold text-success">4,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Chicken Wings"
@@ -682,24 +702,23 @@
           <div class="col-md-4">
             <div class="card h-100 shadow">
               <img src="images/glaces.jpg" width="250" height="400" class="card-img-top" alt="Boules de Glaces">
-              <div class="card-body text-center">
-                <h5 class="card-title"><strong>Boules de Glaces</strong></h5>
-                <p class="card-text">Une séléction de 10 parfums différents venant du Glacier des Alpes. (Fraise, pistache, chocolat, mangue, melon, vanille, rhubarbe, lavande, noix de coco et citron)</p>
-                <p class="fw-bold text-success">1 boule : 1,50 €</p>
-                <p class="fw-bold text-success">2 boules : 2,50 €</p>
-                <p class="fw-bold text-success">3 boules : 4,00 €</p>
-                <a href="#" class="btn btn-primary add-to-cart"
-                   data-name="Boules de Glaces (1 boule)"
-                   data-price="1.50"
-                   data-img="images/glaces.jpg">Ajouter au panier</a>
-                <a href="#" class="btn btn-primary add-to-cart"
-                   data-name="Boules de Glaces (2 boules)"
-                   data-price="2.50"
-                   data-img="images/glaces.jpg">Ajouter au panier</a>
-                <a href="#" class="btn btn-primary add-to-cart"
-                   data-name="Boules de Glaces (3 boules)"
-                   data-price="4.00"
-                   data-img="images/glaces.jpg">Ajouter au panier</a>
+              <div class="card-body">
+                <h5 class="card-title text-center"><strong>Boules de Glaces</strong></h5>
+                <p class="card-text text-center">Une sélection de 10 parfums différents venant du Glacier des Alpes. (Fraise, pistache, chocolat, mangue, melon, vanille, rhubarbe, lavande, noix de coco et citron)</p>
+                <div class="glaces-options">
+                  <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                    <span class="fw-bold text-success">1 boule : 1,50 €</span>
+                    <a href="#" class="btn btn-primary add-to-cart ms-2" data-name="Boules de Glaces (1 boule)" data-price="1.50" data-img="images/glaces.jpg">Ajouter au panier</a>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                    <span class="fw-bold text-success">2 boules : 2,50 €</span>
+                    <a href="#" class="btn btn-primary add-to-cart ms-2" data-name="Boules de Glaces (2 boules)" data-price="2.50" data-img="images/glaces.jpg">Ajouter au panier</a>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <span class="fw-bold text-success">3 boules : 4,00 €</span>
+                    <a href="#" class="btn btn-primary add-to-cart ms-2" data-name="Boules de Glaces (3 boules)" data-price="4.00" data-img="images/glaces.jpg">Ajouter au panier</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -800,11 +819,173 @@
     <h4>Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
     <p>Total : <span id="cart-total">0.00</span> €</p>
-    <button class="btn" id="clear-cart">Vider le panier</button>
-    <button class="btn btn-secondary" id="close-cart" style="float:right;">Fermer</button>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+    </div>
   </div>
 </div>
+
+<!-- Modale de choix pour les menus -->
+<div class="modal" tabindex="-1" id="menu-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content" style="max-width:400px;">
+    <h4>Choisissez votre burger et boisson</h4>
+    <form id="menu-choice-form">
+      <div class="mb-3">
+        <label for="burger-choice" class="form-label">Burger/Tacos</label>
+        <select id="burger-choice" class="form-select" required>
+          <option value="">Sélectionnez un burger/tacos</option>
+          <option>Burger Boeuf</option>
+          <option>Burger Poulet</option>
+          <option>Burger Poisson</option>
+          <option>Burger Spécial</option>
+          <option>Burger Montagnard</option>
+          <option>Burger Pulled-pork</option>
+          <option>Burger Végétarien</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="boisson-choice" class="form-label">Boisson</label>
+        <select id="boisson-choice" class="form-select" required>
+          <option value="">Sélectionnez une boisson</option>
+          <option>Coca-Cola</option>
+          <option>Oasis</option>
+          <option>Lipton Ice Tea pêche</option>
+          <option>Sprite</option>
+          <option>Fanta</option>
+          <option>Eau minéral</option>
+          <option>Eau gazeuse</option>
+          <option>Coca-Cola Zéro</option>
+          <option>Jus d'orange</option>
+          <option>Jus de Pomme</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-menu-choice">Annuler</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modale de choix pour Tacos Mixed -->
+<div class="modal" tabindex="-1" id="tacos-mixed-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content" style="max-width:500px;">
+    <h4>Choisissez vos 7 tacos</h4>
+    <form id="tacos-mixed-form">
+      <div class="mb-3">
+        <label class="form-label">Tacos 1</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 2</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 3</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 4</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 5</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 6</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tacos 7</label>
+        <select class="form-select tacos-mixed-choice" required>
+          <option value="">Sélectionnez un tacos</option>
+          <option>Tacos de Boeuf</option>
+          <option>Tacos de Poulet</option>
+          <option>Tacos de Poisson</option>
+          <option>Tacos d'Agneau</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-tacos-mixed">Annuler</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" id="glace-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content" style="max-width:400px;">
+    <h4>Choisissez vos parfum(s) de glace</h4>
+    <form id="glace-choice-form">
+      <div id="glace-parfums-container"></div>
+      <button type="submit" class="btn btn-primary w-100 mt-3">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-glace-choice">Annuler</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modale de choix pour Yaourt à boire -->
+<div class="modal" tabindex="-1" id="yaourt-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content" style="max-width:400px;">
+    <h4>Choisissez le parfum du yaourt à boire</h4>
+    <form id="yaourt-choice-form">
+      <div class="mb-3">
+        <label for="yaourt-parfum-choice" class="form-label">Parfum</label>
+        <select id="yaourt-parfum-choice" class="form-select" required>
+          <option value="">Sélectionnez un parfum</option>
+          <option>Original</option>
+          <option>Banane</option>
+          <option>Green Tea</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-yaourt-choice">Annuler</button>
+    </form>
+  </div>
+</div>
+
 <script>
+// Gestion du panier et des modales (clean code)
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
@@ -840,8 +1021,122 @@ function removeFromCart(idx) {
   setCart(cart);
   renderCart();
 }
+// Boules de Glaces : gestion modale et ajout au panier uniquement après choix parfums
+const parfumsGlace = [
+  'Fraise', 'Pistache', 'Chocolat', 'Mangue', 'Melon', 'Vanille', 'Rhubarbe', 'Lavande', 'Noix de coco', 'Citron'
+];
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
+    const menuName = this.dataset.name;
+    // Boules de Glaces : ouverture modale, pas d'ajout direct
+    if (menuName && menuName.startsWith('Boules de Glaces')) {
+      e.preventDefault();
+      let nbBoules = 1;
+      if (menuName.includes('2 boules')) nbBoules = 2;
+      if (menuName.includes('3 boules')) nbBoules = 3;
+      document.getElementById('glace-choice-modal').style.display = 'block';
+      const container = document.getElementById('glace-parfums-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= nbBoules; i++) {
+        const div = document.createElement('div');
+        div.className = 'mb-2';
+        div.innerHTML = `<label class='form-label'>Parfum ${i}</label><select class='form-select glace-parfum-choice' required><option value=''>Sélectionnez un parfum</option>${parfumsGlace.map(p => `<option>${p}</option>`).join('')}</select>`;
+        container.appendChild(div);
+      }
+      window.selectedGlace = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Yaourt à boire : ouverture modale parfum
+    if (menuName === 'Yaourt à Boire') {
+      e.preventDefault();
+      document.getElementById('yaourt-choice-modal').style.display = 'block';
+      window.selectedYaourt = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Menu enfant : ouverture modale
+    if (menuName === 'Menu enfant') {
+      e.preventDefault();
+      document.getElementById('menu-choice-modal').style.display = 'block';
+      document.getElementById('burger-choice').innerHTML = `
+        <option value="">Sélectionnez un plat</option>
+        <option>Cheeseburger de boeuf</option>
+        <option>6 Nuggets de poulet</option>
+      `;
+      window.selectedMenu = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Menus Small/XL : ouverture modale avec burgers ET tacos
+    if (menuName === 'Menu Small' || menuName === 'Menu XL') {
+      e.preventDefault();
+      document.getElementById('menu-choice-modal').style.display = 'block';
+      document.getElementById('burger-choice').innerHTML = `
+        <option value="">Sélectionnez un burger/tacos</option>
+        <option>Burger Boeuf</option>
+        <option>Burger Poulet</option>
+        <option>Burger Poisson</option>
+        <option>Burger Spécial</option>
+        <option>Burger Montagnard</option>
+        <option>Burger Pulled-pork</option>
+        <option>Burger Végétarien</option>
+        <option>Smash Burger</option>
+        <option>Tacos de Boeuf</option>
+        <option>Tacos de Poulet</option>
+        <option>Tacos de Poisson</option>
+        <option>Tacos d'Agneau</option>
+      `;
+      window.selectedMenu = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Autres menus (si besoin, à adapter)
+    if (menuName && menuName.startsWith('Menu')) {
+      e.preventDefault();
+      document.getElementById('menu-choice-modal').style.display = 'block';
+      document.getElementById('burger-choice').innerHTML = `
+        <option value="">Sélectionnez un burger</option>
+        <option>Burger Boeuf</option>
+        <option>Burger Poulet</option>
+        <option>Burger Poisson</option>
+        <option>Burger Spécial</option>
+        <option>Burger Montagnard</option>
+        <option>Burger Pulled-pork</option>
+        <option>Burger Végétarien</option>
+        <option>Smash Burger</option>
+      `;
+      window.selectedMenu = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Tacos Mixed : ouverture modale
+    if (menuName === 'Tacos Mixed') {
+      e.preventDefault();
+      document.getElementById('tacos-mixed-modal').style.display = 'block';
+      window.selectedTacosMixed = {
+        name: this.dataset.name,
+        price: parseFloat(this.dataset.price),
+        img: this.dataset.img
+      };
+      return;
+    }
+    // Autres produits : ajout direct au panier
     e.preventDefault();
     const name = this.dataset.name;
     const price = parseFloat(this.dataset.price);
@@ -853,6 +1148,104 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     setCart(cart);
   });
 });
+// Gestion modale Yaourt à boire
+const closeYaourtBtn = document.getElementById('close-yaourt-choice');
+if (closeYaourtBtn) {
+  closeYaourtBtn.onclick = function() {
+    document.getElementById('yaourt-choice-modal').style.display = 'none';
+  };
+}
+document.getElementById('yaourt-choice-form').onsubmit = function(e) {
+  e.preventDefault();
+  const parfum = document.getElementById('yaourt-parfum-choice').value;
+  if (!parfum) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedYaourt.name + ' (' + parfum + ')',
+    price: window.selectedYaourt.price,
+    img: window.selectedYaourt.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('yaourt-choice-modal').style.display = 'none';
+};
+// Gestion modale Boules de Glaces
+const closeGlaceBtn = document.getElementById('close-glace-choice');
+if (closeGlaceBtn) {
+  closeGlaceBtn.onclick = function() {
+    document.getElementById('glace-choice-modal').style.display = 'none';
+  };
+}
+document.getElementById('glace-choice-form').onsubmit = function(e) {
+  e.preventDefault();
+  const selects = document.querySelectorAll('.glace-parfum-choice');
+  let parfums = [];
+  let valid = true;
+  selects.forEach(sel => {
+    if (!sel.value) valid = false;
+    parfums.push(sel.value);
+  });
+  if (!valid) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedGlace.name + ' (' + parfums.join(', ') + ')',
+    price: window.selectedGlace.price,
+    img: window.selectedGlace.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('glace-choice-modal').style.display = 'none';
+};
+// Gestion modale Menu
+const closeMenuBtn = document.getElementById('close-menu-choice');
+if (closeMenuBtn) {
+  closeMenuBtn.onclick = function() {
+    document.getElementById('menu-choice-modal').style.display = 'none';
+  };
+}
+document.getElementById('menu-choice-form').onsubmit = function(e) {
+  e.preventDefault();
+  const burger = document.getElementById('burger-choice').value;
+  const boisson = document.getElementById('boisson-choice').value;
+  if (!burger || !boisson) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedMenu.name + ' (' + burger + ', ' + boisson + ')',
+    price: window.selectedMenu.price,
+    img: window.selectedMenu.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('menu-choice-modal').style.display = 'none';
+};
+// Gestion modale Tacos Mixed
+const closeTacosBtn = document.getElementById('close-tacos-mixed');
+if (closeTacosBtn) {
+  closeTacosBtn.onclick = function() {
+    document.getElementById('tacos-mixed-modal').style.display = 'none';
+  };
+}
+document.getElementById('tacos-mixed-form').onsubmit = function(e) {
+  e.preventDefault();
+  const selects = document.querySelectorAll('.tacos-mixed-choice');
+  let choices = [];
+  let valid = true;
+  selects.forEach(sel => {
+    if (!sel.value) valid = false;
+    choices.push(sel.value);
+  });
+  if (!valid) return;
+  let cart = getCart();
+  cart.push({
+    name: window.selectedTacosMixed.name + ' (' + choices.join(', ') + ')',
+    price: window.selectedTacosMixed.price,
+    img: window.selectedTacosMixed.img,
+    qty: 1
+  });
+  setCart(cart);
+  document.getElementById('tacos-mixed-modal').style.display = 'none';
+};
+// Gestion modale panier
 const openCartBtn = document.getElementById('open-cart');
 if (openCartBtn) {
   openCartBtn.onclick = function(e) {
@@ -874,7 +1267,14 @@ if (clearCartBtn) {
     renderCart();
   };
 }
+const validateCartBtn = document.getElementById('validate-cart');
+if (validateCartBtn) {
+  validateCartBtn.onclick = function() {
+    window.location.href = 'Commandes.html';
+  };
+}
 updateCartCount();
 </script>
+<script src="burger-menu.js"></script>
 </body>
 </html>
