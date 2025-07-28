@@ -1,0 +1,234 @@
+{
+  "fr": {
+    "nav": {
+      "home": "Accueil",
+      "about": "A propos",
+      "menu": "Menu",
+      "contact": "Contact",
+      "cart": "Panier"
+    },
+    "hero": {
+      "title": "Bienvenue chez Bun'Deal",
+      "subtitle": "Des burgers frais, savoureux et servis en un éclair !",
+      "cta": "Voir le menu"
+    },
+    "bestsellers": {
+      "title": "Nos Best-Sellers",
+      "burger_special": {
+        "title": "Burger Spécial",
+        "description": "Un steak savoureux, du fromage fondant et notre sauce maison."
+      },
+      "menu_tacos": {
+        "title": "Menu Tacos",
+        "description": "Garniture au choix, sauce fromagère et frites incluses."
+      },
+      "menu_enfant": {
+        "title": "Menu Enfant",
+        "description": "Mini burger, frites et jus de fruits. Jouet offert !"
+      },
+      "assiette_tapas": {
+        "title": "Assiette Tapas",
+        "description": "Formule pour vos soirées ou apéros. Choix de 7 Tacos parmi notre sélection de tacos !"
+      },
+      "tenders": {
+        "title": "Tenders de poulet",
+        "description": "4 Tenders de poulet pané maison avec épices, sésames et ciboulette"
+      },
+      "add_to_cart": "Ajouter au panier"
+    },
+    "about": {
+      "title": "POURQUOI NOUS ?",
+      "text": "Chez Bun'deal, on ne fait pas de compromis entre goût, qualité et engagement. Notre promesse : une cuisine fraîche, faite maison, avec des ingrédients locaux et de qualité. Chaque bun, chaque garniture, chaque sauce est préparé avec soin, dans notre cuisine, à partir de produits bruts issus de producteurs locaux sélectionnés pour leur savoir-faire et leur respect de la terre. En choisissant Bun'deal, vous soutenez une entreprise qui agit concrètement pour le développement du terroir et de notre région. Vous encouragez une économie plus responsable, plus humaine et plus savoureuse. Bun'deal, c'est bien plus qu'un repas : c'est un deal gagnant entre vous, la planète, et nos producteurs."
+    },
+    "testimonials": {
+      "title": "Ce que nos clients disent de nous",
+      "review1": "Les burgers sont incroyables ! Le pain est moelleux, la viande est juteuse et la sauce maison... un délice !",
+      "review2": "Livraison rapide et super chaude à l'arrivée. Les frites sont croustillantes, rien à redire.",
+      "review3": "Le menu enfant est parfait pour mes petits. Ils adorent et moi aussi ! Et en plus, le jouet est trop mignon."
+    },
+    "modals": {
+      "cart": {
+        "title": "Votre panier",
+        "total": "Total",
+        "clear": "Vider le panier",
+        "validate": "Valider le panier",
+        "close": "Fermer",
+        "remove": "Supprimer"
+      },
+      "taco": {
+        "title": "Composez votre Menu Tacos",
+        "garnish": "Garniture :",
+        "drink": "Boisson :",
+        "garnish_options": {
+          "poulet": "Poulet",
+          "boeuf": "Bœuf",
+          "poisson": "Poisson",
+          "agneau": "Agneau"
+        },
+        "add": "Ajouter au panier",
+        "cancel": "Annuler"
+      },
+      "child": {
+        "title": "Composez votre Menu Enfant",
+        "main": "Plat principal :",
+        "drink": "Boisson :",
+        "main_options": {
+          "cheeseburger": "Mini Cheeseburger",
+          "nuggets": "4 Nuggets de poulet"
+        },
+        "add": "Ajouter au panier",
+        "cancel": "Annuler"
+      },
+      "tapas": {
+        "title": "Composez votre Assiette Tapas",
+        "subtitle": "Choisissez 7 tacos parmi nos garnitures",
+        "counter": "Total sélectionné :",
+        "tacos": "tacos",
+        "add": "Ajouter au panier",
+        "cancel": "Annuler"
+      },
+      "drinks": {
+        "oasis": "Oasis",
+        "coca": "Coca-Cola",
+        "icetea": "Lipton Ice Tea pêche",
+        "sprite": "Sprite",
+        "fanta": "Fanta",
+        "eau": "Eau minérale",
+        "eau_gazeuse": "Eau gazeuse",
+        "coca_zero": "Coca-Cola Zéro",
+        "jus_orange": "Jus d'orange",
+        "jus_pomme": "Jus de Pomme"
+      }
+    },
+    "footer": {
+      "services": "Services",
+      "about": "About",
+      "contact": "Contact",
+      "events": "Évènements",
+      "special_orders": "Commandes spéciales",
+      "company": "Company",
+      "team": "Team",
+      "legacy": "Legacy",
+      "contact_us": "Nous contacter",
+      "join_us": "Nous rejoindre",
+      "find_us": "Nous trouver",
+      "copyright": "Bun'Deal © 2025"
+    }
+  },
+  "en": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "menu": "Menu",
+      "contact": "Contact",
+      "cart": "Cart"
+    },
+    "hero": {
+      "title": "Welcome to Bun'Deal",
+      "subtitle": "Fresh, tasty burgers served in a flash!",
+      "cta": "View menu"
+    },
+    "bestsellers": {
+      "title": "Our Best-Sellers",
+      "burger_special": {
+        "title": "Special Burger",
+        "description": "A tasty steak, melted cheese and our homemade sauce."
+      },
+      "menu_tacos": {
+        "title": "Tacos Menu",
+        "description": "Choice of filling, cheese sauce and fries included."
+      },
+      "menu_enfant": {
+        "title": "Kids Menu",
+        "description": "Mini burger, fries and fruit juice. Free toy included!"
+      },
+      "assiette_tapas": {
+        "title": "Tapas Platter",
+        "description": "Perfect for your evenings or appetizers. Choice of 7 Tacos from our selection!"
+      },
+      "tenders": {
+        "title": "Chicken Tenders",
+        "description": "4 homemade breaded chicken tenders with spices, sesame and chives"
+      },
+      "add_to_cart": "Add to cart"
+    },
+    "about": {
+      "title": "WHY US?",
+      "text": "At Bun'deal, we don't compromise between taste, quality and commitment. Our promise: fresh, homemade cuisine with local, quality ingredients. Every bun, every filling, every sauce is carefully prepared in our kitchen from raw products sourced from local producers selected for their know-how and respect for the land. By choosing Bun'deal, you support a company that acts concretely for the development of our terroir and region. You encourage a more responsible, more human and more flavorful economy. Bun'deal is much more than a meal: it's a winning deal between you, the planet, and our producers."
+    },
+    "testimonials": {
+      "title": "What our customers say about us",
+      "review1": "The burgers are incredible! The bun is soft, the meat is juicy and the homemade sauce... delicious!",
+      "review2": "Fast delivery and super hot on arrival. The fries are crispy, nothing to complain about.",
+      "review3": "The kids menu is perfect for my little ones. They love it and so do I! And the toy is so cute."
+    },
+    "modals": {
+      "cart": {
+        "title": "Your cart",
+        "total": "Total",
+        "clear": "Clear cart",
+        "validate": "Validate cart",
+        "close": "Close",
+        "remove": "Remove"
+      },
+      "taco": {
+        "title": "Compose your Tacos Menu",
+        "garnish": "Filling:",
+        "drink": "Drink:",
+        "garnish_options": {
+          "poulet": "Chicken",
+          "boeuf": "Beef",
+          "poisson": "Fish",
+          "agneau": "Lamb"
+        },
+        "add": "Add to cart",
+        "cancel": "Cancel"
+      },
+      "child": {
+        "title": "Compose your Kids Menu",
+        "main": "Main dish:",
+        "drink": "Drink:",
+        "main_options": {
+          "cheeseburger": "Small Cheeseburger",
+          "nuggets": "4 Chicken Nuggets"
+        },
+        "add": "Add to cart",
+        "cancel": "Cancel"
+      },
+      "tapas": {
+        "title": "Compose your Tapas Platter",
+        "subtitle": "Choose 7 tacos from our fillings",
+        "counter": "Total selected:",
+        "tacos": "tacos",
+        "add": "Add to cart",
+        "cancel": "Cancel"
+      },
+      "drinks": {
+        "oasis": "Oasis",
+        "coca": "Coca-Cola",
+        "icetea": "Lipton Ice Tea Peach",
+        "sprite": "Sprite",
+        "fanta": "Fanta",
+        "eau": "Mineral water",
+        "eau_gazeuse": "Sparkling water",
+        "coca_zero": "Coca-Cola Zero",
+        "jus_orange": "Orange juice",
+        "jus_pomme": "Apple juice"
+      }
+    },
+    "footer": {
+      "services": "Services",
+      "about": "About",
+      "contact": "Contact",
+      "events": "Events",
+      "special_orders": "Special orders",
+      "company": "Company",
+      "team": "Team",
+      "legacy": "Legacy",
+      "contact_us": "Contact us",
+      "join_us": "Join us",
+      "find_us": "Find us",
+      "copyright": "Bun'Deal © 2025"
+    }
+  }
+}

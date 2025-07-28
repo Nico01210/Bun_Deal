@@ -38,11 +38,14 @@
     
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="apropos.html">A propos</a></li>
-      <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Contact.html">Contact</a></li>
-      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
+      <li><a href="/index.html" data-translate="nav.home">Accueil</a></li>
+      <li><a href="apropos.html" data-translate="nav.about">A propos</a></li>
+      <li><a href="/menu.html" data-translate="nav.menu">Menu</a></li>
+      <li><a href="/Contact.html" data-translate="nav.contact">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 <span data-translate="nav.cart">Panier</span> (<span id="cart-count">0</span>)</a></li>
+      <li>
+        <button id="lang-toggle" class="btn btn-outline-light btn-sm">🇬🇧 EN</button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -51,28 +54,29 @@
 <!-- HERO SECTION -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Bienvenue chez Bun'Deal</h1>
-    <p>Des burgers frais, savoureux et servis en un éclair !</p>
-    <a href="/menu.html" class="btn-order">Voir le menu</a>
+    <h1 data-translate="hero.title">Bienvenue chez Bun'Deal</h1>
+    <p data-translate="hero.subtitle">Des burgers frais, savoureux et servis en un éclair !</p>
+    <a href="/menu.html" class="btn-order" data-translate="hero.cta">Voir le menu</a>
   </div>
 </section>
 
 <!-- CONTENU PRINCIPAL -->
 <div class="container my-5">
-  <h2 class="text-center mb-4">Nos Best-Sellers</h2>
+  <h2 class="text-center mb-4" data-translate="bestsellers.title">Nos Best-Sellers</h2>
   <div class="row g-4">
     <!-- Carte 1 -->
     <div class="col-md-4">
       <div class="card h-100 shadow">
         <img src="images/Special-burger.png" width=400px height=350px class="card-img-top" alt="Burger Spécial">
         <div class="card-body text-center">
-          <h5 class="card-title">Burger Spécial</h5>
-          <p class="card-text">Un steak savoureux, du fromage fondant et notre sauce maison.</p>
+          <h5 class="card-title" data-translate="bestsellers.burger_special.title">Burger Spécial</h5>
+          <p class="card-text" data-translate="bestsellers.burger_special.description">Un steak savoureux, du fromage fondant et notre sauce maison.</p>
           <p class="fw-bold text-success">9,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Burger Spécial" 
              data-price="9.50" 
-             data-img="images/burger.jpg">Ajouter au panier</a>
+             data-img="images/burger.jpg"
+             data-translate="bestsellers.add_to_cart">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -81,10 +85,10 @@
       <div class="card h-100 shadow">
         <img src="images/tacos.jpg" width=400px height=350px class="card-img-top" alt="Tacos">
         <div class="card-body text-center">
-          <h5 class="card-title">Menu Tacos</h5>
-          <p class="card-text">Garniture au choix, sauce fromagère et frites incluses.</p>
+          <h5 class="card-title" data-translate="bestsellers.menu_tacos.title">Menu Tacos</h5>
+          <p class="card-text" data-translate="bestsellers.menu_tacos.description">Garniture au choix, sauce fromagère et frites incluses.</p>
           <p class="fw-bold text-success">10,50 €</p>
-          <button class="btn btn-primary" id="open-taco-modal">Ajouter au panier</button>
+          <button class="btn btn-primary" id="open-taco-modal" data-translate="bestsellers.add_to_cart">Ajouter au panier</button>
         </div>
       </div>
     </div>
@@ -93,36 +97,38 @@
       <div class="card h-100 shadow">
         <img src="images/Menu-enfant.jpg" width=400px height=350px class="card-img-top" alt="Menu Enfant">
         <div class="card-body text-center">
-          <h5 class="card-title">Menu Enfant</h5>
-          <p class="card-text">Mini burger, frites et jus de fruits. Jouet offert !</p>
+          <h5 class="card-title" data-translate="bestsellers.menu_enfant.title">Menu Enfant</h5>
+          <p class="card-text" data-translate="bestsellers.menu_enfant.description">Mini burger, frites et jus de fruits. Jouet offert !</p>
           <p class="fw-bold text-success">6,50 €</p>
-          <button class="btn btn-primary" id="open-child-modal">Ajouter au panier</button>
+          <button class="btn btn-primary" id="open-child-modal" data-translate="bestsellers.add_to_cart">Ajouter au panier</button>
         </div>
       </div>
     </div>
-     <!-- Correction du bouton Tacos Mixed -->
-     <div class="col-md-4">
+    <!-- Carte 4 -->
+    <div class="col-md-4">
       <div class="card h-100 shadow">
         <img src="images/mixed-tacos.jpg" width=400px height=350px class="card-img-top" alt="Tacos-Mixed">
         <div class="card-body text-center">
-          <h5 class="card-title">Assiette Tapas</h5>
-          <p class="card-text">Formule pour vos soirées ou apéros. Choix de 7 Tacos parmi notre sélection de tacos !</p>
-          <p class="fw-bold text-success"> 45,50€</p>
-          <button class="btn btn-primary" id="open-tapas-modal">Ajouter au panier</button>
+          <h5 class="card-title" data-translate="bestsellers.assiette_tapas.title">Assiette Tapas</h5>
+          <p class="card-text" data-translate="bestsellers.assiette_tapas.description">Formule pour vos soirées ou apéros. Choix de 7 Tacos parmi notre sélection de tacos !</p>
+          <p class="fw-bold text-success">45,50€</p>
+          <button class="btn btn-primary" id="open-tapas-modal" data-translate="bestsellers.add_to_cart">Ajouter au panier</button>
         </div>
       </div>
     </div>
-     <div class="col-md-4">
+    <!-- Carte 5 -->
+    <div class="col-md-4">
       <div class="card h-100 shadow">
         <img src="images/tenders.jpg" width=400px height=350px class="card-img-top" alt="Tenders">
         <div class="card-body text-center">
-          <h5 class="card-title">Tenders de poulet</h5>
-          <p class="card-text">4 Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
+          <h5 class="card-title" data-translate="bestsellers.tenders.title">Tenders de poulet</h5>
+          <p class="card-text" data-translate="bestsellers.tenders.description">4 Tenders de poulet pané maison avec épices, sésames et ciboulette</p>
           <p class="fw-bold text-success">3,50 €</p>
           <a href="#" class="btn btn-primary add-to-cart" 
              data-name="Tenders de poulet" 
              data-price="3.50" 
-             data-img="images/tenders.jpg">Ajouter au panier</a>
+             data-img="images/tenders.jpg"
+             data-translate="bestsellers.add_to_cart">Ajouter au panier</a>
         </div>
       </div>
     </div>
@@ -131,8 +137,8 @@
 
 <article class="container" id="pourquoi-nous">
     <img src="images/produits.jpg" alt="Produits locaux" class="product-img">
-    <h2> POURQUOI NOUS ?</h2>
-    <p>Chez Bun'deal, on ne fait pas de compromis entre goût, qualité et engagement.
+    <h2 data-translate="about.title">POURQUOI NOUS ?</h2>
+    <p data-translate="about.text">Chez Bun'deal, on ne fait pas de compromis entre goût, qualité et engagement.
 Notre promesse : une cuisine fraîche, faite maison, avec des ingrédients locaux et de qualité. Chaque bun, chaque garniture, chaque sauce est préparé avec soin, dans notre cuisine, à partir de produits bruts issus de producteurs locaux sélectionnés pour leur savoir-faire et leur respect de la terre.
 
 En choisissant Bun'deal, vous soutenez une entreprise qui agit concrètement pour le développement du terroir et de notre région. Vous encouragez une économie plus responsable, plus humaine et plus savoureuse.
@@ -140,28 +146,27 @@ En choisissant Bun'deal, vous soutenez une entreprise qui agit concrètement pou
 Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, la planète, et nos producteurs. </p>
 </article>
 
-
- <div class="container my-5">
-  <h2 class="text-center mb-4">Ce que nos clients disent de nous</h2>
+<div class="container my-5">
+  <h2 class="text-center mb-4" data-translate="testimonials.title">Ce que nos clients disent de nous</h2>
   <div class="row g-4">
     <div class="col-md-4">
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
-        <p class="quote">"Les burgers sont incroyables ! Le pain est moelleux, la viande est juteuse et la sauce maison... un délice !"</p>
+        <p class="quote" data-translate="testimonials.review1">"Les burgers sont incroyables ! Le pain est moelleux, la viande est juteuse et la sauce maison... un délice !"</p>
         <p class="author">— Camille R.</p>
       </div>
     </div>
     <div class="col-md-4">
       <div class="testimonial-card">
         <div class="stars">★★★★☆</div>
-        <p class="quote">"Livraison rapide et super chaude à l’arrivée. Les frites sont croustillantes, rien à redire."</p>
+        <p class="quote" data-translate="testimonials.review2">"Livraison rapide et super chaude à l'arrivée. Les frites sont croustillantes, rien à redire."</p>
         <p class="author">— Mehdi L.</p>
       </div>
     </div>
     <div class="col-md-4">
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
-        <p class="quote">"Le menu enfant est parfait pour mes petits. Ils adorent et moi aussi ! Et en plus, le jouet est trop mignon."</p>
+        <p class="quote" data-translate="testimonials.review3">"Le menu enfant est parfait pour mes petits. Ils adorent et moi aussi ! Et en plus, le jouet est trop mignon."</p>
         <p class="author">— Sarah D.</p>
       </div>
     </div>
@@ -174,29 +179,28 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
   <footer>
     <div class="container">
       <div class="row justify-content-center">
-        <!-- Footer links (services, about, etc.) -->
         <div class="col-sm-4 col-md-3 item">
-          <h3>Services</h3>
+          <h3 data-translate="footer.services">Services</h3>
           <ul>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="Contact.html">Évènements</a></li>
-            <li><a href="Contact.html">Commandes spéciales</a></li>
+            <li><a href="menu.html" data-translate="nav.menu">Menu</a></li>
+            <li><a href="Contact.html" data-translate="footer.events">Évènements</a></li>
+            <li><a href="Contact.html" data-translate="footer.special_orders">Commandes spéciales</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>About</h3>
+          <h3 data-translate="footer.about">About</h3>
           <ul>
-            <li><a href="apropos.html">Company</a></li>
-            <li><a href="apropos.html">Team</a></li>
-            <li><a href="apropos.html">Legacy</a></li>
+            <li><a href="apropos.html" data-translate="footer.company">Company</a></li>
+            <li><a href="apropos.html" data-translate="footer.team">Team</a></li>
+            <li><a href="apropos.html" data-translate="footer.legacy">Legacy</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>Contact</h3>
+          <h3 data-translate="footer.contact">Contact</h3>
           <ul>
-            <li><a href="Contact.html">Nous contacter</a></li>
-            <li><a href="Contact.html">Nous rejoindre</a></li>
-            <li><a href="apropos.html">Nous trouver</a></li>
+            <li><a href="Contact.html" data-translate="footer.contact_us">Nous contacter</a></li>
+            <li><a href="Contact.html" data-translate="footer.join_us">Nous rejoindre</a></li>
+            <li><a href="apropos.html" data-translate="footer.find_us">Nous trouver</a></li>
           </ul>
         </div>
         <div class="col-lg-3 item social text-center">
@@ -204,221 +208,84 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
           <a href="#"><img src="images/twitter.png" alt="Twitter" class="footer-social-logo"></a>
           <a href="#"><img src="images/snapchat.webp" alt="Snapchat" class="footer-social-logo"></a>
           <a href="#"><img src="images/insta.png" alt="Instagram" class="footer-social-logo"></a>
-          <p class="copyright mt-2">Bun'Deal © 2025</p>
+          <p class="copyright mt-2" data-translate="footer.copyright">Bun'Deal © 2025</p>
         </div>
       </div>
     </div>
   </footer>
 </div>
 
-<div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+<!-- Modal panier -->
+<div class="modal" tabindex="-1" id="cart-modal">
   <div style="background:#fff; margin:5% auto; padding:20px; max-width:500px; border-radius:8px; position:relative;">
-    <h4>Votre panier</h4>
+    <h4 data-translate="modals.cart.title">Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
-    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <p><span data-translate="modals.cart.total">Total</span> : <span id="cart-total">0.00</span> €</p>
     <div class="d-flex justify-content-between gap-2 mt-3">
-      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
-      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
-      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+      <button class="btn btn-danger flex-fill" id="clear-cart" data-translate="modals.cart.clear">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart" data-translate="modals.cart.validate">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart" data-translate="modals.cart.close">Fermer</button>
     </div>
-  </div>
-</div>
-
-<!-- Modale de choix pour le menu enfant -->
-<div class="modal" tabindex="-1" id="menu-enfant-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
-  <div style="background:#fff; margin:5% auto; padding:20px; max-width:400px; border-radius:8px; position:relative;">
-    <h4>Choisissez le plat et la boisson</h4>
-    <form id="menu-enfant-choice-form">
-      <div class="mb-3">
-        <label for="menu-enfant-plat" class="form-label">Plat</label>
-        <select id="menu-enfant-plat" class="form-select" required>
-          <option value="">Sélectionnez un plat</option>
-          <option>Cheeseburger de boeuf</option>
-          <option>6 Nuggets de poulet</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="menu-enfant-boisson" class="form-label">Boisson</label>
-        <select id="menu-enfant-boisson" class="form-select" required>
-          <option value="">Sélectionnez une boisson</option>
-          <option>Coca-Cola</option>
-          <option>Oasis</option>
-          <option>Lipton Ice Tea pêche</option>
-          <option>Sprite</option>
-          <option>Fanta</option>
-          <option>Eau minéral</option>
-          <option>Eau gazeuse</option>
-          <option>Coca-Cola Zéro</option>
-          <option>Jus d'orange</option>
-          <option>Jus de Pomme</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
-      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-menu-enfant-choice">Annuler</button>
-    </form>
-  </div>
-</div>
-
-<!-- Modale de choix pour Tacos Mixed (si absente) -->
-<div class="modal" tabindex="-1" id="tacos-mixed-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
-  <div style="background:#fff; margin:5% auto; padding:20px; max-width:500px; border-radius:8px; position:relative;">
-    <h4>Choisissez vos 7 tacos</h4>
-    <form id="tacos-mixed-form">
-      <div class="mb-3">
-        <label class="form-label">Tacos 1</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tacos 2</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tacos 3</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tacos 4</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tacos 5</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tacos 6</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tacos 7</label>
-        <select class="form-select tacos-mixed-choice" required>
-          <option value="">Sélectionnez un tacos</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
-      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-tacos-mixed">Annuler</button>
-    </form>
   </div>
 </div>
 
 <!-- Modal choix de tacos -->
-<div class="modal" tabindex="-1" id="taco-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+<div class="modal" tabindex="-1" id="taco-choice-modal">
   <div style="background:#fff; margin:5% auto; padding:30px; max-width:450px; border-radius:12px; position:relative;">
-    <h4 class="text-center mb-4">Composez votre Menu Tacos</h4>
+    <h4 class="text-center mb-4" data-translate="modals.taco.title">Composez votre Menu Tacos</h4>
     
     <div class="mb-3">
-      <label class="form-label fw-bold">Garniture :</label>
+      <label class="form-label fw-bold" data-translate="modals.taco.garnish">Garniture :</label>
       <select class="form-select" id="taco-garniture">
-        <option value="poulet">Poulet</option>
-        <option value="boeuf">Bœuf</option>
-        <option value="poisson">Poisson</option>
-        <option value="agneau">Agneau</option>
+        <!-- Options mises à jour par JS -->
       </select>
     </div>
     
     <div class="mb-3">
-      <label class="form-label fw-bold">Boisson :</label>
+      <label class="form-label fw-bold" data-translate="modals.taco.drink">Boisson :</label>
       <select class="form-select" id="taco-boisson">
-        <option value="oasis">Oasis</option>
-        <option value="coca">Coca-Cola</option>
-        <option value="icetea">Lipton Ice Tea pêche</option>
-        <option value="sprite">Sprite</option>
-        <option value="fanta">Fanta</option>
-        <option value="eau">Eau minérale</option>
-        <option value="eau-gazeuse">Eau gazeuse</option>
-        <option value="coca-zero">Coca-Cola Zéro</option>
-        <option value="jus-orange">Jus d'orange</option>
-        <option value="jus-pomme">Jus de Pomme</option>
+        <!-- Options mises à jour par JS -->
       </select>
     </div>
     
     <div class="text-center">
-      <button class="btn btn-primary me-2" id="add-taco-to-cart">Ajouter au panier</button>
-      <button class="btn btn-secondary" id="close-taco-modal">Annuler</button>
+      <button class="btn btn-primary me-2" id="add-taco-to-cart" data-translate="modals.taco.add">Ajouter au panier</button>
+      <button class="btn btn-secondary" id="close-taco-modal" data-translate="modals.taco.cancel">Annuler</button>
     </div>
   </div>
 </div>
 
 <!-- Modal choix menu enfant -->
-<div class="modal" tabindex="-1" id="child-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+<div class="modal" tabindex="-1" id="child-choice-modal">
   <div style="background:#fff; margin:5% auto; padding:30px; max-width:450px; border-radius:12px; position:relative;">
-    <h4 class="text-center mb-4">Composez votre Menu Enfant</h4>
+    <h4 class="text-center mb-4" data-translate="modals.child.title">Composez votre Menu Enfant</h4>
     
     <div class="mb-3">
-      <label class="form-label fw-bold">Plat principal :</label>
+      <label class="form-label fw-bold" data-translate="modals.child.main">Plat principal :</label>
       <select class="form-select" id="child-plat">
-        <option value="cheeseburger">Mini Cheeseburger</option>
-        <option value="nuggets">4 Nuggets de poulet</option>
+        <!-- Options mises à jour par JS -->
       </select>
     </div>
     
     <div class="mb-3">
-      <label class="form-label fw-bold">Boisson :</label>
+      <label class="form-label fw-bold" data-translate="modals.child.drink">Boisson :</label>
       <select class="form-select" id="child-boisson">
-        <option value="oasis">Oasis</option>
-        <option value="coca">Coca-Cola</option>
-        <option value="icetea">Lipton Ice Tea pêche</option>
-        <option value="sprite">Sprite</option>
-        <option value="fanta">Fanta</option>
-        <option value="eau">Eau minérale</option>
-        <option value="eau-gazeuse">Eau gazeuse</option>
-        <option value="coca-zero">Coca-Cola Zéro</option>
-        <option value="jus-orange">Jus d'orange</option>
-        <option value="jus-pomme">Jus de Pomme</option>
+        <!-- Options mises à jour par JS -->
       </select>
     </div>
     
     <div class="text-center">
-      <button class="btn btn-primary me-2" id="add-child-to-cart">Ajouter au panier</button>
-      <button class="btn btn-secondary" id="close-child-modal">Annuler</button>
+      <button class="btn btn-primary me-2" id="add-child-to-cart" data-translate="modals.child.add">Ajouter au panier</button>
+      <button class="btn btn-secondary" id="close-child-modal" data-translate="modals.child.cancel">Annuler</button>
     </div>
   </div>
 </div>
 
 <!-- Modal choix assiette tapas -->
-<div class="modal" tabindex="-1" id="tapas-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+<div class="modal" tabindex="-1" id="tapas-choice-modal">
   <div style="background:#fff; margin:3% auto; padding:30px; max-width:500px; border-radius:12px; position:relative;">
-    <h4 class="text-center mb-4">Composez votre Assiette Tapas</h4>
-    <p class="text-center text-muted mb-4">Choisissez 7 tacos parmi nos garnitures</p>
+    <h4 class="text-center mb-4" data-translate="modals.tapas.title">Composez votre Assiette Tapas</h4>
+    <p class="text-center text-muted mb-4" data-translate="modals.tapas.subtitle">Choisissez 7 tacos parmi nos garnitures</p>
     
     <div class="row g-3">
       <div class="col-md-6">
@@ -476,12 +343,12 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
     </div>
     
     <div class="alert alert-info mt-3" id="tapas-counter">
-      <small>Total sélectionné : <span id="tapas-total">0</span>/7 tacos</small>
+      <small><span data-translate="modals.tapas.counter">Total sélectionné :</span> <span id="tapas-total">0</span>/7 <span data-translate="modals.tapas.tacos">tacos</span></small>
     </div>
     
     <div class="text-center">
-      <button class="btn btn-primary me-2" id="add-tapas-to-cart" disabled>Ajouter au panier</button>
-      <button class="btn btn-secondary" id="close-tapas-modal">Annuler</button>
+      <button class="btn btn-primary me-2" id="add-tapas-to-cart" disabled data-translate="modals.tapas.add">Ajouter au panier</button>
+      <button class="btn btn-secondary" id="close-tapas-modal" data-translate="modals.tapas.cancel">Annuler</button>
     </div>
   </div>
 </div>
@@ -489,6 +356,115 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <script>
+// Script de traduction
+let currentLang = localStorage.getItem('language') || 'fr';
+let translations = {};
+
+// Charge les traductions
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    translations = await response.json();
+    updateLanguage();
+  } catch (error) {
+    console.error('Erreur lors du chargement des traductions:', error);
+  }
+}
+
+// Met à jour tous les textes selon la langue
+function updateLanguage() {
+  const langButton = document.getElementById('lang-toggle');
+  
+  // Met à jour le bouton de langue
+  if (currentLang === 'fr') {
+    langButton.innerHTML = '🇬🇧 EN';
+  } else {
+    langButton.innerHTML = '🇫🇷 FR';
+  }
+  
+  // Met à jour tous les éléments avec data-translate
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    const text = getTranslation(key);
+    if (text) {
+      element.textContent = text;
+    }
+  });
+  
+  // Met à jour les options des selects
+  updateSelectOptions();
+}
+
+// Récupère une traduction par clé
+function getTranslation(key) {
+  const keys = key.split('.');
+  let value = translations[currentLang];
+  
+  for (const k of keys) {
+    if (value && value[k]) {
+      value = value[k];
+    } else {
+      return null;
+    }
+  }
+  
+  return value;
+}
+
+// Met à jour les options des selects
+function updateSelectOptions() {
+  // Garnitures tacos
+  const tacoGarnitureSelect = document.getElementById('taco-garniture');
+  if (tacoGarnitureSelect) {
+    tacoGarnitureSelect.innerHTML = `
+      <option value="poulet">${getTranslation('modals.taco.garnish_options.poulet')}</option>
+      <option value="boeuf">${getTranslation('modals.taco.garnish_options.boeuf')}</option>
+      <option value="poisson">${getTranslation('modals.taco.garnish_options.poisson')}</option>
+      <option value="agneau">${getTranslation('modals.taco.garnish_options.agneau')}</option>
+    `;
+  }
+  
+  // Boissons
+  const drinkSelects = ['taco-boisson', 'child-boisson'];
+  drinkSelects.forEach(selectId => {
+    const select = document.getElementById(selectId);
+    if (select) {
+      select.innerHTML = `
+        <option value="oasis">${getTranslation('modals.drinks.oasis')}</option>
+        <option value="coca">${getTranslation('modals.drinks.coca')}</option>
+        <option value="icetea">${getTranslation('modals.drinks.icetea')}</option>
+        <option value="sprite">${getTranslation('modals.drinks.sprite')}</option>
+        <option value="fanta">${getTranslation('modals.drinks.fanta')}</option>
+        <option value="eau">${getTranslation('modals.drinks.eau')}</option>
+        <option value="eau-gazeuse">${getTranslation('modals.drinks.eau_gazeuse')}</option>
+        <option value="coca-zero">${getTranslation('modals.drinks.coca_zero')}</option>
+        <option value="jus-orange">${getTranslation('modals.drinks.jus_orange')}</option>
+        <option value="jus-pomme">${getTranslation('modals.drinks.jus_pomme')}</option>
+      `;
+    }
+  });
+  
+  // Plats menu enfant
+  const childPlatSelect = document.getElementById('child-plat');
+  if (childPlatSelect) {
+    childPlatSelect.innerHTML = `
+      <option value="cheeseburger">${getTranslation('modals.child.main_options.cheeseburger')}</option>
+      <option value="nuggets">${getTranslation('modals.child.main_options.nuggets')}</option>
+    `;
+  }
+}
+
+// Gestion du changement de langue
+document.addEventListener('DOMContentLoaded', function() {
+  loadTranslations();
+  
+  document.getElementById('lang-toggle').addEventListener('click', function() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    localStorage.setItem('language', currentLang);
+    updateLanguage();
+  });
+});
+
 // Gestion du panier et des modales
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
@@ -525,6 +501,7 @@ function removeFromCart(idx) {
   setCart(cart);
   renderCart();
 }
+
 // Event listeners pour les boutons "Ajouter au panier"
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
@@ -562,6 +539,7 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     setCart(cart);
   });
 });
+
 document.getElementById('open-taco-modal').onclick = function(e) {
   e.preventDefault();
   document.getElementById('taco-choice-modal').style.display = 'block';
@@ -593,6 +571,7 @@ document.getElementById('add-taco-to-cart').onclick = function() {
   // Ferme la modale après ajout
   document.getElementById('taco-choice-modal').style.display = 'none';
 };
+
 document.getElementById('open-child-modal').onclick = function(e) {
   e.preventDefault();
   document.getElementById('child-choice-modal').style.display = 'block';
@@ -622,18 +601,22 @@ document.getElementById('add-child-to-cart').onclick = function() {
   // Ferme la modale après ajout
   document.getElementById('child-choice-modal').style.display = 'none';
 };
+
 document.getElementById('open-cart').onclick = function(e) {
   e.preventDefault();
   document.getElementById('cart-modal').style.display = 'block';
   renderCart();
 };
+
 document.getElementById('close-cart').onclick = function() {
   document.getElementById('cart-modal').style.display = 'none';
 };
+
 document.getElementById('clear-cart').onclick = function() {
   setCart([]);
   renderCart();
 };
+
 document.getElementById('open-tapas-modal').onclick = function(e) {
   e.preventDefault();
   document.getElementById('tapas-choice-modal').style.display = 'block';
@@ -700,8 +683,24 @@ document.getElementById('add-tapas-to-cart').onclick = function() {
     document.getElementById(id).value = '0';
   });
 };
+
+document.getElementById('validate-cart').onclick = function() {
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert('Votre panier est vide !');
+    return;
+  }
+  
+  // Sauvegarde le panier pour la page de commandes
+  localStorage.setItem('orderToConfirm', JSON.stringify(cart));
+  
+  // Redirige vers la page de commandes (avec majuscule)
+  window.location.href = 'Commandes.html';
+};
+
 updateCartCount();
 </script>
+
 <script>
 window.addEventListener('scroll', function() {
   const navbar = document.querySelector('.menu');
@@ -713,6 +712,7 @@ window.addEventListener('scroll', function() {
   }
 });
 </script>
+
 <script src="burger-menu.js"></script>
 </body>
 </html>
