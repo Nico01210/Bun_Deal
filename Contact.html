@@ -28,11 +28,14 @@
     
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="apropos.html">A propos</a></li>
-      <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Contact.html">Contact</a></li>
-      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
+      <li><a href="/index.html" data-translate="nav.home">Accueil</a></li>
+      <li><a href="apropos.html" data-translate="nav.about">A propos</a></li>
+      <li><a href="/menu.html" data-translate="nav.menu">Menu</a></li>
+      <li><a href="/Contact.html" data-translate="nav.contact">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 <span data-translate="nav.cart">Panier</span> (<span id="cart-count">0</span>)</a></li>
+      <li>
+        <button id="lang-toggle" class="btn btn-outline-light btn-sm">🇬🇧 EN</button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -41,50 +44,50 @@
 <br>
 <br>
 
-      <h1 class="title-contact"> Contactez nous</h1>
+<h1 class="title-contact" data-translate="contact.title">Contactez nous</h1>
 
-      <form name="contact" class="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="https://formspree.io/f/xanjaqwd">
-        <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="redirect" value="/merci.html">
-        <p hidden>
-          <label>Ne pas remplir : <input name="bot-field" /></label>
-        </p>
-        <div>
-          <label for="civilite">Civilité</label>
-          <select name="civilite" id="civilite" required>
-            <option value="">--Choisissez une option--</option>
-            <option value="Mr">Monsieur</option>
-            <option value="Mme">Madame</option>
-            <option value="Autre">Autre</option>
-          </select>
-        </div>
+<form name="contact" class="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="https://formspree.io/f/xanjaqwd">
+  <input type="hidden" name="form-name" value="contact">
+  <input type="hidden" name="redirect" value="/merci.html">
+  <p hidden>
+    <label>Ne pas remplir : <input name="bot-field" /></label>
+  </p>
+  <div>
+    <label for="civilite" data-translate="contact.form.civility">Civilité</label>
+    <select name="civilite" id="civilite" required>
+      <option value="" data-translate="contact.form.choose_option">--Choisissez une option--</option>
+      <option value="Mr" data-translate="contact.form.mr">Monsieur</option>
+      <option value="Mme" data-translate="contact.form.mrs">Madame</option>
+      <option value="Autre" data-translate="contact.form.other">Autre</option>
+    </select>
+  </div>
 
-        <div>
-          <label for="nom">Nom</label>
-          <input type="text" name="nom" required>
-        </div>
+  <div>
+    <label for="nom" data-translate="contact.form.lastname">Nom</label>
+    <input type="text" name="nom" required>
+  </div>
 
-        <div>
-          <label for="prenom">Prénom</label>
-          <input type="text" name="prenom" required>
-        </div>
+  <div>
+    <label for="prenom" data-translate="contact.form.firstname">Prénom</label>
+    <input type="text" name="prenom" required>
+  </div>
 
-        <div>
-          <label for="email">Email</label>
-          <input type="email" name="email" required>
-        </div>
+  <div>
+    <label for="email" data-translate="contact.form.email">Email</label>
+    <input type="email" name="email" required>
+  </div>
 
-        <div>
-          <label for="message">Votre message</label>
-          <textarea name="message" placeholder="Exprimez-vous" required></textarea>
-        </div>
-         <input type="hidden" name="_gotcha" style="display:none">
+  <div>
+    <label for="message" data-translate="contact.form.message">Votre message</label>
+    <textarea name="message" data-translate-placeholder="contact.form.message_placeholder" placeholder="Exprimez-vous" required></textarea>
+  </div>
+  <input type="hidden" name="_gotcha" style="display:none">
   <input type="hidden" name="_subject" value="Nouveau message depuis le site Bun'Deal">
   <input type="hidden" name="_redirect" value="https://ton-site.com/merci.html">
 
-        <button type="submit">Envoyer</button>
+  <button type="submit" data-translate="contact.form.send_button">Envoyer</button>
+</form>
 
-      </form>
 <!-- Footer -->
 <div class="footer-clean bg-light pt-4">
   <footer>
@@ -92,27 +95,27 @@
       <div class="row justify-content-center">
         <!-- Footer links (services, about, etc.) -->
         <div class="col-sm-4 col-md-3 item">
-          <h3>Services</h3>
+          <h3 data-translate="footer.services">Services</h3>
           <ul>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="Contact.html">Évènements</a></li>
-            <li><a href="Contact.html">Commandes spéciales</a></li>
+            <li><a href="menu.html" data-translate="nav.menu">Menu</a></li>
+            <li><a href="Contact.html" data-translate="footer.events">Évènements</a></li>
+            <li><a href="Contact.html" data-translate="footer.special_orders">Commandes spéciales</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>About</h3>
+          <h3 data-translate="footer.about">About</h3>
           <ul>
-            <li><a href="apropos.html">Company</a></li>
-            <li><a href="apropos.html">Team</a></li>
-            <li><a href="apropos.html">Legacy</a></li>
+            <li><a href="apropos.html" data-translate="footer.company">Company</a></li>
+            <li><a href="apropos.html" data-translate="footer.team">Team</a></li>
+            <li><a href="apropos.html" data-translate="footer.legacy">Legacy</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>Contact</h3>
+          <h3 data-translate="footer.contact">Contact</h3>
           <ul>
-            <li><a href="Contact.html">Nous contacter</a></li>
-            <li><a href="Contact.html">Nous rejoindre</a></li>
-            <li><a href="apropos.html">Nous trouver</a></li>
+            <li><a href="Contact.html" data-translate="footer.contact_us">Nous contacter</a></li>
+            <li><a href="Contact.html" data-translate="footer.join_us">Nous rejoindre</a></li>
+            <li><a href="apropos.html" data-translate="footer.find_us">Nous trouver</a></li>
           </ul>
         </div>
         <div class="col-lg-3 item social text-center">
@@ -120,26 +123,125 @@
           <a href="#"><img src="images/twitter.png" alt="Twitter" class="footer-social-logo"></a>
           <a href="#"><img src="images/snapchat.webp" alt="Snapchat" class="footer-social-logo"></a>
           <a href="#"><img src="images/insta.png" alt="Instagram" class="footer-social-logo"></a>
-          <p class="copyright mt-2">Bun'Deal © 2025</p>
+          <p class="copyright mt-2" data-translate="footer.copyright">Bun'Deal © 2025</p>
         </div>
       </div>
     </div>
   </footer>
 </div>
 
-<!-- Modal panier et script clean code -->
+<!-- Modal panier -->
 <div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div class="cart-modal-content">
-    <h4>Votre panier</h4>
+    <h4 data-translate="modals.cart.title">Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
-    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <p><span data-translate="modals.cart.total">Total</span> : <span id="cart-total">0.00</span> €</p>
     <div class="d-flex justify-content-between gap-2 mt-3">
-      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
-      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
-      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+      <button class="btn btn-danger flex-fill" id="clear-cart" data-translate="modals.cart.clear">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart" data-translate="modals.cart.validate">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart" data-translate="modals.cart.close">Fermer</button>
     </div>
   </div>
 </div>
+
+<!-- Scripts -->
+<script>
+// Script de traduction
+let currentLang = localStorage.getItem('language') || 'fr';
+let translations = {};
+
+// Charge les traductions
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    translations = await response.json();
+    updateLanguage();
+  } catch (error) {
+    console.error('Erreur lors du chargement des traductions:', error);
+  }
+}
+
+// Met à jour tous les textes selon la langue
+function updateLanguage() {
+  const langButton = document.getElementById('lang-toggle');
+  
+  // Met à jour le bouton de langue
+  if (currentLang === 'fr') {
+    langButton.innerHTML = '🇬🇧 EN';
+  } else {
+    langButton.innerHTML = '🇫🇷 FR';
+  }
+  
+  // Met à jour tous les éléments avec data-translate
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    const text = getTranslation(key);
+    if (text) {
+      element.textContent = text;
+    }
+  });
+  
+  // Met à jour les placeholders
+  document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-translate-placeholder');
+    const text = getTranslation(key);
+    if (text) {
+      element.placeholder = text;
+    }
+  });
+  
+  // Met à jour les options du select
+  updateSelectOptions();
+}
+
+// Récupère une traduction par clé
+function getTranslation(key) {
+  const keys = key.split('.');
+  let value = translations[currentLang];
+  
+  for (const k of keys) {
+    if (value && value[k]) {
+      value = value[k];
+    } else {
+      return null;
+    }
+  }
+  
+  return value;
+}
+
+// Met à jour les options du select civilité
+function updateSelectOptions() {
+  const civiliteSelect = document.getElementById('civilite');
+  if (civiliteSelect && translations[currentLang]) {
+    const options = civiliteSelect.querySelectorAll('option');
+    options.forEach(option => {
+      const key = option.getAttribute('data-translate');
+      if (key) {
+        const text = getTranslation(key);
+        if (text) {
+          option.textContent = text;
+        }
+      }
+    });
+  }
+}
+
+// Gestion du changement de langue
+document.addEventListener('DOMContentLoaded', function() {
+  loadTranslations();
+  
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', function() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      localStorage.setItem('language', currentLang);
+      updateLanguage();
+    });
+  }
+});
+</script>
+
 <script>
 // Gestion du panier clean code
 function getCart() {

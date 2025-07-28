@@ -136,6 +136,22 @@
         "price": "Prix unitaire",
         "total": "Total"
       }
+    },
+    "contact": {
+      "title": "Contactez nous",
+      "form": {
+        "civility": "Civilité",
+        "choose_option": "--Choisissez une option--",
+        "mr": "Monsieur",
+        "mrs": "Madame",
+        "other": "Autre",
+        "lastname": "Nom",
+        "firstname": "Prénom",
+        "email": "Email",
+        "message": "Votre message",
+        "message_placeholder": "Exprimez-vous",
+        "send_button": "Envoyer"
+      }
     }
   },
   "en": {
@@ -274,6 +290,22 @@
         "quantity": "Quantity",
         "price": "Unit price",
         "total": "Total"
+      }
+    },
+    "contact": {
+      "title": "Contact us",
+      "form": {
+        "civility": "Title",
+        "choose_option": "--Choose an option--",
+        "mr": "Mr",
+        "mrs": "Mrs",
+        "other": "Other",
+        "lastname": "Last name",
+        "firstname": "First name",
+        "email": "Email",
+        "message": "Your message",
+        "message_placeholder": "Express yourself",
+        "send_button": "Send"
       }
     }
   }
