@@ -107,16 +107,55 @@
         "cancel": "Annuler"
       },
       "drinks": {
-        "oasis": "Oasis",
-        "coca": "Coca-Cola",
-        "icetea": "Lipton Ice Tea pêche",
-        "sprite": "Sprite",
-        "fanta": "Fanta",
-        "eau": "Eau minérale",
-        "eau_gazeuse": "Eau gazeuse",
-        "coca_zero": "Coca-Cola Zéro",
-        "jus_orange": "Jus d'orange",
-        "jus_pomme": "Jus de Pomme"
+        "title": "Les Boissons",
+        "oasis": {
+          "title": "Oasis",
+          "description": "Canette de 33cl."
+        },
+        "coca_cola": {
+          "title": "Coca-Cola",
+          "description": "Canette de 33cl."
+        },
+        "ice_tea": {
+          "title": "Lipton Ice Tea pêche",
+          "description": "Canette de 33cl."
+        },
+        "sprite": {
+          "title": "Sprite",
+          "description": "Canette de 33cl."
+        },
+        "fanta": {
+          "title": "Fanta",
+          "description": "Canette de 33cl."
+        },
+        "eau_minerale": {
+          "title": "Eau minérale",
+          "description": "Bouteille de Vittel 50cl."
+        },
+        "eau_gazeuse": {
+          "title": "Eau gazeuse",
+          "description": "Bouteille de Perrier 50cl."
+        },
+        "coca_zero": {
+          "title": "Coca-Cola Zéro",
+          "description": "Canette de 33cl."
+        },
+        "jus_orange": {
+          "title": "Jus d'orange",
+          "description": "Bouteille de jus d'orange Innocent 25cl."
+        },
+        "jus_pomme": {
+          "title": "Jus de Pomme",
+          "description": "Bouteille de jus de pomme Innocent 25cl."
+        },
+        "biere_blonde": {
+          "title": "Bière Blonde",
+          "description": "Bière pression 1664, 25cl."
+        },
+        "biere_brune": {
+          "title": "Bière Brune",
+          "description": "Bière pression CHIMAY, 25cl."
+        }
       }
     },
     "footer": {
@@ -164,6 +203,69 @@
         "message": "Votre message",
         "message_placeholder": "Exprimez-vous",
         "send_button": "Envoyer"
+      }
+    },
+    "menu": {
+      "title": "Menu",
+      "tabs": {
+        "menus": "Les Menus",
+        "burgers": "Les Burgers",
+        "tacos": "Les Tacos",
+        "snacks": "Les Snacks",
+        "drinks": "Les Boissons",
+        "desserts": "Les Desserts"
+      },
+      "add_to_cart": "Ajouter au panier",
+      "drinks": {
+        "title": "Les Boissons",
+        "oasis": {
+          "title": "Oasis",
+          "description": "Canette de 33cl."
+        },
+        "coca_cola": {
+          "title": "Coca-Cola",
+          "description": "Canette de 33cl."
+        },
+        "ice_tea": {
+          "title": "Lipton Ice Tea pêche",
+          "description": "Canette de 33cl."
+        },
+        "sprite": {
+          "title": "Sprite",
+          "description": "Canette de 33cl."
+        },
+        "fanta": {
+          "title": "Fanta",
+          "description": "Canette de 33cl."
+        },
+        "eau_minerale": {
+          "title": "Eau minérale",
+          "description": "Bouteille de Vittel 50cl."
+        },
+        "eau_gazeuse": {
+          "title": "Eau gazeuse",
+          "description": "Bouteille de Perrier 50cl."
+        },
+        "coca_zero": {
+          "title": "Coca-Cola Zéro",
+          "description": "Canette de 33cl."
+        },
+        "jus_orange": {
+          "title": "Jus d'orange",
+          "description": "Bouteille de jus d'orange Innocent 25cl."
+        },
+        "jus_pomme": {
+          "title": "Jus de Pomme",
+          "description": "Bouteille de jus de pomme Innocent 25cl."
+        },
+        "biere_blonde": {
+          "title": "Bière Blonde",
+          "description": "Bière pression 1664, 25cl."
+        },
+        "biere_brune": {
+          "title": "Bière Brune",
+          "description": "Bière pression CHIMAY, 25cl."
+        }
       }
     }
   },
@@ -275,16 +377,55 @@
         "cancel": "Cancel"
       },
       "drinks": {
-        "oasis": "Oasis",
-        "coca": "Coca-Cola",
-        "icetea": "Lipton Ice Tea Peach",
-        "sprite": "Sprite",
-        "fanta": "Fanta",
-        "eau": "Mineral water",
-        "eau_gazeuse": "Sparkling water",
-        "coca_zero": "Coca-Cola Zero",
-        "jus_orange": "Orange juice",
-        "jus_pomme": "Apple juice"
+        "title": "The Drinks",
+        "oasis": {
+          "title": "Oasis",
+          "description": "33cl can."
+        },
+        "coca_cola": {
+          "title": "Coca-Cola",
+          "description": "33cl can."
+        },
+        "ice_tea": {
+          "title": "Lipton Ice Tea peach",
+          "description": "33cl can."
+        },
+        "sprite": {
+          "title": "Sprite",
+          "description": "33cl can."
+        },
+        "fanta": {
+          "title": "Fanta",
+          "description": "33cl can."
+        },
+        "eau_minerale": {
+          "title": "Mineral water",
+          "description": "Vittel 50cl bottle."
+        },
+        "eau_gazeuse": {
+          "title": "Sparkling water",
+          "description": "Perrier 50cl bottle."
+        },
+        "coca_zero": {
+          "title": "Coca-Cola Zero",
+          "description": "33cl can."
+        },
+        "jus_orange": {
+          "title": "Orange juice",
+          "description": "Innocent 25cl orange juice bottle."
+        },
+        "jus_pomme": {
+          "title": "Apple juice",
+          "description": "Innocent 25cl apple juice bottle."
+        },
+        "biere_blonde": {
+          "title": "Blonde Beer",
+          "description": "1664 draft beer, 25cl."
+        },
+        "biere_brune": {
+          "title": "Brown Beer",
+          "description": "CHIMAY draft beer, 25cl."
+        }
       }
     },
     "footer": {
@@ -332,6 +473,69 @@
         "message": "Your message",
         "message_placeholder": "Express yourself",
         "send_button": "Send"
+      }
+    },
+    "menu": {
+      "title": "Menu",
+      "tabs": {
+        "menus": "Menus",
+        "burgers": "Burgers",
+        "tacos": "Tacos",
+        "snacks": "Snacks",
+        "drinks": "Drinks",
+        "desserts": "Desserts"
+      },
+      "add_to_cart": "Add to cart",
+      "drinks": {
+        "title": "The Drinks",
+        "oasis": {
+          "title": "Oasis",
+          "description": "33cl can."
+        },
+        "coca_cola": {
+          "title": "Coca-Cola",
+          "description": "33cl can."
+        },
+        "ice_tea": {
+          "title": "Lipton Ice Tea peach",
+          "description": "33cl can."
+        },
+        "sprite": {
+          "title": "Sprite",
+          "description": "33cl can."
+        },
+        "fanta": {
+          "title": "Fanta",
+          "description": "33cl can."
+        },
+        "eau_minerale": {
+          "title": "Mineral water",
+          "description": "Vittel 50cl bottle."
+        },
+        "eau_gazeuse": {
+          "title": "Sparkling water",
+          "description": "Perrier 50cl bottle."
+        },
+        "coca_zero": {
+          "title": "Coca-Cola Zero",
+          "description": "33cl can."
+        },
+        "jus_orange": {
+          "title": "Orange juice",
+          "description": "Innocent 25cl orange juice bottle."
+        },
+        "jus_pomme": {
+          "title": "Apple juice",
+          "description": "Innocent 25cl apple juice bottle."
+        },
+        "biere_blonde": {
+          "title": "Blonde Beer",
+          "description": "1664 draft beer, 25cl."
+        },
+        "biere_brune": {
+          "title": "Brown Beer",
+          "description": "CHIMAY draft beer, 25cl."
+        }
       }
     }
   }

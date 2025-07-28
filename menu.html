@@ -69,14 +69,17 @@
     
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="apropos.html">A propos</a></li>
-      <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Contact.html">Contact</a></li>
+      <li><a href="/index.html" data-translate="nav.home">Accueil</a></li>
+      <li><a href="apropos.html" data-translate="nav.about">A propos</a></li>
+      <li><a href="/menu.html" data-translate="nav.menu">Menu</a></li>
+      <li><a href="/Contact.html" data-translate="nav.contact">Contact</a></li>
       <li>
         <a href="#" id="open-cart" style="font-weight:bold;">
-          🛒 Panier (<span id="cart-count">0</span>)
+          🛒 <span data-translate="nav.cart">Panier</span> (<span id="cart-count">0</span>)
         </a>
+      </li>
+      <li>
+        <button id="lang-toggle" class="btn btn-outline-light btn-sm">🇬🇧 EN</button>
       </li>
     </ul>
   </div>
@@ -86,27 +89,27 @@
 
 
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Menu</h1>
+    <h1 class="text-center mb-4" data-translate="menu.title">Menu</h1>
 
     <!-- Onglets -->
     <ul class="nav nav-tabs justify-content-center" id="menuTabs" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="menus-tab" data-bs-toggle="tab" data-bs-target="#Menus" type="button" role="tab">Les Menus</button>
+        <button class="nav-link active" id="menus-tab" data-bs-toggle="tab" data-bs-target="#Menus" type="button" role="tab" data-translate="menu.tabs.menus">Les Menus</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="burgers-tab" data-bs-toggle="tab" data-bs-target="#Burgers" type="button" role="tab">Les Burgers</button>
+        <button class="nav-link" id="burgers-tab" data-bs-toggle="tab" data-bs-target="#Burgers" type="button" role="tab" data-translate="menu.tabs.burgers">Les Burgers</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tacos-tab" data-bs-toggle="tab" data-bs-target="#Tacos" type="button" role="tab">Les Tacos</button>
+        <button class="nav-link" id="tacos-tab" data-bs-toggle="tab" data-bs-target="#Tacos" type="button" role="tab" data-translate="menu.tabs.tacos">Les Tacos</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="snacks-tab" data-bs-toggle="tab" data-bs-target="#Snacks" type="button" role="tab">Les Snacks</button>
+        <button class="nav-link" id="snacks-tab" data-bs-toggle="tab" data-bs-target="#Snacks" type="button" role="tab" data-translate="menu.tabs.snacks">Les Snacks</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="boissons-tab" data-bs-toggle="tab" data-bs-target="#Boissons" type="button" role="tab">Les Boissons</button>
+        <button class="nav-link" id="boissons-tab" data-bs-toggle="tab" data-bs-target="#Boissons" type="button" role="tab" data-translate="menu.tabs.drinks">Les Boissons</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#Desserts" type="button" role="tab">Les Desserts</button>
+        <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#Desserts" type="button" role="tab" data-translate="menu.tabs.desserts">Les Desserts</button>
       </li>
     </ul>
 
@@ -478,20 +481,21 @@
 
         <!-- Contenu des boissons -->
 
-        <h3 class="text-center">Les Boissons</h3>
+        <h3 class="text-center" data-translate="menu.drinks.title">Les Boissons</h3>
         <div class="row g-4 justify-content-center">
           <!-- Carte 1 -->
           <div class="col-md-4">
             <div class="card h-100 shadow">
               <img src="images/oasis.webp" width="250" height="400" class="card-img-top" alt="Oasis">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Oasis</strong></h5>
-                <p class="card-text">Canette de 33cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.oasis.title">Oasis</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.oasis.description">Canette de 33cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Oasis"
                    data-price="2.00"
-                   data-img="images/oasis.webp">Ajouter au panier</a>
+                   data-img="images/oasis.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -500,13 +504,14 @@
             <div class="card h-100 shadow">
               <img src="images/coca.webp" width="250" height="400" class="card-img-top" alt="Coca-Cola">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Coca-Cola</strong></h5>
-                <p class="card-text">Canette de 33cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.coca_cola.title">Coca-Cola</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.coca_cola.description">Canette de 33cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Coca-Cola"
                    data-price="2.00"
-                   data-img="images/coca.webp">Ajouter au panier</a>
+                   data-img="images/coca.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -515,13 +520,14 @@
             <div class="card h-100 shadow">
               <img src="images/ice-tea.webp" width="250" height="400" class="card-img-top" alt="Ice Tea">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Lipton Ice Tea pêche</strong></h5>
-                <p class="card-text">Canette de 33cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.ice_tea.title">Lipton Ice Tea pêche</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.ice_tea.description">Canette de 33cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Lipton Ice Tea pêche"
                    data-price="2.00"
-                   data-img="images/ice-tea.webp">Ajouter au panier</a>
+                   data-img="images/ice-tea.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -530,13 +536,14 @@
             <div class="card h-100 shadow">
               <img src="images/Sprite.jpg" width="250" height="400" class="card-img-top" alt="Sprite">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Sprite</strong></h5>
-                <p class="card-text">Canette de 33cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.sprite.title">Sprite</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.sprite.description">Canette de 33cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Sprite"
                    data-price="2.00"
-                   data-img="images/Sprite.jpg">Ajouter au panier</a>
+                   data-img="images/Sprite.jpg"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -545,13 +552,14 @@
             <div class="card h-100 shadow">
               <img src="images/canette_fanta.webp" width="250" height="400" class="card-img-top" alt="Fanta">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Fanta</strong></h5>
-                <p class="card-text">Canette de 33cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.fanta.title">Fanta</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.fanta.description">Canette de 33cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Fanta"
                    data-price="2.00"
-                   data-img="images/canette_fanta.webp">Ajouter au panier</a>
+                   data-img="images/canette_fanta.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -560,28 +568,30 @@
             <div class="card h-100 shadow">
               <img src="images/vittel.webp" width="250" height="400" class="card-img-top" alt="Vittel">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Eau minéral</strong></h5>
-                <p class="card-text">Bouteille de Vittel 50cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.eau_minerale.title">Eau minérale</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.eau_minerale.description">Bouteille de Vittel 50cl.</p>
                 <p class="fw-bold text-success">1,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Eau minéral"
                    data-price="1.50"
-                   data-img="images/vittel.webp">Ajouter au panier</a>
+                   data-img="images/vittel.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
           <!-- Carte 7 -->
           <div class="col-md-4">
             <div class="card h-100 shadow">
-              <img src="images/eau-gazeuse.webp" width="250" height="400" class="card-img-top" alt="Eau gazeuse ">
+              <img src="images/eau-gazeuse.webp" width="250" height="400" class="card-img-top" alt="Eau gazeuse">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Eau gazeuse</strong></h5>
-                <p class="card-text">Bouteille de Perrier 50cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.eau_gazeuse.title">Eau gazeuse</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.eau_gazeuse.description">Bouteille de Perrier 50cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Eau gazeuse"
                    data-price="2.00"
-                   data-img="images/eau-gazeuse.webp">Ajouter au panier</a>
+                   data-img="images/eau-gazeuse.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -590,28 +600,30 @@
             <div class="card h-100 shadow">
               <img src="images/coca-zero.webp" width="250" height="400" class="card-img-top" alt="Coca-Cola Zero">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Coca-Cola Zéro</strong></h5>
-                <p class="card-text">Canette de 33cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.coca_zero.title">Coca-Cola Zéro</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.coca_zero.description">Canette de 33cl.</p>
                 <p class="fw-bold text-success">2,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Coca-Cola Zéro"
                    data-price="2.00"
-                   data-img="images/coca-zero.webp">Ajouter au panier</a>
+                   data-img="images/coca-zero.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
           <!-- Carte 9 -->
           <div class="col-md-4">
             <div class="card h-100 shadow">
-              <img src="images/innoncent-orange.webp" width="250" height="400" class="card-img-top" alt="Innocent Orange  ">
+              <img src="images/innoncent-orange.webp" width="250" height="400" class="card-img-top" alt="Innocent Orange">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Jus d'orange</strong></h5>
-                <p class="card-text">Bouteille de jus d'orange Innocent 25cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.jus_orange.title">Jus d'orange</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.jus_orange.description">Bouteille de jus d'orange Innocent 25cl.</p>
                 <p class="fw-bold text-success">2,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Jus d'orange"
                    data-price="2.50"
-                   data-img="images/innoncent-orange.webp">Ajouter au panier</a>
+                   data-img="images/innoncent-orange.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -620,13 +632,14 @@
             <div class="card h-100 shadow">
               <img src="images/innocent_pomme25cl_002_.webp" width="250" height="400" class="card-img-top" alt="Innocent Pomme">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Jus de Pomme</strong></h5>
-                <p class="card-text">Bouteille de jus de pomme Innocent 25cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.jus_pomme.title">Jus de Pomme</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.jus_pomme.description">Bouteille de jus de pomme Innocent 25cl.</p>
                 <p class="fw-bold text-success">2,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Jus de Pomme"
                    data-price="2.50"
-                   data-img="images/innocent_pomme25cl_002_.webp">Ajouter au panier</a>
+                   data-img="images/innocent_pomme25cl_002_.webp"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -635,13 +648,14 @@
             <div class="card h-100 shadow">
               <img src="images/biere-blonde.png" width="250" height="400" class="card-img-top" alt="Bière Blonde">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Bière Blonde</strong></h5>
-                <p class="card-text">Bière pression 1664, 25cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.biere_blonde.title">Bière Blonde</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.biere_blonde.description">Bière pression 1664, 25cl.</p>
                 <p class="fw-bold text-success">3,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Bière Blonde"
                    data-price="3.00"
-                   data-img="images/biere-blonde.png">Ajouter au panier</a>
+                   data-img="images/biere-blonde.png"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -650,13 +664,14 @@
             <div class="card h-100 shadow">
               <img src="images/biere-brune.jpg" width="250" height="400" class="card-img-top" alt="Bière Brune">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Bière Brune</strong></h5>
-                <p class="card-text">Bière pression CHIMAY, 25cl.</p>
+                <h5 class="card-title"><strong data-translate="menu.drinks.biere_brune.title">Bière Brune</strong></h5>
+                <p class="card-text" data-translate="menu.drinks.biere_brune.description">Bière pression CHIMAY, 25cl.</p>
                 <p class="fw-bold text-success">3,00 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Bière Brune"
                    data-price="3.00"
-                   data-img="images/biere-brune.jpg">Ajouter au panier</a>
+                   data-img="images/biere-brune.jpg"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
@@ -775,29 +790,28 @@
   <footer>
     <div class="container">
       <div class="row justify-content-center">
-        <!-- Footer links (services, about, etc.) -->
         <div class="col-sm-4 col-md-3 item">
-          <h3>Services</h3>
+          <h3 data-translate="footer.services">Services</h3>
           <ul>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="Contact.html">Évènements</a></li>
-            <li><a href="Contact.html">Commandes spéciales</a></li>
+            <li><a href="menu.html" data-translate="nav.menu">Menu</a></li>
+            <li><a href="Contact.html" data-translate="footer.events">Évènements</a></li>
+            <li><a href="Contact.html" data-translate="footer.special_orders">Commandes spéciales</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>About</h3>
+          <h3 data-translate="footer.about">About</h3>
           <ul>
-            <li><a href="apropos.html">Company</a></li>
-            <li><a href="apropos.html">Team</a></li>
-            <li><a href="apropos.html">Legacy</a></li>
+            <li><a href="apropos.html" data-translate="footer.company">Company</a></li>
+            <li><a href="apropos.html" data-translate="footer.team">Team</a></li>
+            <li><a href="apropos.html" data-translate="footer.legacy">Legacy</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>Contact</h3>
+          <h3 data-translate="footer.contact">Contact</h3>
           <ul>
-            <li><a href="Contact.html">Nous contacter</a></li>
-            <li><a href="Contact.html">Nous rejoindre</a></li>
-            <li><a href="apropos.html">Nous trouver</a></li>
+            <li><a href="Contact.html" data-translate="footer.contact_us">Nous contacter</a></li>
+            <li><a href="Contact.html" data-translate="footer.join_us">Nous rejoindre</a></li>
+            <li><a href="apropos.html" data-translate="footer.find_us">Nous trouver</a></li>
           </ul>
         </div>
         <div class="col-lg-3 item social text-center">
@@ -805,7 +819,7 @@
           <a href="#"><img src="images/twitter.png" alt="Twitter" class="footer-social-logo"></a>
           <a href="#"><img src="images/snapchat.webp" alt="Snapchat" class="footer-social-logo"></a>
           <a href="#"><img src="images/insta.png" alt="Instagram" class="footer-social-logo"></a>
-          <p class="copyright mt-2">Bun'Deal © 2025</p>
+          <p class="copyright mt-2" data-translate="footer.copyright">Bun'Deal © 2025</p>
         </div>
       </div>
     </div>
@@ -984,6 +998,69 @@
   </div>
 </div>
 
+<script>
+// Script de traduction
+let currentLang = localStorage.getItem('language') || 'fr';
+let translations = {};
+
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    translations = await response.json();
+    updateLanguage();
+  } catch (error) {
+    console.error('Erreur lors du chargement des traductions:', error);
+  }
+}
+
+function getTranslation(key) {
+  const keys = key.split('.');
+  let value = translations[currentLang];
+  
+  for (const k of keys) {
+    if (value && value[k]) {
+      value = value[k];
+    } else {
+      return null;
+    }
+  }
+  
+  return value;
+}
+
+function updateLanguage() {
+  const langButton = document.getElementById('lang-toggle');
+  
+  if (currentLang === 'fr') {
+    langButton.innerHTML = '🇬🇧 EN';
+  } else {
+    langButton.innerHTML = '🇫🇷 FR';
+  }
+  
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    const text = getTranslation(key);
+    if (text) {
+      element.textContent = text;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadTranslations();
+  
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', function() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      localStorage.setItem('language', currentLang);
+      updateLanguage();
+    });
+  }
+});
+</script>
+
+<!-- Script existant... -->
 <script>
 // Gestion du panier et des modales (clean code)
 function getCart() {
