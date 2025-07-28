@@ -29,11 +29,14 @@
     
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="apropos.html">A propos</a></li>
-      <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Contact.html">Contact</a></li>
-      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
+      <li><a href="/index.html" data-translate="nav.home">Accueil</a></li>
+      <li><a href="apropos.html" data-translate="nav.about">A propos</a></li>
+      <li><a href="/menu.html" data-translate="nav.menu">Menu</a></li>
+      <li><a href="/Contact.html" data-translate="nav.contact">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 <span data-translate="nav.cart">Panier</span> (<span id="cart-count">0</span>)</a></li>
+      <li>
+        <button id="lang-toggle" class="btn btn-outline-light btn-sm">🇬🇧 EN</button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -41,22 +44,22 @@
 <div style="height:120px;"></div>
 
 <section id="legacy" class="legacy-section container my-5">
-  <h2 class="text-center mb-4">Notre Héritage</h2>
+  <h2 class="text-center mb-4" data-translate="about.legacy.title">Notre Héritage</h2>
   <div class="row align-items-center">
     <div class="col-md-6 mb-4 mb-md-0">
       <img src="images/cuisinier.jpg" alt="Nos valeurs" width= 100% height= 350px class="img-fluid rounded shadow">
     </div>
     <div class="col-md-6">
-      <p>
+      <p data-translate="about.legacy.text1">
         Chez <strong>Bun'Deal</strong>, chaque recette raconte une histoire.  
         Celle de notre terroir, de nos producteurs passionnés, et de notre volonté de faire simple, bon et responsable.
       </p>
-      <p>
-        Notre héritage, c’est celui d’une cuisine faite maison, sans compromis sur la qualité.  
+      <p data-translate="about.legacy.text2">
+        Notre héritage, c'est celui d'une cuisine faite maison, sans compromis sur la qualité.  
         Nos ingrédients sont issus de filières locales, nos buns sont préparés avec soin, et nos sauces sont toutes maison.
       </p>
-      <p>
-        Plus qu’un fast-food, nous voulons être un trait d’union entre authenticité et modernité, entre producteurs et clients.  
+      <p data-translate="about.legacy.text3">
+        Plus qu'un fast-food, nous voulons être un trait d'union entre authenticité et modernité, entre producteurs et clients.  
         Ensemble, construisons une alimentation plus humaine et plus savoureuse.
       </p>
     </div>
@@ -64,43 +67,38 @@
 </section>
 
 <section id="team" class="team-section container my-6">
-  <h2 class="text-center mb-4">Notre Team</h2>
+  <h2 class="text-center mb-4" data-translate="about.team.title">Notre Team</h2>
   <div class="row align-items-center">
     <div class="col-md-6 mb-4 mb-md-0">
       <img src="images/team.jpg" alt="Nos valeurs" width= 100% height= 350px class="img rounded shadow">
     </div>
     <div class="col-md-6">
-      <p>
-L’équipe Bun’Deal : Une passion partagée, un goût unique
-Chez Bun’Deal, notre force, c’est notre équipe soudée, complémentaire et animée par l’amour du bon produit. Derrière chaque burger, chaque recette et chaque sourire, il y a eux 👇 :
-<br>
-<br>
+      <p data-translate="about.team.description">
+L'équipe Bun'Deal : Une passion partagée, un goût unique
+Chez Bun'Deal, notre force, c'est notre équipe soudée, complémentaire et animée par l'amour du bon produit. Derrière chaque burger, chaque recette et chaque sourire, il y a eux 👇 :
+<br><br>
 🍔 <strong>Takeshi</strong> – Chef de cuisine & maître du grill
-Ancien chef dans un bistrot fusion franco-nippon, Takeshi marie technique, rigueur et créativité. Il est le garant de la cuisson parfaite et du dressage soigné. C’est lui qui crée les recettes maison et peaufine les sauces comme un alchimiste du goût.
-<br>
-<br>
+Ancien chef dans un bistrot fusion franco-nippon, Takeshi marie technique, rigueur et créativité. Il est le garant de la cuisson parfaite et du dressage soigné. C'est lui qui crée les recettes maison et peaufine les sauces comme un alchimiste du goût.
+<br><br>
 🍞 <strong>Elena</strong> –  Elena – Dernière recrue du service en salle
 Globe-trotteuse devenue locavore convaincue. Enthousiaste et engagée, elle met son sens du contact et sa passion du local au service des clients. Curieuse et toujours souriante, elle veille à ce que chaque expérience en salle soit aussi chaleureuse que responsable. Son crédo : "du bon pour vous, du bien pour la planète."
-<br>
-<br>
+<br><br>
 💬 <strong>Aminata</strong> – Community Manager &  tisse des partenariats avec des producteurs de confiance de la région.
-Toujours souriante et à l’écoute, Aminata est la voix de Bun'Deal sur les réseaux et dans vos boîtes mail. Elle gère aussi les événements et les retours clients avec énergie. Elle crée du lien, du vrai. "Chez Bun’Deal, chaque client est un invité."
-<br>
-<br>
+Toujours souriante et à l'écoute, Aminata est la voix de Bun'Deal sur les réseaux et dans vos boîtes mail. Elle gère aussi les événements et les retours clients avec énergie. Elle crée du lien, du vrai. "Chez Bun'Deal, chaque client est un invité."
+<br><br>
 📦<strong>Malik</strong> – Logistique & commandes en ligne
-Organisé comme un horloger suisse, Malik s’assure que chaque commande parte à l’heure et arrive chaude. Il coordonne les livraisons, optimise les stocks et gère le site web. Son mantra : "Zéro bug, zéro retard, zéro compromis."
-<br>
-<br>
+Organisé comme un horloger suisse, Malik s'assure que chaque commande parte à l'heure et arrive chaude. Il coordonne les livraisons, optimise les stocks et gère le site web. Son mantra : "Zéro bug, zéro retard, zéro compromis."
+<br><br>
 💬 Notre credo commun ?
 Authenticité, transparence, engagement.
-Chez Bun’Deal, on ne vend pas juste des burgers, on partage des valeurs.
+Chez Bun'Deal, on ne vend pas juste des burgers, on partage des valeurs.
       </p>
     </div>
   </div>
 </section>
 
 <section id="Position" class="team-section container my-7">
-  <h2 class="text-center mb-4">Notre localisation</h2>
+  <h2 class="text-center mb-4" data-translate="about.location.title">Notre localisation</h2>
   <div style="display: flex; justify-content: center;">
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1167.4336041090044!2d6.12559397633538!3d45.89849876501672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1751016713111!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
@@ -112,27 +110,27 @@ Chez Bun’Deal, on ne vend pas juste des burgers, on partage des valeurs.
     <div class="container">
       <div class="row justify-content-center align-items-stretch">
         <div class="col-sm-4 col-md-3 item">
-          <h3>Services</h3>
+          <h3 data-translate="footer.services">Services</h3>
           <ul>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="Contact.html">Évènements</a></li>
-            <li><a href="Contact.html">Commandes spéciales</a></li>
+            <li><a href="menu.html" data-translate="nav.menu">Menu</a></li>
+            <li><a href="Contact.html" data-translate="footer.events">Évènements</a></li>
+            <li><a href="Contact.html" data-translate="footer.special_orders">Commandes spéciales</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>About</h3>
+          <h3 data-translate="footer.about">About</h3>
           <ul>
-            <li><a href="apropos.html">Company</a></li>
-            <li><a href="apropos.html">Team</a></li>
-            <li><a href="apropos.html">Legacy</a></li>
+            <li><a href="apropos.html" data-translate="footer.company">Company</a></li>
+            <li><a href="apropos.html" data-translate="footer.team">Team</a></li>
+            <li><a href="apropos.html" data-translate="footer.legacy">Legacy</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>Contact</h3>
+          <h3 data-translate="footer.contact">Contact</h3>
           <ul>
-            <li><a href="Contact.html">Nous contacter</a></li>
-            <li><a href="Contact.html">Nous rejoindre</a></li>
-            <li><a href="apropos.html">Nous trouver</a></li>
+            <li><a href="Contact.html" data-translate="footer.contact_us">Nous contacter</a></li>
+            <li><a href="Contact.html" data-translate="footer.join_us">Nous rejoindre</a></li>
+            <li><a href="apropos.html" data-translate="footer.find_us">Nous trouver</a></li>
           </ul>
         </div>
         <div class="col-lg-3 item social text-center">
@@ -140,23 +138,23 @@ Chez Bun’Deal, on ne vend pas juste des burgers, on partage des valeurs.
           <a href="#"><img src="images/twitter.png" alt="Twitter" class="footer-social-logo"></a>
           <a href="#"><img src="images/snapchat.webp" alt="Snapchat" class="footer-social-logo"></a>
           <a href="#"><img src="images/insta.png" alt="Instagram" class="footer-social-logo"></a>
-          <p class="copyright mt-2">Bun'Deal © 2025</p>
+          <p class="copyright mt-2" data-translate="footer.copyright">Bun'Deal © 2025</p>
         </div>
       </div>
     </div>
   </footer>
 </div>
 
-<!-- Modal Panier et script clean -->
+<!-- Modal Panier -->
 <div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div class="cart-modal-content">
-    <h4>Votre panier</h4>
+    <h4 data-translate="modals.cart.title">Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
-    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <p><span data-translate="modals.cart.total">Total</span> : <span id="cart-total">0.00</span> €</p>
     <div class="d-flex justify-content-between gap-2 mt-3">
-      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
-      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
-      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+      <button class="btn btn-danger flex-fill" id="clear-cart" data-translate="modals.cart.clear">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart" data-translate="modals.cart.validate">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart" data-translate="modals.cart.close">Fermer</button>
     </div>
   </div>
 </div>
@@ -226,6 +224,68 @@ if (validateCartBtn) {
   };
 }
 updateCartCount();
+</script>
+<script>
+// Script de traduction
+let currentLang = localStorage.getItem('language') || 'fr';
+let translations = {};
+
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    translations = await response.json();
+    updateLanguage();
+  } catch (error) {
+    console.error('Erreur lors du chargement des traductions:', error);
+  }
+}
+
+function updateLanguage() {
+  const langButton = document.getElementById('lang-toggle');
+  
+  if (currentLang === 'fr') {
+    langButton.innerHTML = '🇬🇧 EN';
+  } else {
+    langButton.innerHTML = '🇫🇷 FR';
+  }
+  
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    const text = getTranslation(key);
+    if (text) {
+      // Préserve les balises HTML dans le texte
+      element.innerHTML = text.replace(/\n/g, '<br>');
+    }
+  });
+}
+
+function getTranslation(key) {
+  const keys = key.split('.');
+  let value = translations[currentLang];
+  
+  for (const k of keys) {
+    if (value && value[k]) {
+      value = value[k];
+    } else {
+      return null;
+    }
+  }
+  
+  return value;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadTranslations();
+  
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', function() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      localStorage.setItem('language', currentLang);
+      updateLanguage();
+    });
+  }
+});
 </script>
 <script src="burger-menu.js"></script>
 

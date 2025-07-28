@@ -38,7 +38,20 @@
     },
     "about": {
       "title": "POURQUOI NOUS ?",
-      "text": "Chez Bun'deal, on ne fait pas de compromis entre goût, qualité et engagement. Notre promesse : une cuisine fraîche, faite maison, avec des ingrédients locaux et de qualité. Chaque bun, chaque garniture, chaque sauce est préparé avec soin, dans notre cuisine, à partir de produits bruts issus de producteurs locaux sélectionnés pour leur savoir-faire et leur respect de la terre. En choisissant Bun'deal, vous soutenez une entreprise qui agit concrètement pour le développement du terroir et de notre région. Vous encouragez une économie plus responsable, plus humaine et plus savoureuse. Bun'deal, c'est bien plus qu'un repas : c'est un deal gagnant entre vous, la planète, et nos producteurs."
+      "text": "Chez Bun'deal, on ne fait pas de compromis entre goût, qualité et engagement. Notre promesse : une cuisine fraîche, faite maison, avec des ingrédients locaux et de qualité. Chaque bun, chaque garniture, chaque sauce est préparé avec soin, dans notre cuisine, à partir de produits bruts issus de producteurs locaux sélectionnés pour leur savoir-faire et leur respect de la terre. En choisissant Bun'deal, vous soutenez une entreprise qui agit concrètement pour le développement du terroir et de notre région. Vous encouragez une économie plus responsable, plus humaine et plus savoureuse. Bun'deal, c'est bien plus qu'un repas : c'est un deal gagnant entre vous, la planète, et nos producteurs.",
+      "legacy": {
+        "title": "Notre Héritage",
+        "text1": "Chez Bun'Deal, chaque recette raconte une histoire. Celle de notre terroir, de nos producteurs passionnés, et de notre volonté de faire simple, bon et responsable.",
+        "text2": "Notre héritage, c'est celui d'une cuisine faite maison, sans compromis sur la qualité. Nos ingrédients sont issus de filières locales, nos buns sont préparés avec soin, et nos sauces sont toutes maison.",
+        "text3": "Plus qu'un fast-food, nous voulons être un trait d'union entre authenticité et modernité, entre producteurs et clients. Ensemble, construisons une alimentation plus humaine et plus savoureuse."
+      },
+      "team": {
+        "title": "Notre Team",
+        "description": "L'équipe Bun'Deal : Une passion partagée, un goût unique\nChez Bun'Deal, notre force, c'est notre équipe soudée, complémentaire et animée par l'amour du bon produit. Derrière chaque burger, chaque recette et chaque sourire, il y a eux 👇 :\n\n🍔 Takeshi – Chef de cuisine & maître du grill\nAncien chef dans un bistrot fusion franco-nippon, Takeshi marie technique, rigueur et créativité. Il est le garant de la cuisson parfaite et du dressage soigné. C'est lui qui crée les recettes maison et peaufine les sauces comme un alchimiste du goût.\n\n🍞 Elena – Dernière recrue du service en salle\nGlobe-trotteuse devenue locavore convaincue. Enthousiaste et engagée, elle met son sens du contact et sa passion du local au service des clients. Curieuse et toujours souriante, elle veille à ce que chaque expérience en salle soit aussi chaleureuse que responsable. Son crédo : \"du bon pour vous, du bien pour la planète.\"\n\n💬 Aminata – Community Manager & tisse des partenariats avec des producteurs de confiance de la région.\nToujours souriante et à l'écoute, Aminata est la voix de Bun'Deal sur les réseaux et dans vos boîtes mail. Elle gère aussi les événements et les retours clients avec énergie. Elle crée du lien, du vrai. \"Chez Bun'Deal, chaque client est un invité.\"\n\n📦 Malik – Logistique & commandes en ligne\nOrganisé comme un horloger suisse, Malik s'assure que chaque commande parte à l'heure et arrive chaude. Il coordonne les livraisons, optimise les stocks et gère le site web. Son mantra : \"Zéro bug, zéro retard, zéro compromis.\"\n\n💬 Notre credo commun ?\nAuthenticité, transparence, engagement.\nChez Bun'Deal, on ne vend pas juste des burgers, on partage des valeurs."
+      },
+      "location": {
+        "title": "Notre localisation"
+      }
     },
     "testimonials": {
       "title": "Ce que nos clients disent de nous",
@@ -193,7 +206,20 @@
     },
     "about": {
       "title": "WHY US?",
-      "text": "At Bun'deal, we don't compromise between taste, quality and commitment. Our promise: fresh, homemade cuisine with local, quality ingredients. Every bun, every filling, every sauce is carefully prepared in our kitchen from raw products sourced from local producers selected for their know-how and respect for the land. By choosing Bun'deal, you support a company that acts concretely for the development of our terroir and region. You encourage a more responsible, more human and more flavorful economy. Bun'deal is much more than a meal: it's a winning deal between you, the planet, and our producers."
+      "text": "At Bun'deal, we don't compromise between taste, quality and commitment. Our promise: fresh, homemade cuisine with local, quality ingredients. Every bun, every filling, every sauce is carefully prepared in our kitchen from raw products sourced from local producers selected for their know-how and respect for the land. By choosing Bun'deal, you support a company that acts concretely for the development of our terroir and region. You encourage a more responsible, more human and more flavorful economy. Bun'deal is much more than a meal: it's a winning deal between you, the planet, and our producers.",
+      "legacy": {
+        "title": "Our Heritage",
+        "text1": "At Bun'Deal, every recipe tells a story. That of our terroir, our passionate producers, and our desire to make things simple, good and responsible.",
+        "text2": "Our heritage is that of home-made cuisine, without compromising on quality. Our ingredients come from local sources, our buns are prepared with care, and our sauces are all home-made.",
+        "text3": "More than a fast-food, we want to be a bridge between authenticity and modernity, between producers and customers. Together, let's build a more human and tastier food system."
+      },
+      "team": {
+        "title": "Our Team",
+        "description": "The Bun'Deal team: A shared passion, a unique taste\nAt Bun'Deal, our strength is our united team, complementary and driven by the love of good products. Behind every burger, every recipe and every smile, there are them 👇:\n\n🍔 Takeshi – Head chef & grill master\nFormer chef in a Franco-Japanese fusion bistro, Takeshi combines technique, rigor and creativity. He is the guarantor of perfect cooking and careful presentation. He creates home recipes and perfects sauces like a taste alchemist.\n\n🍞 Elena – Latest recruit for dining room service\nGlobe-trotter turned convinced locavore. Enthusiastic and committed, she puts her sense of contact and passion for local at the service of customers. Curious and always smiling, she ensures that every dining experience is as warm as it is responsible. Her credo: \"good for you, good for the planet.\"\n\n💬 Aminata – Community Manager & weaves partnerships with trusted producers in the region.\nAlways smiling and listening, Aminata is the voice of Bun'Deal on social networks and in your mailboxes. She also manages events and customer feedback with energy. She creates real connections. \"At Bun'Deal, every customer is a guest.\"\n\n📦 Malik – Logistics & online orders\nOrganized like a Swiss watchmaker, Malik ensures that every order leaves on time and arrives hot. He coordinates deliveries, optimizes stocks and manages the website. His mantra: \"Zero bugs, zero delays, zero compromises.\"\n\n💬 Our common credo?\nAuthenticity, transparency, commitment.\nAt Bun'Deal, we don't just sell burgers, we share values."
+      },
+      "location": {
+        "title": "Our location"
+      }
     },
     "testimonials": {
       "title": "What our customers say about us",
