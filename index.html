@@ -282,14 +282,14 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
 </div>
 
 <!-- Modal choix assiette tapas -->
-<div class="modal" tabindex="-1" id="tapas-choice-modal">
+<div class="modal" tabindex="-1" id="tapas-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div style="background:#fff; margin:3% auto; padding:30px; max-width:500px; border-radius:12px; position:relative;">
     <h4 class="text-center mb-4" data-translate="modals.tapas.title">Composez votre Assiette Tapas</h4>
     <p class="text-center text-muted mb-4" data-translate="modals.tapas.subtitle">Choisissez 7 tacos parmi nos garnitures</p>
     
     <div class="row g-3">
       <div class="col-md-6">
-        <label class="form-label fw-bold">Tacos Poulet :</label>
+        <label class="form-label fw-bold" data-translate="modals.tapas.labels.poulet">Tacos Poulet :</label>
         <select class="form-select" id="tapas-poulet">
           <option value="0">0</option>
           <option value="1">1</option>
@@ -302,7 +302,7 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
         </select>
       </div>
       <div class="col-md-6">
-        <label class="form-label fw-bold">Tacos Bœuf :</label>
+        <label class="form-label fw-bold" data-translate="modals.tapas.labels.boeuf">Tacos Bœuf :</label>
         <select class="form-select" id="tapas-boeuf">
           <option value="0">0</option>
           <option value="1">1</option>
@@ -315,7 +315,7 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
         </select>
       </div>
       <div class="col-md-6">
-        <label class="form-label fw-bold">Tacos Poisson :</label>
+        <label class="form-label fw-bold" data-translate="modals.tapas.labels.poisson">Tacos Poisson :</label>
         <select class="form-select" id="tapas-poisson">
           <option value="0">0</option>
           <option value="1">1</option>
@@ -328,7 +328,7 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
         </select>
       </div>
       <div class="col-md-6">
-        <label class="form-label fw-bold">Tacos Agneau :</label>
+        <label class="form-label fw-bold" data-translate="modals.tapas.labels.agneau">Tacos Agneau :</label>
         <select class="form-select" id="tapas-agneau">
           <option value="0">0</option>
           <option value="1">1</option>

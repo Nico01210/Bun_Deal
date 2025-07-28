@@ -82,6 +82,12 @@
       "tapas": {
         "title": "Composez votre Assiette Tapas",
         "subtitle": "Choisissez 7 tacos parmi nos garnitures",
+        "labels": {
+          "poulet": "Tacos Poulet :",
+          "boeuf": "Tacos Bœuf :",
+          "poisson": "Tacos Poisson :",
+          "agneau": "Tacos Agneau :"
+        },
         "counter": "Total sélectionné :",
         "tacos": "tacos",
         "add": "Ajouter au panier",
@@ -113,6 +119,23 @@
       "join_us": "Nous rejoindre",
       "find_us": "Nous trouver",
       "copyright": "Bun'Deal © 2025"
+    },
+    "commandes": {
+      "title": "Finalisation de la commande",
+      "summary": "Voici le récapitulatif de votre commande :",
+      "confirm_button": "Confirmer ma commande",
+      "empty_cart": "Votre panier est vide.",
+      "back_to_menu": "Retour à l'accueil",
+      "order_confirmed": "Merci pour votre commande !",
+      "thank_you": "Conservez bien ce numéro pour le retrait.",
+      "ready_around": "Votre commande sera prête aux alentours de",
+
+      "table": {
+        "product": "Produit",
+        "quantity": "Quantité",
+        "price": "Prix unitaire",
+        "total": "Total"
+      }
     }
   },
   "en": {
@@ -198,6 +221,12 @@
       "tapas": {
         "title": "Compose your Tapas Platter",
         "subtitle": "Choose 7 tacos from our fillings",
+        "labels": {
+          "poulet": "Chicken Tacos:",
+          "boeuf": "Beef Tacos:",
+          "poisson": "Fish Tacos:",
+          "agneau": "Lamb Tacos:"
+        },
         "counter": "Total selected:",
         "tacos": "tacos",
         "add": "Add to cart",
@@ -229,6 +258,23 @@
       "join_us": "Join us",
       "find_us": "Find us",
       "copyright": "Bun'Deal © 2025"
+    },
+    "commandes": {
+      "title": "Order finalization",
+      "summary": "Here is your order summary:",
+      "confirm_button": "Confirm my order",
+      "empty_cart": "Your cart is empty.",
+      "back_to_menu": "Back to home",
+      "order_confirmed": "Thank you for your order!",
+      "thank_you": "Keep this number for pickup.",
+      "ready_around": "Your order will be ready around",
+
+      "table": {
+        "product": "Product",
+        "quantity": "Quantity",
+        "price": "Unit price",
+        "total": "Total"
+      }
     }
   }
 }

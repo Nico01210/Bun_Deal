@@ -20,7 +20,7 @@
       <img src="images/Logo.png" alt="Logo Bun'Deal" class="logo-navbar">
     </a>
     
-    <!-- Menu burger (visible sur mobile/tablette) -->
+    <!-- Menu burger -->
     <div class="burger-menu">
       <span></span>
       <span></span>
@@ -29,27 +29,43 @@
     
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="apropos.html">A propos</a></li>
-      <li><a href="/menu.html">Menu</a></li>
-      <li><a href="/Contact.html">Contact</a></li>
-      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 Panier (<span id="cart-count">0</span>)</a></li>
+      <li><a href="/index.html" data-translate="nav.home">Accueil</a></li>
+      <li><a href="apropos.html" data-translate="nav.about">A propos</a></li>
+      <li><a href="/menu.html" data-translate="nav.menu">Menu</a></li>
+      <li><a href="/Contact.html" data-translate="nav.contact">Contact</a></li>
+      <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 <span data-translate="nav.cart">Panier</span> (<span id="cart-count">0</span>)</a></li>
+      <li>
+        <button id="lang-toggle" class="btn btn-outline-light btn-sm">🇬🇧 EN</button>
+      </li>
     </ul>
   </div>
 </nav>
 
-<div style="height:140px;"></div>
-
+<!-- Contenu principal -->
 <div class="commande-bg py-5">
   <div class="container" style="max-width: 700px;">
-    <h2 class="commande-title text-center mb-4">Finalisation de la commande</h2>
+    <h2 class="commande-title text-center mb-4" data-translate="commandes.title">Finalisation de la commande</h2>
     <div id="contenu-commande" class="commande-card p-4 rounded-4 shadow-lg bg-white">
-      <p class="mb-3 fs-5">Voici le <span class="fw-bold text-primary">récapitulatif</span> de votre commande :</p>
+      <p class="mb-3 fs-5" data-translate="commandes.summary">Voici le <span class="fw-bold text-primary">récapitulatif</span> de votre commande :</p>
       <div id="panier-container"></div>
       <div id="panier-total" class="fw-bold my-3 fs-5"></div>
-      <button id="confirmer-commande" class="btn btn-success w-100 py-2 fs-5 mt-2">Confirmer ma commande</button>
+      <button id="confirmer-commande" class="btn btn-success w-100 py-2 fs-5 mt-2" data-translate="commandes.confirm_button">Confirmer ma commande</button>
     </div>
     <div id="confirmation" style="display: none; margin-top: 30px;"></div>
+  </div>
+</div>
+
+<!-- Modal panier -->
+<div class="modal" tabindex="-1" id="cart-modal">
+  <div style="background:#fff; margin:5% auto; padding:20px; max-width:500px; border-radius:8px; position:relative;">
+    <h4 data-translate="modals.cart.title">Votre panier</h4>
+    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+    <p><span data-translate="modals.cart.total">Total</span> : <span id="cart-total">0.00</span> €</p>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <button class="btn btn-danger flex-fill" id="clear-cart" data-translate="modals.cart.clear">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart" data-translate="modals.cart.validate">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart" data-translate="modals.cart.close">Fermer</button>
+    </div>
   </div>
 </div>
 
@@ -107,50 +123,133 @@
 
 <!-- Ton script JS directement dans la page -->
 <script>
-// Gestion du récapitulatif commande
-const panier = JSON.parse(localStorage.getItem("cart")) || [];
-const container = document.getElementById("panier-container");
-const totalDiv = document.getElementById("panier-total");
-if (panier.length === 0) {
-  container.innerHTML = "<p>Votre panier est vide.</p>";
-  document.getElementById("confirmer-commande").style.display = "none";
-  totalDiv.innerHTML = "";
-} else {
-  let total = 0;
-  container.innerHTML = `
-    <table class='table table-bordered'>
-      <thead><tr><th>Produit</th><th>Quantité</th><th>Prix unitaire</th><th>Sous-total</th></tr></thead>
-      <tbody>
-        ${panier.map(p => {
-          const sousTotal = (p.price * p.qty).toFixed(2);
-          total += parseFloat(sousTotal);
-          return `<tr><td>${p.name}</td><td>${p.qty}</td><td>${p.price.toFixed(2)}€</td><td>${sousTotal}€</td></tr>`;
-        }).join("")}
-      </tbody>
-    </table>
-  `;
-  totalDiv.innerHTML = `Total : <span style='color:#10222e;'>${total.toFixed(2)}€</span>`;
+// Script de traduction
+let currentLang = localStorage.getItem('language') || 'fr';
+let translations = {};
+
+// Charge les traductions
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    translations = await response.json();
+    updateLanguage();
+  } catch (error) {
+    console.error('Erreur lors du chargement des traductions:', error);
+  }
 }
+
+// Met à jour tous les textes selon la langue
+function updateLanguage() {
+  const langButton = document.getElementById('lang-toggle');
+  
+  // Met à jour le bouton de langue
+  if (currentLang === 'fr') {
+    langButton.innerHTML = '🇬🇧 EN';
+  } else {
+    langButton.innerHTML = '🇫🇷 FR';
+  }
+  
+  // Met à jour tous les éléments avec data-translate
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    const text = getTranslation(key);
+    if (text) {
+      element.textContent = text;
+    }
+  });
+  
+  // Met à jour le contenu du panier si affiché
+  updateCommandeDisplay();
+}
+
+// Récupère une traduction par clé
+function getTranslation(key) {
+  const keys = key.split('.');
+  let value = translations[currentLang];
+  
+  for (const k of keys) {
+    if (value && value[k]) {
+      value = value[k];
+    } else {
+      return null;
+    }
+  }
+  
+  return value;
+}
+
+// Gestion du changement de langue
+document.addEventListener('DOMContentLoaded', function() {
+  loadTranslations();
+  
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', function() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      localStorage.setItem('language', currentLang);
+      updateLanguage();
+    });
+  }
+});
+
+// Met à jour l'affichage de la commande avec traduction
+function updateCommandeDisplay() {
+  const panier = JSON.parse(localStorage.getItem("cart")) || [];
+  const container = document.getElementById("panier-container");
+  const totalDiv = document.getElementById("panier-total");
+  
+  if (panier.length === 0) {
+    container.innerHTML = `<p>${getTranslation('commandes.empty_cart') || 'Votre panier est vide.'}</p>`;
+    document.getElementById("confirmer-commande").style.display = "none";
+    totalDiv.innerHTML = "";
+  } else {
+    let total = 0;
+    container.innerHTML = `
+      <table class='table table-bordered'>
+        <thead><tr>
+          <th>${getTranslation('commandes.table.product') || 'Produit'}</th>
+          <th>${getTranslation('commandes.table.quantity') || 'Quantité'}</th>
+          <th>${getTranslation('commandes.table.price') || 'Prix unitaire'}</th>
+          <th>${getTranslation('commandes.table.total') || 'Sous-total'}</th>
+        </tr></thead>
+        <tbody>
+          ${panier.map(p => {
+            const sousTotal = (p.price * p.qty).toFixed(2);
+            total += parseFloat(sousTotal);
+            return `<tr><td>${p.name}</td><td>${p.qty}</td><td>${p.price.toFixed(2)}€</td><td>${sousTotal}€</td></tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    `;
+    totalDiv.innerHTML = `${getTranslation('commandes.table.total') || 'Total'} : <span style='color:#10222e;'>${total.toFixed(2)}€</span>`;
+  }
+}
+
+// Gestion du récapitulatif commande
+updateCommandeDisplay();
+
 document.getElementById("confirmer-commande").onclick = function () {
   const numeroCommande = "CMD" + Math.floor(100000 + Math.random() * 900000);
   const heureActuelle = new Date();
   const tempsPreparation = 35;
   const heureRetrait = new Date(heureActuelle.getTime() + tempsPreparation * 60000);
   const heureStr = heureRetrait.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
   document.getElementById("contenu-commande").style.display = "none";
   document.getElementById("confirmation").innerHTML = `
     <div class='card shadow p-4 mb-4 text-center' style='max-width: 500px; margin: 40px auto; border: 2px solid #198754;'>
-      <h3 class='mb-3' style='color:#198754;'>🛒 Merci pour votre commande !</h3>
-      <p class='mb-2'>Numéro de commande : <strong style='color:#10222e; font-size:1.2em;'>${numeroCommande}</strong></p>
-      <p class='mb-2'>Votre commande sera prête aux alentours de <strong style='color:#10222e;'>${heureStr}</strong>.</p>
-      <p class='mb-3'>Conservez bien ce numéro pour le retrait.</p>
-      <a href="index.html" class="btn btn-outline-success mt-2">Retour à l'accueil</a>
+      <h3 class='mb-3' style='color:#198754;'>🛒 ${getTranslation('commandes.order_confirmed') || 'Merci pour votre commande !'}</h3>
+      <p class='mb-2'>${getTranslation('commandes.order_number') || 'Numéro de commande :'} <strong style='color:#10222e; font-size:1.2em;'>${numeroCommande}</strong></p>
+      <p class='mb-2'>${getTranslation('commandes.ready_around') || 'Votre commande sera prête aux alentours de'} <strong style='color:#10222e;'>${heureStr}</strong>.</p>
+      <p class='mb-3'>${getTranslation('commandes.thank_you') || 'Conservez bien ce numéro pour le retrait.'}</p>
+      <a href="index.html" class="btn btn-outline-success mt-2">${getTranslation('commandes.back_to_menu') || 'Retour à l\'accueil'}</a>
     </div>
   `;
   document.getElementById("confirmation").style.display = "block";
   localStorage.removeItem("cart");
 };
-// Gestion du modal panier clean code
+
+// Gestion du modal panier
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
@@ -174,7 +273,7 @@ function renderCart() {
     li.innerHTML = `
       <img src="${item.img}" width="40" style="vertical-align:middle;"> 
       ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
-      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">Supprimer</button>
+      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">${getTranslation('modals.cart.remove') || 'Supprimer'}</button>
     `;
     list.appendChild(li);
   });
@@ -186,6 +285,7 @@ function removeFromCart(idx) {
   setCart(cart);
   renderCart();
 }
+
 const openCartBtn = document.getElementById('open-cart');
 if (openCartBtn) {
   openCartBtn.onclick = function(e) {
@@ -213,6 +313,7 @@ if (validateCartBtn) {
     window.location.href = 'Commandes.html';
   };
 }
+
 updateCartCount();
 </script>
 
@@ -221,39 +322,36 @@ updateCartCount();
   <footer>
     <div class="container">
       <div class="row">
-        <!-- Footer links (services, about, etc.) -->
         <div class="col-sm-4 col-md-3 item">
-          <h3>Services</h3>
+          <h3 data-translate="footer.services">Services</h3>
           <ul>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="Contact.html">Évènements</a></li>
-            <li><a href="Contact.html">Commandes spéciales</a></li>
+            <li><a href="menu.html" data-translate="nav.menu">Menu</a></li>
+            <li><a href="Contact.html" data-translate="footer.events">Évènements</a></li>
+            <li><a href="Contact.html" data-translate="footer.special_orders">Commandes spéciales</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>About</h3>
+          <h3 data-translate="footer.about">About</h3>
           <ul>
-            <li><a href="apropos.html">Company</a></li>
-            <li><a href="apropos.html">Team</a></li>
-            <li><a href="apropos.html">Legacy</a></li>
+            <li><a href="apropos.html" data-translate="footer.company">Company</a></li>
+            <li><a href="apropos.html" data-translate="footer.team">Team</a></li>
+            <li><a href="apropos.html" data-translate="footer.legacy">Legacy</a></li>
           </ul>
         </div>
         <div class="col-sm-4 col-md-3 item">
-          <h3>Contact</h3>
+          <h3 data-translate="footer.contact">Contact</h3>
           <ul>
-            <li><a href="Contact.html">Nous contacter</a></li>
-            <li><a href="Contact.html">Nous rejoindre</a></li>
-            <li><a href="apropos.html">Nous trouver</a></li>
+            <li><a href="Contact.html" data-translate="footer.contact_us">Nous contacter</a></li>
+            <li><a href="Contact.html" data-translate="footer.join_us">Nous rejoindre</a></li>
+            <li><a href="apropos.html" data-translate="footer.find_us">Nous trouver</a></li>
           </ul>
         </div>
-      </div>
-      <div class="footer-social-row">
         <div class="col-lg-3 item social text-center">
           <a href="#"><img src="images/FB.webp" alt="Facebook" class="footer-social-logo"></a>
           <a href="#"><img src="images/twitter.png" alt="Twitter" class="footer-social-logo"></a>
           <a href="#"><img src="images/snapchat.webp" alt="Snapchat" class="footer-social-logo"></a>
           <a href="#"><img src="images/insta.png" alt="Instagram" class="footer-social-logo"></a>
-          <p class="copyright mt-2">Bun'Deal © 2025</p>
+          <p class="copyright mt-2" data-translate="footer.copyright">Bun'Deal © 2025</p>
         </div>
       </div>
     </div>
@@ -261,5 +359,4 @@ updateCartCount();
 </div>
 <script src="burger-menu.js"></script>
 </body>
-</html>
 </html>
