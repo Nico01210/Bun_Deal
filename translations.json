@@ -106,6 +106,16 @@
         "add": "Ajouter au panier",
         "cancel": "Annuler"
       },
+      "modal_tacos_mixed": {
+        "title": "Choisissez vos 7 tacos",
+        "select_tacos": "Sélectionnez un tacos",
+        "tacos_beef": "Tacos de Boeuf",
+        "tacos_chicken": "Tacos de Poulet",
+        "tacos_fish": "Tacos de Poisson",
+        "tacos_lamb": "Tacos d'Agneau",
+        "add_to_cart": "Ajouter au panier",
+        "cancel": "Annuler"
+      },
       "drinks": {
         "title": "Les Boissons",
         "oasis": {
@@ -305,6 +315,29 @@
           "title": "Yaourt à Boire",
           "description": "Yaourt à boire onctueux et rafraîchissant. Parfum au choix : Original, Banane ou Green Tea."
         }
+      },
+      "tacos": {
+        "title": "Les Tacos",
+        "beef": {
+          "title": "Tacos de Boeuf",
+          "description": "Galette de maîs, viande hachée savoureuse Black Angus, garnitures au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce latines aux herbes ou guacamole."
+        },
+        "chicken": {
+          "title": "Tacos de Poulet",
+          "description": "Galette de maîs, filet de poulet mariné 100% français, garnitures au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce yaourt aux herbes ou guacamole."
+        },
+        "fish": {
+          "title": "Tacos de Poisson",
+          "description": "Galette de maîs, filet de colin pané par nos soins, garniture au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre), sauce vierge ou guacamole."
+        },
+        "lamb": {
+          "title": "Tacos d'Agneau",
+          "description": "Galette de maîs, agneau 100% français cuit à l'étouffé à basse température pendant 12heures, garniture au choix (haricots rouge, tomates, oignons rouge, coriandre, grenade, concombre) sauce yaourt aux herbes ou guacamole."
+        },
+        "mixed": {
+          "title": "Tacos Mixed",
+          "description": "Formule pour vos soirées ou apéros. Choix de 7 Tacos parmis notre sélection de tacos."
+        }
       }
     }
   },
@@ -415,6 +448,16 @@
         "add": "Add to cart",
         "cancel": "Cancel"
       },
+      "modal_tacos_mixed": {
+        "title": "Choose your 7 tacos",
+        "select_tacos": "Select a tacos",
+        "tacos_beef": "Beef Tacos",
+        "tacos_chicken": "Chicken Tacos",
+        "tacos_fish": "Fish Tacos",
+        "tacos_lamb": "Lamb Tacos",
+        "add_to_cart": "Add to cart",
+        "cancel": "Cancel"
+      },
       "drinks": {
         "title": "The Drinks",
         "oasis": {
@@ -465,6 +508,16 @@
           "title": "Brown Beer",
           "description": "CHIMAY draft beer, 25cl."
         }
+      },
+      "tacos_mixed": {
+        "title": "Choose your 7 tacos",
+        "select_tacos": "Select a tacos",
+        "tacos_beef": "Beef Tacos",
+        "tacos_chicken": "Chicken Tacos",
+        "tacos_fish": "Fish Tacos",
+        "tacos_lamb": "Lamb Tacos",
+        "add_to_cart": "Add to cart",
+        "cancel": "Cancel"
       }
     },
     "footer": {
@@ -613,6 +666,29 @@
         "yaourt": {
           "title": "Drinking Yogurt",
           "description": "Smooth and refreshing drinking yogurt. Choice of flavor: Original, Banana or Green Tea."
+        }
+      },
+      "tacos": {
+        "title": "The Tacos",
+        "beef": {
+          "title": "Beef Tacos",
+          "description": "Corn tortilla, tasty Black Angus ground beef, choice of toppings (red beans, tomatoes, red onions, coriander, pomegranate, cucumber), Latin herb sauce or guacamole."
+        },
+        "chicken": {
+          "title": "Chicken Tacos",
+          "description": "Corn tortilla, 100% French marinated chicken fillet, choice of toppings (red beans, tomatoes, red onions, coriander, pomegranate, cucumber), herb yogurt sauce or guacamole."
+        },
+        "fish": {
+          "title": "Fish Tacos",
+          "description": "Corn tortilla, hake fillet breaded by our chefs, choice of toppings (red beans, tomatoes, red onions, coriander, pomegranate, cucumber), fresh sauce or guacamole."
+        },
+        "lamb": {
+          "title": "Lamb Tacos",
+          "description": "Corn tortilla, 100% French lamb slow-cooked at low temperature for 12 hours, choice of toppings (red beans, tomatoes, red onions, coriander, pomegranate, cucumber), herb yogurt sauce or guacamole."
+        },
+        "mixed": {
+          "title": "Mixed Tacos",
+          "description": "Perfect for your evenings or appetizers. Choice of 7 Tacos from our selection of tacos."
         }
       }
     }
