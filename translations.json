@@ -266,6 +266,45 @@
           "title": "Bière Brune",
           "description": "Bière pression CHIMAY, 25cl."
         }
+      },
+      "snacks": {
+        "title": "Les Snacks",
+        "frites": {
+          "title": "Frites",
+          "description": "Frites maison croustillantes, cuites dans l'huile de tournesol. Portion généreuse de 200g avec sauce maison au choix."
+        },
+        "nuggets": {
+          "title": "Nuggets de poulet",
+          "description": "6 Nuggets de poulet pané maison avec épices, sésames et ciboulette. Servis avec sauce barbecue ou moutarde à l'ancienne."
+        },
+        "tenders": {
+          "title": "Tenders de poulet",
+          "description": "4 Tenders de poulet pané maison avec épices, sésames et ciboulette. Servis avec sauce barbecue ou moutarde à l'ancienne."
+        },
+        "onion_rings": {
+          "title": "Onion Rings",
+          "description": "8 Anneaux d'oignons panés et frits, croustillants à l'extérieur et fondants à l'intérieur. Servis avec sauce ranch."
+        },
+        "tacos_mixed": {
+          "title": "Tacos Mixed",
+          "description": "Formule pour vos soirées ou apéros. Choix de 7 Tacos parmi notre sélection de tacos !"
+        },
+        "glaces_1": {
+          "title": "Boules de Glaces (1 boule)",
+          "description": "Une boule de glace artisanale au parfum de votre choix parmi notre sélection."
+        },
+        "glaces_2": {
+          "title": "Boules de Glaces (2 boules)",
+          "description": "Deux boules de glace artisanale aux parfums de votre choix parmi notre sélection."
+        },
+        "glaces_3": {
+          "title": "Boules de Glaces (3 boules)",
+          "description": "Trois boules de glace artisanale aux parfums de votre choix parmi notre sélection."
+        },
+        "yaourt": {
+          "title": "Yaourt à Boire",
+          "description": "Yaourt à boire onctueux et rafraîchissant. Parfum au choix : Original, Banane ou Green Tea."
+        }
       }
     }
   },
@@ -535,6 +574,45 @@
         "biere_brune": {
           "title": "Brown Beer",
           "description": "CHIMAY draft beer, 25cl."
+        }
+      },
+      "snacks": {
+        "title": "The Snacks",
+        "frites": {
+          "title": "French Fries",
+          "description": "Crispy homemade fries, cooked in sunflower oil. Generous 200g portion with your choice of homemade sauce."
+        },
+        "nuggets": {
+          "title": "Chicken Nuggets",
+          "description": "6 homemade breaded chicken nuggets with spices, sesame and chives. Served with barbecue sauce or old-fashioned mustard."
+        },
+        "tenders": {
+          "title": "Chicken Tenders",
+          "description": "4 homemade breaded chicken tenders with spices, sesame and chives. Served with barbecue sauce or old-fashioned mustard."
+        },
+        "onion_rings": {
+          "title": "Onion Rings",
+          "description": "8 breaded and fried onion rings, crispy on the outside and tender on the inside. Served with ranch sauce."
+        },
+        "tacos_mixed": {
+          "title": "Mixed Tacos",
+          "description": "Perfect for your evenings or appetizers. Choice of 7 Tacos from our selection!"
+        },
+        "glaces_1": {
+          "title": "Ice Cream Scoops (1 scoop)",
+          "description": "One scoop of artisanal ice cream in your choice of flavor from our selection."
+        },
+        "glaces_2": {
+          "title": "Ice Cream Scoops (2 scoops)",
+          "description": "Two scoops of artisanal ice cream in your choice of flavors from our selection."
+        },
+        "glaces_3": {
+          "title": "Ice Cream Scoops (3 scoops)",
+          "description": "Three scoops of artisanal ice cream in your choice of flavors from our selection."
+        },
+        "yaourt": {
+          "title": "Drinking Yogurt",
+          "description": "Smooth and refreshing drinking yogurt. Choice of flavor: Original, Banana or Green Tea."
         }
       }
     }
