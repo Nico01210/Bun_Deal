@@ -166,6 +166,50 @@
           "title": "Bière Brune",
           "description": "Bière pression CHIMAY, 25cl."
         }
+      },
+      "menu_choice": {
+        "title": "Choisissez votre burger et boisson",
+        "burger_label": "Burger/Tacos",
+        "burger_placeholder": "Sélectionnez un burger/tacos",
+        "drink_label": "Boisson",
+        "drink_placeholder": "Sélectionnez une boisson",
+        "add_button": "Ajouter au panier",
+        "cancel_button": "Annuler",
+        "kid_menu": {
+          "title": "Choisissez votre plat et boisson",
+          "dish_label": "Plat",
+          "dish_placeholder": "Sélectionnez un plat",
+          "choices": {
+            "cheeseburger": "Cheeseburger de boeuf",
+            "nuggets": "6 Nuggets de poulet"
+          }
+        },
+        "burger_choices": {
+          "burger_boeuf": "Burger Boeuf",
+          "burger_poulet": "Burger Poulet",
+          "burger_poisson": "Burger Poisson",
+          "burger_special": "Burger Spécial",
+          "burger_montagnard": "Burger Montagnard",
+          "burger_pulled_pork": "Burger Pulled-pork",
+          "burger_vegetarien": "Burger Végétarien",
+          "smash_burger": "Smash Burger",
+          "tacos_boeuf": "Tacos de Boeuf",
+          "tacos_poulet": "Tacos de Poulet",
+          "tacos_poisson": "Tacos de Poisson",
+          "tacos_agneau": "Tacos d'Agneau"
+        },
+        "drinks": {
+          "coca_cola": "Coca-Cola",
+          "oasis": "Oasis",
+          "ice_tea": "Lipton Ice Tea pêche",
+          "sprite": "Sprite",
+          "fanta": "Fanta",
+          "eau_minerale": "Eau minérale",
+          "eau_gazeuse": "Eau gazeuse",
+          "coca_zero": "Coca-Cola Zéro",
+          "jus_orange": "Jus d'orange",
+          "jus_pomme": "Jus de Pomme"
+        }
       }
     },
     "footer": {
@@ -338,6 +382,21 @@
           "title": "Tacos Mixed",
           "description": "Formule pour vos soirées ou apéros. Choix de 7 Tacos parmis notre sélection de tacos."
         }
+      },
+      "menus": {
+        "title": "Les Menus",
+        "enfant": {
+          "title": "Menu enfant",
+          "description": "Un Cheeseburger de boeuf ou 6 Nuggets de poulet au choix avec boisson ainsi que 80g de frites et sauce maison."
+        },
+        "small": {
+          "title": "Menu Small",
+          "description": "Burger ou Tacos au choix avec boisson ainsi que 180g de frites et sauce maison."
+        },
+        "xl": {
+          "title": "Menu XL",
+          "description": "Burger ou Tacos au choix avec boisson ainsi que 250g de frites et sauce maison."
+        }
       }
     }
   },
@@ -389,7 +448,7 @@
       },
       "team": {
         "title": "Our Team",
-        "description": "The Bun'Deal team: A shared passion, a unique taste\nAt Bun'Deal, our strength is our united team, complementary and driven by the love of good products. Behind every burger, every recipe and every smile, there are them 👇:\n\n🍔 Takeshi – Head chef & grill master\nFormer chef in a Franco-Japanese fusion bistro, Takeshi combines technique, rigor and creativity. He is the guarantor of perfect cooking and careful presentation. He creates home recipes and perfects sauces like a taste alchemist.\n\n🍞 Elena – Latest recruit for dining room service\nGlobe-trotter turned convinced locavore. Enthusiastic and committed, she puts her sense of contact and passion for local at the service of customers. Curious and always smiling, she ensures that every dining experience is as warm as it is responsible. Her credo: \"good for you, good for the planet.\"\n\n💬 Aminata – Community Manager & weaves partnerships with trusted producers in the region.\nAlways smiling and listening, Aminata is the voice of Bun'Deal on social networks and in your mailboxes. She also manages events and customer feedback with energy. She creates real connections. \"At Bun'Deal, every customer is a guest.\"\n\n📦 Malik – Logistics & online orders\nOrganized like a Swiss watchmaker, Malik ensures that every order leaves on time and arrives hot. He coordinates deliveries, optimizes stocks and manages the website. His mantra: \"Zero bugs, zero delays, zero compromises.\"\n\n💬 Our common credo?\nAuthenticity, transparency, commitment.\nAt Bun'Deal, we don't just sell burgers, we share values."
+        "description": "The Bun'Deal team: A shared passion, a unique taste\nAt Bun'Deal, our strength is our united team, complementary and driven by the love of good products. Behind every burger, every recipe and every smile, there are them 👇:\n\n🍔 Takeshi – Head chef & grill master\nFormer chef in a Franco-Japanese fusion bistro, Takeshi combines technique, rigor and creativity. He is the guarantor of perfect cooking and careful presentation. He creates home recipes and perfects sauces like a taste alchemist.\n\n🍞 Elena – Latest recruit for dining room service\nGlobe-trotteuse turned convinced locavore. Enthusiastic and committed, she puts her sense of contact and passion for local at the service of customers. Curious and always smiling, she ensures that every dining experience is as warm as it is responsible. Her credo: \"good for you, good for the planet.\"\n\n💬 Aminata – Community Manager & weaves partnerships with trusted producers in the region.\nAlways smiling and listening, Aminata is the voice of Bun'Deal on social networks and in your mailboxes. She also manages events and customer feedback with energy. She creates real connections. \"At Bun'Deal, every customer is a guest.\"\n\n📦 Malik – Logistics & online orders\nOrganized like a Swiss watchmaker, Malik ensures that every order leaves on time and arrives hot. He coordinates deliveries, optimizes stocks and manages the website. His mantra: \"Zero bugs, zero delays, zero compromises.\"\n\n💬 Our common credo?\nAuthenticity, transparency, commitment.\nAt Bun'Deal, we don't just sell burgers, we share values."
       },
       "location": {
         "title": "Our location"
@@ -518,6 +577,50 @@
         "tacos_lamb": "Lamb Tacos",
         "add_to_cart": "Add to cart",
         "cancel": "Cancel"
+      },
+      "menu_choice": {
+        "title": "Choose your burger and drink",
+        "burger_label": "Burger/Tacos",
+        "burger_placeholder": "Select a burger/tacos",
+        "drink_label": "Drink",
+        "drink_placeholder": "Select a drink",
+        "add_button": "Add to cart",
+        "cancel_button": "Cancel",
+        "kid_menu": {
+          "title": "Choose your dish and drink",
+          "dish_label": "Dish",
+          "dish_placeholder": "Select a dish",
+          "choices": {
+            "cheeseburger": "Beef Cheeseburger",
+            "nuggets": "6 Chicken Nuggets"
+          }
+        },
+        "burger_choices": {
+          "burger_boeuf": "Beef Burger",
+          "burger_poulet": "Chicken Burger",
+          "burger_poisson": "Fish Burger",
+          "burger_special": "Special Burger",
+          "burger_montagnard": "Mountain Burger",
+          "burger_pulled_pork": "Pulled-pork Burger",
+          "burger_vegetarien": "Vegetarian Burger",
+          "smash_burger": "Smash Burger",
+          "tacos_boeuf": "Beef Tacos",
+          "tacos_poulet": "Chicken Tacos",
+          "tacos_poisson": "Fish Tacos",
+          "tacos_agneau": "Lamb Tacos"
+        },
+        "drinks": {
+          "coca_cola": "Coca-Cola",
+          "oasis": "Oasis",
+          "ice_tea": "Lipton Ice Tea Peach",
+          "sprite": "Sprite",
+          "fanta": "Fanta",
+          "eau_minerale": "Mineral Water",
+          "eau_gazeuse": "Sparkling Water",
+          "coca_zero": "Coca-Cola Zero",
+          "jus_orange": "Orange Juice",
+          "jus_pomme": "Apple Juice"
+        }
       }
     },
     "footer": {
@@ -669,7 +772,7 @@
         }
       },
       "tacos": {
-        "title": "The Tacos",
+        "title": "Tacos",
         "beef": {
           "title": "Beef Tacos",
           "description": "Corn tortilla, tasty Black Angus ground beef, choice of toppings (red beans, tomatoes, red onions, coriander, pomegranate, cucumber), Latin herb sauce or guacamole."
@@ -689,6 +792,21 @@
         "mixed": {
           "title": "Mixed Tacos",
           "description": "Perfect for your evenings or appetizers. Choice of 7 Tacos from our selection of tacos."
+        }
+      },
+      "menus": {
+        "title": "Menus",
+        "enfant": {
+          "title": "Kids Menu",
+          "description": "Choice of Beef Cheeseburger or 6 Chicken Nuggets with drink, 80g of fries and homemade sauce."
+        },
+        "small": {
+          "title": "Small Menu",
+          "description": "Choice of Burger or Tacos with drink, 180g of fries and homemade sauce."
+        },
+        "xl": {
+          "title": "XL Menu",
+          "description": "Choice of Burger or Tacos with drink, 250g of fries and homemade sauce."
         }
       }
     }

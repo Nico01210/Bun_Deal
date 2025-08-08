@@ -119,53 +119,60 @@
 
         <!-- Contenu des menus -->
 
-        <h3 class="text-center">Les Menus</h3>
+        <h3 class="text-center" data-translate="menu.menus.title">Les Menus</h3>
         <div class="row g-4 justify-content-center">
-          <!-- Carte 1 -->
+          
+          <!-- Carte 1 - Menu enfant -->
           <div class="col-md-4">
             <div class="card h-100 shadow">
               <img src="images/Menu-enfant.jpg" width="250" height="400" class="card-img-top" alt="Menu enfant">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Menu enfant</strong></h5>
-                <p class="card-text">Un Cheeseburger de boeuf ou 6 Nuggets de poulet au choix avec boisson ainsi que 80g de frites et sauce maison.</p>
+                <h5 class="card-title"><strong data-translate="menu.menus.enfant.title">Menu enfant</strong></h5>
+                <p class="card-text" data-translate="menu.menus.enfant.description">Un Cheeseburger de boeuf ou 6 Nuggets de poulet au choix avec boisson ainsi que 80g de frites et sauce maison.</p>
                 <p class="fw-bold text-success">6,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Menu enfant"
                    data-price="6.50"
-                   data-img="images/Menu-enfant.jpg">Ajouter au panier</a>
+                   data-img="images/Menu-enfant.jpg"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
-          <!-- Carte 2 -->
+          
+          <!-- Carte 2 - Menu Small -->
           <div class="col-md-4">
             <div class="card h-100 shadow">
               <img src="images/menu-SMALL.jpg" width="250" height="400" class="card-img-top" alt="Menu small">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Menu Small</strong></h5>
-                <p class="card-text">Burger ou Tacos au choix avec boisson ainsi que 180g de frites et sauce maison.</p>
+                <h5 class="card-title"><strong data-translate="menu.menus.small.title">Menu Small</strong></h5>
+                <p class="card-text" data-translate="menu.menus.small.description">Burger ou Tacos au choix avec boisson ainsi que 180g de frites et sauce maison.</p>
                 <p class="fw-bold text-success">10,50 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Menu Small"
                    data-price="10.50"
-                   data-img="images/menu-SMALL.jpg">Ajouter au panier</a>
+                   data-img="images/menu-SMALL.jpg"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
-          <!-- Carte 3 -->
+          
+          <!-- Carte 3 - Menu XL -->
           <div class="col-md-4">
             <div class="card h-100 shadow">
               <img src="images/menu-XL.jpg" width="250" height="400" class="card-img-top" alt="Menu XL">
               <div class="card-body text-center">
-                <h5 class="card-title"><strong>Menu XL</strong></h5>
-                <p class="card-text">Burger ou Tacos au choix avec boisson ainsi que 250g de frites et sauce maison.</p>
+                <h5 class="card-title"><strong data-translate="menu.menus.xl.title">Menu XL</strong></h5>
+                <p class="card-text" data-translate="menu.menus.xl.description">Burger ou Tacos au choix avec boisson ainsi que 250g de frites et sauce maison.</p>
                 <p class="fw-bold text-success">13,80 €</p>
                 <a href="#" class="btn btn-primary add-to-cart"
                    data-name="Menu XL"
                    data-price="13.80"
-                   data-img="images/menu-XL.jpg">Ajouter au panier</a>
+                   data-img="images/menu-XL.jpg"
+                   data-translate="menu.add_to_cart">Ajouter au panier</a>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
       <div class="tab-pane fade" id="Burgers" role="tabpanel">
@@ -843,44 +850,24 @@
 <!-- Modale de choix pour les menus -->
 <div class="modal" tabindex="-1" id="menu-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div class="cart-modal-content" style="max-width:400px;">
-    <h4>Choisissez votre burger et boisson</h4>
+    <h4 data-translate="modals.menu_choice.title">Choisissez votre burger et boisson</h4>
     <form id="menu-choice-form">
       <div class="mb-3">
-        <label for="burger-choice" class="form-label">Burger/Tacos</label>
+        <label for="burger-choice" class="form-label" data-translate="modals.menu_choice.burger_label">Burger/Tacos</label>
         <select id="burger-choice" class="form-select" required>
-          <option value="">Sélectionnez un burger/tacos</option>
-          <option>Burger Boeuf</option>
-          <option>Burger Poulet</option>
-          <option>Burger Poisson</option>
-          <option>Burger Spécial</option>
-          <option>Burger Montagnard</option>
-          <option>Burger Pulled-pork</option>
-          <option>Burger Végétarien</option>
-          <option>Tacos de Boeuf</option>
-          <option>Tacos de Poulet</option>
-          <option>Tacos de Poisson</option>
-          <option>Tacos d'Agneau</option>
-
+          <option value="" data-translate="modals.menu_choice.burger_placeholder">Sélectionnez un burger/tacos</option>
+          <!-- Les options seront remplies dynamiquement par JavaScript -->
         </select>
       </div>
       <div class="mb-3">
-        <label for="boisson-choice" class="form-label">Boisson</label>
+        <label for="boisson-choice" class="form-label" data-translate="modals.menu_choice.drink_label">Boisson</label>
         <select id="boisson-choice" class="form-select" required>
-          <option value="">Sélectionnez une boisson</option>
-          <option>Coca-Cola</option>
-          <option>Oasis</option>
-          <option>Lipton Ice Tea pêche</option>
-          <option>Sprite</option>
-          <option>Fanta</option>
-          <option>Eau minéral</option>
-          <option>Eau gazeuse</option>
-          <option>Coca-Cola Zéro</option>
-          <option>Jus d'orange</option>
-          <option>Jus de Pomme</option>
+          <option value="" data-translate="modals.menu_choice.drink_placeholder">Sélectionnez une boisson</option>
+          <!-- Les options seront remplies dynamiquement par JavaScript -->
         </select>
       </div>
-      <button type="submit" class="btn btn-primary w-100">Ajouter au panier</button>
-      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-menu-choice">Annuler</button>
+      <button type="submit" class="btn btn-primary w-100" data-translate="modals.menu_choice.add_button">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-menu-choice" data-translate="modals.menu_choice.cancel_button">Annuler</button>
     </form>
   </div>
 </div>
@@ -1043,6 +1030,149 @@ function updateLanguage() {
       element.textContent = text;
     }
   });
+  
+  // Met à jour les modales ouvertes
+  updateMenuChoices(); // Ajoute cette ligne
+}
+
+function updateMenuChoices() {
+  const modal = document.getElementById('menu-choice-modal');
+  if (modal && modal.style.display === 'block') {
+    const title = modal.querySelector('h4');
+    const burgerLabel = modal.querySelector('label[for="burger-choice"]');
+    const drinkLabel = modal.querySelector('label[for="boisson-choice"]');
+    const submitBtn = modal.querySelector('button[type="submit"]');
+    const cancelBtn = modal.querySelector('#close-menu-choice');
+    const burgerSelect = modal.querySelector('#burger-choice');
+    const drinkSelect = modal.querySelector('#boisson-choice');
+    
+    // Traduit le titre selon le type de menu
+    if (title) {
+      if (window.selectedMenu && window.selectedMenu.name === 'Menu enfant') {
+        title.textContent = getTranslation('modals.menu_choice.kid_menu.title') || 'Choisissez votre plat et boisson';
+        if (burgerLabel) {
+          burgerLabel.textContent = getTranslation('modals.menu_choice.kid_menu.dish_label') || 'Plat';
+        }
+      } else {
+        title.textContent = getTranslation('modals.menu_choice.title') || 'Choisissez votre burger et boisson';
+        if (burgerLabel) {
+          burgerLabel.textContent = getTranslation('modals.menu_choice.burger_label') || 'Burger/Tacos';
+        }
+      }
+    }
+    
+    // Traduit les labels
+    if (drinkLabel) {
+      drinkLabel.textContent = getTranslation('modals.menu_choice.drink_label') || 'Boisson';
+    }
+    
+    // Traduit les boutons
+    if (submitBtn) {
+      submitBtn.textContent = getTranslation('modals.menu_choice.add_button') || 'Ajouter au panier';
+    }
+    if (cancelBtn) {
+      cancelBtn.textContent = getTranslation('modals.menu_choice.cancel_button') || 'Annuler';
+    }
+    
+    // Traduit les options des selects
+    if (burgerSelect && drinkSelect) {
+      const burgerCurrentValue = burgerSelect.value;
+      const drinkCurrentValue = drinkSelect.value;
+      
+      // Placeholder pour burger/plat
+      if (window.selectedMenu && window.selectedMenu.name === 'Menu enfant') {
+        const dishPlaceholder = getTranslation('modals.menu_choice.kid_menu.dish_placeholder') || 'Sélectionnez un plat';
+        const cheeseburgerText = getTranslation('modals.menu_choice.kid_menu.choices.cheeseburger') || 'Cheeseburger de boeuf';
+        const nuggetsText = getTranslation('modals.menu_choice.kid_menu.choices.nuggets') || '6 Nuggets de poulet';
+        
+        burgerSelect.innerHTML = `
+          <option value="">${dishPlaceholder}</option>
+          <option value="cheeseburger">${cheeseburgerText}</option>
+          <option value="nuggets">${nuggetsText}</option>
+        `;
+      } else {
+        const burgerPlaceholder = getTranslation('modals.menu_choice.burger_placeholder') || 'Sélectionnez un burger/tacos';
+        const burgerBoeufText = getTranslation('modals.menu_choice.burger_choices.burger_boeuf') || 'Burger Boeuf';
+        const burgerPouletText = getTranslation('modals.menu_choice.burger_choices.burger_poulet') || 'Burger Poulet';
+        const burgerPoissonText = getTranslation('modals.menu_choice.burger_choices.burger_poisson') || 'Burger Poisson';
+        const burgerSpecialText = getTranslation('modals.menu_choice.burger_choices.burger_special') || 'Burger Spécial';
+        const burgerMontagnardText = getTranslation('modals.menu_choice.burger_choices.burger_montagnard') || 'Burger Montagnard';
+        const burgerPulledPorkText = getTranslation('modals.menu_choice.burger_choices.burger_pulled_pork') || 'Burger Pulled-pork';
+        const burgerVegetarienText = getTranslation('modals.menu_choice.burger_choices.burger_vegetarien') || 'Burger Végétarien';
+        const smashBurgerText = getTranslation('modals.menu_choice.burger_choices.smash_burger') || 'Smash Burger';
+        const tacosBoeufText = getTranslation('modals.menu_choice.burger_choices.tacos_boeuf') || 'Tacos de Boeuf';
+        const tacosPouletText = getTranslation('modals.menu_choice.burger_choices.tacos_poulet') || 'Tacos de Poulet';
+        const tacosPoissonText = getTranslation('modals.menu_choice.burger_choices.tacos_poisson') || 'Tacos de Poisson';
+        const tacosAgneauText = getTranslation('modals.menu_choice.burger_choices.tacos_agneau') || 'Tacos d\'Agneau';
+        
+        burgerSelect.innerHTML = `
+          <option value="">${burgerPlaceholder}</option>
+          <option value="burger_boeuf">${burgerBoeufText}</option>
+          <option value="burger_poulet">${burgerPouletText}</option>
+          <option value="burger_poisson">${burgerPoissonText}</option>
+          <option value="burger_special">${burgerSpecialText}</option>
+          <option value="burger_montagnard">${burgerMontagnardText}</option>
+          <option value="burger_pulled_pork">${burgerPulledPorkText}</option>
+          <option value="burger_vegetarien">${burgerVegetarienText}</option>
+          <option value="smash_burger">${smashBurgerText}</option>
+          <option value="tacos_boeuf">${tacosBoeufText}</option>
+          <option value="tacos_poulet">${tacosPouletText}</option>
+          <option value="tacos_poisson">${tacosPoissonText}</option>
+          <option value="tacos_agneau">${tacosAgneauText}</option>
+        `;
+      }
+      
+      // Traduit les boissons
+      const drinkPlaceholder = getTranslation('modals.menu_choice.drink_placeholder') || 'Sélectionnez une boisson';
+      const cocaColaText = getTranslation('modals.menu_choice.drinks.coca_cola') || 'Coca-Cola';
+      const oasisText = getTranslation('modals.menu_choice.drinks.oasis') || 'Oasis';
+      const iceTeaText = getTranslation('modals.menu_choice.drinks.ice_tea') || 'Lipton Ice Tea pêche';
+      const spriteText = getTranslation('modals.menu_choice.drinks.sprite') || 'Sprite';
+      const fantaText = getTranslation('modals.menu_choice.drinks.fanta') || 'Fanta';
+      const eauMineraleText = getTranslation('modals.menu_choice.drinks.eau_minerale') || 'Eau minérale';
+      const eauGazeuseText = getTranslation('modals.menu_choice.drinks.eau_gazeuse') || 'Eau gazeuse';
+      const cocaZeroText = getTranslation('modals.menu_choice.drinks.coca_zero') || 'Coca-Cola Zéro';
+      const jusOrangeText = getTranslation('modals.menu_choice.drinks.jus_orange') || 'Jus d\'orange';
+      const jusPommeText = getTranslation('modals.menu_choice.drinks.jus_pomme') || 'Jus de Pomme';
+      
+      drinkSelect.innerHTML = `
+        <option value="">${drinkPlaceholder}</option>
+        <option value="coca_cola">${cocaColaText}</option>
+        <option value="oasis">${oasisText}</option>
+        <option value="ice_tea">${iceTeaText}</option>
+        <option value="sprite">${spriteText}</option>
+        <option value="fanta">${fantaText}</option>
+        <option value="eau_minerale">${eauMineraleText}</option>
+        <option value="eau_gazeuse">${eauGazeuseText}</option>
+        <option value="coca_zero">${cocaZeroText}</option>
+        <option value="jus_orange">${jusOrangeText}</option>
+        <option value="jus_pomme">${jusPommeText}</option>
+      `;
+      
+      // Restaure les valeurs sélectionnées
+      burgerSelect.value = burgerCurrentValue;
+      drinkSelect.value = drinkCurrentValue;
+    }
+  }
+}
+function getMenuChoices() {
+  // Retourne les choix de menu disponibles (à adapter si besoin)
+  return [
+    { value: 'Cheeseburger de boeuf', label: 'Cheeseburger de boeuf' },
+    { value: '6 Nuggets de poulet', label: '6 Nuggets de poulet' },
+    { value: 'Burger Boeuf', label: 'Burger Boeuf' },
+    { value: 'Burger Poulet', label: 'Burger Poulet' },
+    { value: 'Burger Poisson', label: 'Burger Poisson' },
+    { value: 'Burger Spécial', label: 'Burger Spécial' },
+    { value: 'Burger Montagnard', label: 'Burger Montagnard' },
+    { value: 'Burger Pulled-pork', label: 'Burger Pulled-pork' },
+    { value: 'Burger Végétarien', label: 'Burger Végétarien' },
+    { value: 'Smash Burger', label: 'Smash Burger' },
+    { value: 'Tacos de Boeuf', label: 'Tacos de Boeuf' },
+    { value: 'Tacos de Poulet', label: 'Tacos de Poulet' },
+    { value: 'Tacos de Poisson', label: 'Tacos de Poisson' },
+    { value: 'Tacos d\'Agneau', label: 'Tacos d\'Agneau' }
+  ];
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1057,10 +1187,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-</script>
-
-<!-- Script existant... -->
-<script>
 // Gestion du panier et des modales (clean code)
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
@@ -1078,7 +1204,7 @@ function renderCart() {
   const cart = getCart();
   const list = document.getElementById('cart-items');
   list.innerHTML = '';
-  let total = 0;
+   let total = 0;
   cart.forEach((item, idx) => {
     total += item.price * item.qty;
     const li = document.createElement('li');
@@ -1141,44 +1267,130 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     if (menuName === 'Menu enfant') {
       e.preventDefault();
       document.getElementById('menu-choice-modal').style.display = 'block';
+      
+      // Applique immédiatement les traductions
+      const dishPlaceholder = getTranslation('modals.menu_choice.kid_menu.dish_placeholder') || 'Sélectionnez un plat';
+      const cheeseburgerText = getTranslation('modals.menu_choice.kid_menu.choices.cheeseburger') || 'Cheeseburger de boeuf';
+      const nuggetsText = getTranslation('modals.menu_choice.kid_menu.choices.nuggets') || '6 Nuggets de poulet';
+      
       document.getElementById('burger-choice').innerHTML = `
-        <option value="">Sélectionnez un plat</option>
-        <option>Cheeseburger de boeuf</option>
-        <option>6 Nuggets de poulet</option>
+        <option value="">${dishPlaceholder}</option>
+        <option value="cheeseburger">${cheeseburgerText}</option>
+        <option value="nuggets">${nuggetsText}</option>
       `;
+      
+      // Applique les traductions des boissons
+      const drinkPlaceholder = getTranslation('modals.menu_choice.drink_placeholder') || 'Sélectionnez une boisson';
+      const cocaColaText = getTranslation('modals.menu_choice.drinks.coca_cola') || 'Coca-Cola';
+      const oasisText = getTranslation('modals.menu_choice.drinks.oasis') || 'Oasis';
+      const iceTeaText = getTranslation('modals.menu_choice.drinks.ice_tea') || 'Lipton Ice Tea pêche';
+      const spriteText = getTranslation('modals.menu_choice.drinks.sprite') || 'Sprite';
+      const fantaText = getTranslation('modals.menu_choice.drinks.fanta') || 'Fanta';
+      const eauMineraleText = getTranslation('modals.menu_choice.drinks.eau_minerale') || 'Eau minérale';
+      const eauGazeuseText = getTranslation('modals.menu_choice.drinks.eau_gazeuse') || 'Eau gazeuse';
+      const cocaZeroText = getTranslation('modals.menu_choice.drinks.coca_zero') || 'Coca-Cola Zéro';
+      const jusOrangeText = getTranslation('modals.menu_choice.drinks.jus_orange') || 'Jus d\'orange';
+      const jusPommeText = getTranslation('modals.menu_choice.drinks.jus_pomme') || 'Jus de Pomme';
+      
+      document.getElementById('boisson-choice').innerHTML = `
+        <option value="">${drinkPlaceholder}</option>
+        <option value="coca_cola">${cocaColaText}</option>
+        <option value="oasis">${oasisText}</option>
+        <option value="ice_tea">${iceTeaText}</option>
+        <option value="sprite">${spriteText}</option>
+        <option value="fanta">${fantaText}</option>
+        <option value="eau_minerale">${eauMineraleText}</option>
+        <option value="eau_gazeuse">${eauGazeuseText}</option>
+        <option value="coca_zero">${cocaZeroText}</option>
+        <option value="jus_orange">${jusOrangeText}</option>
+        <option value="jus_pomme">${jusPommeText}</option>
+      `;
+      
       window.selectedMenu = {
         name: this.dataset.name,
         price: parseFloat(this.dataset.price),
         img: this.dataset.img
       };
+      
+      // Applique immédiatement toutes les traductions
+      updateMenuChoices();
       return;
     }
+
     // Menus Small/XL : ouverture modale avec burgers ET tacos
     if (menuName === 'Menu Small' || menuName === 'Menu XL') {
       e.preventDefault();
       document.getElementById('menu-choice-modal').style.display = 'block';
+      
+      // Applique immédiatement les traductions des burgers/tacos
+      const burgerPlaceholder = getTranslation('modals.menu_choice.burger_placeholder') || 'Sélectionnez un burger/tacos';
+      const burgerBoeufText = getTranslation('modals.menu_choice.burger_choices.burger_boeuf') || 'Burger Boeuf';
+      const burgerPouletText = getTranslation('modals.menu_choice.burger_choices.burger_poulet') || 'Burger Poulet';
+      const burgerPoissonText = getTranslation('modals.menu_choice.burger_choices.burger_poisson') || 'Burger Poisson';
+      const burgerSpecialText = getTranslation('modals.menu_choice.burger_choices.burger_special') || 'Burger Spécial';
+      const burgerMontagnardText = getTranslation('modals.menu_choice.burger_choices.burger_montagnard') || 'Burger Montagnard';
+      const burgerPulledPorkText = getTranslation('modals.menu_choice.burger_choices.burger_pulled_pork') || 'Burger Pulled-pork';
+      const burgerVegetarienText = getTranslation('modals.menu_choice.burger_choices.burger_vegetarien') || 'Burger Végétarien';
+      const smashBurgerText = getTranslation('modals.menu_choice.burger_choices.smash_burger') || 'Smash Burger';
+      const tacosBoeufText = getTranslation('modals.menu_choice.burger_choices.tacos_boeuf') || 'Tacos de Boeuf';
+      const tacosPouletText = getTranslation('modals.menu_choice.burger_choices.tacos_poulet') || 'Tacos de Poulet';
+      const tacosPoissonText = getTranslation('modals.menu_choice.burger_choices.tacos_poisson') || 'Tacos de Poisson';
+      const tacosAgneauText = getTranslation('modals.menu_choice.burger_choices.tacos_agneau') || 'Tacos d\'Agneau';
+      
       document.getElementById('burger-choice').innerHTML = `
-        <option value="">Sélectionnez un burger/tacos</option>
-        <option>Burger Boeuf</option>
-        <option>Burger Poulet</option>
-        <option>Burger Poisson</option>
-        <option>Burger Spécial</option>
-        <option>Burger Montagnard</option>
-        <option>Burger Pulled-pork</option>
-        <option>Burger Végétarien</option>
-        <option>Smash Burger</option>
-        <option>Tacos de Boeuf</option>
-        <option>Tacos de Poulet</option>
-        <option>Tacos de Poisson</option>
-        <option>Tacos d'Agneau</option>
+        <option value="">${burgerPlaceholder}</option>
+        <option value="burger_boeuf">${burgerBoeufText}</option>
+        <option value="burger_poulet">${burgerPouletText}</option>
+        <option value="burger_poisson">${burgerPoissonText}</option>
+        <option value="burger_special">${burgerSpecialText}</option>
+        <option value="burger_montagnard">${burgerMontagnardText}</option>
+        <option value="burger_pulled_pork">${burgerPulledPorkText}</option>
+        <option value="burger_vegetarien">${burgerVegetarienText}</option>
+        <option value="smash_burger">${smashBurgerText}</option>
+        <option value="tacos_boeuf">${tacosBoeufText}</option>
+        <option value="tacos_poulet">${tacosPouletText}</option>
+        <option value="tacos_poisson">${tacosPoissonText}</option>
+        <option value="tacos_agneau">${tacosAgneauText}</option>
       `;
+      
+      // Applique les traductions des boissons
+      const drinkPlaceholder = getTranslation('modals.menu_choice.drink_placeholder') || 'Sélectionnez une boisson';
+      const cocaColaText = getTranslation('modals.menu_choice.drinks.coca_cola') || 'Coca-Cola';
+      const oasisText = getTranslation('modals.menu_choice.drinks.oasis') || 'Oasis';
+      const iceTeaText = getTranslation('modals.menu_choice.drinks.ice_tea') || 'Lipton Ice Tea pêche';
+      const spriteText = getTranslation('modals.menu_choice.drinks.sprite') || 'Sprite';
+      const fantaText = getTranslation('modals.menu_choice.drinks.fanta') || 'Fanta';
+      const eauMineraleText = getTranslation('modals.menu_choice.drinks.eau_minerale') || 'Eau minérale';
+      const eauGazeuseText = getTranslation('modals.menu_choice.drinks.eau_gazeuse') || 'Eau gazeuse';
+      const cocaZeroText = getTranslation('modals.menu_choice.drinks.coca_zero') || 'Coca-Cola Zéro';
+      const jusOrangeText = getTranslation('modals.menu_choice.drinks.jus_orange') || 'Jus d\'orange';
+      const jusPommeText = getTranslation('modals.menu_choice.drinks.jus_pomme') || 'Jus de Pomme';
+      
+      document.getElementById('boisson-choice').innerHTML = `
+        <option value="">${drinkPlaceholder}</option>
+        <option value="coca_cola">${cocaColaText}</option>
+        <option value="oasis">${oasisText}</option>
+        <option value="ice_tea">${iceTeaText}</option>
+        <option value="sprite">${spriteText}</option>
+        <option value="fanta">${fantaText}</option>
+        <option value="eau_minerale">${eauMineraleText}</option>
+        <option value="eau_gazeuse">${eauGazeuseText}</option>
+        <option value="coca_zero">${cocaZeroText}</option>
+        <option value="jus_orange">${jusOrangeText}</option>
+        <option value="jus_pomme">${jusPommeText}</option>
+      `;
+      
       window.selectedMenu = {
         name: this.dataset.name,
         price: parseFloat(this.dataset.price),
         img: this.dataset.img
       };
+      
+      // Applique immédiatement toutes les traductions
+      updateMenuChoices();
       return;
     }
+    
     // Autres menus (si besoin, à adapter)
     if (menuName && menuName.startsWith('Menu')) {
       e.preventDefault();
