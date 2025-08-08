@@ -397,6 +397,41 @@
           "title": "Menu XL",
           "description": "Burger ou Tacos au choix avec boisson ainsi que 250g de frites et sauce maison."
         }
+      },
+      "burgers": {
+        "title": "Les Burgers",
+        "boeuf": {
+          "title": "Burger Boeuf",
+          "description": "Pain brioche maison, steak haché de bœuf Black Angus 150g, salade, tomate, cornichons, oignon rouge, cheddar affiné et notre sauce burger maison."
+        },
+        "poulet": {
+          "title": "Burger Poulet",
+          "description": "Pain brioche maison, filet de poulet pané 150g, salade, tomate, cornichons, oignon rouge, cheddar affiné et notre sauce burger maison."
+        },
+        "poisson": {
+          "title": "Burger Poisson",
+          "description": "Pain brioche maison, filet de colin pané par nos soins 150g, salade, tomate, cornichons, oignon rouge, cheddar affiné et notre sauce tartare maison."
+        },
+        "special": {
+          "title": "Burger Spécial",
+          "description": "Pain brioche maison, double steak haché de bœuf Black Angus 2x150g, salade, tomate, cornichons, oignon rouge, double cheddar affiné et notre sauce burger maison."
+        },
+        "montagnard": {
+          "title": "Burger Montagnard",
+          "description": "Pain brioche maison, steak haché de bœuf Black Angus 150g, salade, tomate, cornichons, oignon rouge, raclette de Savoie et notre sauce montagnarde maison."
+        },
+        "pulled_pork": {
+          "title": "Burger Pulled-pork",
+          "description": "Pain brioche maison, épaule de porc effilochée cuite 12h à basse température 150g, salade, tomate, cornichons, oignon rouge, cheddar affiné et notre sauce BBQ maison."
+        },
+        "vegetarien": {
+          "title": "Burger Végétarien",
+          "description": "Pain brioche maison, steak végétal aux légumes et céréales 150g, salade, tomate, cornichons, oignon rouge, cheddar végétal et notre sauce verte maison."
+        },
+        "smash": {
+          "title": "Smash Burger",
+          "description": "Pain brioche maison, 2 steaks hachés de bœuf Black Angus écrasés à la plancha 2x80g, salade, tomate, cornichons, oignon rouge, cheddar affiné et notre sauce burger maison."
+        }
       }
     }
   },
@@ -807,6 +842,41 @@
         "xl": {
           "title": "XL Menu",
           "description": "Choice of Burger or Tacos with drink, 250g of fries and homemade sauce."
+        }
+      },
+      "burgers": {
+        "title": "Burgers",
+        "boeuf": {
+          "title": "Beef Burger",
+          "description": "Homemade brioche bun, 150g Black Angus beef patty, lettuce, tomato, pickles, red onion, aged cheddar and our homemade burger sauce."
+        },
+        "poulet": {
+          "title": "Chicken Burger",
+          "description": "Homemade brioche bun, 150g breaded chicken fillet, lettuce, tomato, pickles, red onion, aged cheddar and our homemade burger sauce."
+        },
+        "poisson": {
+          "title": "Fish Burger",
+          "description": "Homemade brioche bun, 150g hake fillet breaded by our chefs, lettuce, tomato, pickles, red onion, aged cheddar and our homemade tartar sauce."
+        },
+        "special": {
+          "title": "Special Burger",
+          "description": "Homemade brioche bun, double 2x150g Black Angus beef patty, lettuce, tomato, pickles, red onion, double aged cheddar and our homemade burger sauce."
+        },
+        "montagnard": {
+          "title": "Mountain Burger",
+          "description": "Homemade brioche bun, 150g Black Angus beef patty, lettuce, tomato, pickles, red onion, Savoie raclette cheese and our homemade mountain sauce."
+        },
+        "pulled_pork": {
+          "title": "Pulled-pork Burger",
+          "description": "Homemade brioche bun, 150g pork shoulder slow-cooked for 12 hours at low temperature, lettuce, tomato, pickles, red onion, aged cheddar and our homemade BBQ sauce."
+        },
+        "vegetarien": {
+          "title": "Vegetarian Burger",
+          "description": "Homemade brioche bun, 150g plant-based patty with vegetables and cereals, lettuce, tomato, pickles, red onion, plant-based cheddar and our homemade green sauce."
+        },
+        "smash": {
+          "title": "Smash Burger",
+          "description": "Homemade brioche bun, 2 Black Angus beef patties smashed on the griddle 2x80g, lettuce, tomato, pickles, red onion, aged cheddar and our homemade burger sauce."
         }
       }
     }
