@@ -27,7 +27,7 @@
         "description": "Mini burger, frites et jus de fruits. Jouet offert !"
       },
       "assiette_tapas": {
-        "title": "Assiette Tapas",
+        "title": "Mix de Tacos",
         "description": "Formule pour vos soirées ou apéros. Choix de 7 Tacos parmi notre sélection de tacos !"
       },
       "tenders": {
@@ -93,7 +93,7 @@
         "cancel": "Annuler"
       },
       "tapas": {
-        "title": "Composez votre Assiette Tapas",
+        "title": "Composez votre Assiette Tacos",
         "subtitle": "Choisissez 7 tacos parmi nos garnitures",
         "labels": {
           "poulet": "Tacos Poulet :",
@@ -209,6 +209,37 @@
           "coca_zero": "Coca-Cola Zéro",
           "jus_orange": "Jus d'orange",
           "jus_pomme": "Jus de Pomme"
+        }
+      },
+      "glace_choice": {
+        "title": "Choisissez vos parfum(s) de glace",
+        "flavor_label": "Parfum",
+        "flavor_placeholder": "Sélectionnez un parfum",
+        "add_button": "Ajouter au panier",
+        "cancel_button": "Annuler",
+        "flavors": {
+          "fraise": "Fraise",
+          "pistache": "Pistache",
+          "chocolat": "Chocolat",
+          "mangue": "Mangue",
+          "melon": "Melon",
+          "vanille": "Vanille",
+          "rhubarbe": "Rhubarbe",
+          "lavande": "Lavande",
+          "noix_coco": "Noix de coco",
+          "citron": "Citron"
+        }
+      },
+      "yaourt_choice": {
+        "title": "Choisissez le parfum du yaourt à boire",
+        "flavor_label": "Parfum",
+        "flavor_placeholder": "Sélectionnez un parfum",
+        "add_button": "Ajouter au panier",
+        "cancel_button": "Annuler",
+        "flavors": {
+          "original": "Original",
+          "banane": "Banane",
+          "green_tea": "Green Tea"
         }
       }
     },
@@ -432,6 +463,36 @@
           "title": "Smash Burger",
           "description": "Pain brioche maison, 2 steaks hachés de bœuf Black Angus écrasés à la plancha 2x80g, salade, tomate, cornichons, oignon rouge, cheddar affiné et notre sauce burger maison."
         }
+      },
+      "desserts": {
+        "title": "Les Desserts",
+        "tiramisu": {
+          "title": "Tiramisu",
+          "description": "Tiramisu original au café."
+        },
+        "brownie": {
+          "title": "Brownie",
+          "description": "Brownie original au chocolat et éclats de noisette."
+        },
+        "glaces": {
+          "title": "Boules de Glaces",
+          "description": "Une sélection de 10 parfums différents venant du Glacier des Alpes. (Fraise, pistache, chocolat, mangue, melon, vanille, rhubarbe, lavande, noix de coco et citron)",
+          "price_1": "1 boule : 1,50 €",
+          "price_2": "2 boules : 2,50 €",
+          "price_3": "3 boules : 4,00 €"
+        },
+        "yaourt": {
+          "title": "Yaourt à Boire",
+          "description": "Pot de Yaourt à boire de 500g. Plusieurs parfum disponible : Original, Banane et Green Tea"
+        },
+        "gaufre": {
+          "title": "Gaufre",
+          "description": "Gaufre faite maison avec topping au choix (Nutella, sucre, beurre de cacahuète, miel, confitures de fraise ou myrtille)."
+        },
+        "salade_fruits": {
+          "title": "Salade de Fruits",
+          "description": "Bol de salade de fruits fraîche. Fruits choisis avec soin en fonction de la saison"
+        }
       }
     }
   },
@@ -463,7 +524,7 @@
         "description": "Mini burger, fries and fruit juice. Free toy included!"
       },
       "assiette_tapas": {
-        "title": "Tapas Platter",
+        "title": "Tacos Mixed",
         "description": "Perfect for your evenings or appetizers. Choice of 7 Tacos from our selection!"
       },
       "tenders": {
@@ -529,7 +590,7 @@
         "cancel": "Cancel"
       },
       "tapas": {
-        "title": "Compose your Tapas Platter",
+        "title": "Compose your Tacos Platter",
         "subtitle": "Choose 7 tacos from our fillings",
         "labels": {
           "poulet": "Chicken Tacos:",
@@ -656,6 +717,37 @@
           "jus_orange": "Orange Juice",
           "jus_pomme": "Apple Juice"
         }
+      },
+      "glace_choice": {
+        "title": "Choose your ice cream flavor(s)",
+        "flavor_label": "Flavor",
+        "flavor_placeholder": "Select a flavor",
+        "add_button": "Add to cart",
+        "cancel_button": "Cancel",
+        "flavors": {
+          "fraise": "Strawberry",
+          "pistache": "Pistachio",
+          "chocolat": "Chocolate",
+          "mangue": "Mango",
+          "melon": "Melon",
+          "vanille": "Vanilla",
+          "rhubarbe": "Rhubarb",
+          "lavande": "Lavender",
+          "noix_coco": "Coconut",
+          "citron": "Lemon"
+        }
+      },
+      "yaourt_choice": {
+        "title": "Choose the yogurt drink flavor",
+        "flavor_label": "Flavor",
+        "flavor_placeholder": "Select a flavor",
+        "add_button": "Add to cart",
+        "cancel_button": "Cancel",
+        "flavors": {
+          "original": "Original",
+          "banane": "Banana",
+          "green_tea": "Green Tea"
+        }
       }
     },
     "footer": {
@@ -717,7 +809,7 @@
       },
       "add_to_cart": "Add to cart",
       "drinks": {
-        "title": "The Drinks",
+        "title": "Drinks",
         "oasis": {
           "title": "Oasis",
           "description": "33cl can."
@@ -768,7 +860,7 @@
         }
       },
       "snacks": {
-        "title": "The Snacks",
+        "title": "Snacks",
         "frites": {
           "title": "French Fries",
           "description": "Crispy homemade fries, cooked in sunflower oil. Generous 200g portion with your choice of homemade sauce."
@@ -877,6 +969,36 @@
         "smash": {
           "title": "Smash Burger",
           "description": "Homemade brioche bun, 2 Black Angus beef patties smashed on the griddle 2x80g, lettuce, tomato, pickles, red onion, aged cheddar and our homemade burger sauce."
+        }
+      },
+      "desserts": {
+        "title": "Desserts",
+        "tiramisu": {
+          "title": "Tiramisu",
+          "description": "Original coffee tiramisu."
+        },
+        "brownie": {
+          "title": "Brownie",
+          "description": "Original chocolate brownie with hazelnut pieces."
+        },
+        "glaces": {
+          "title": "Ice Cream Scoops",
+          "description": "A selection of 10 different flavors from Glacier des Alpes. (Strawberry, pistachio, chocolate, mango, melon, vanilla, rhubarb, lavender, coconut and lemon)",
+          "price_1": "1 scoop: €1.50",
+          "price_2": "2 scoops: €2.50",
+          "price_3": "3 scoops: €4.00"
+        },
+        "yaourt": {
+          "title": "Drinking Yogurt",
+          "description": "500g drinking yogurt pot. Several flavors available: Original, Banana and Green Tea"
+        },
+        "gaufre": {
+          "title": "Waffle",
+          "description": "Homemade waffle with choice of topping (Nutella, sugar, peanut butter, honey, strawberry or blueberry jam)."
+        },
+        "salade_fruits": {
+          "title": "Fruit Salad",
+          "description": "Bowl of fresh fruit salad. Fruits carefully chosen according to the season"
         }
       }
     }
