@@ -229,59 +229,30 @@ Bun'deal, c’est bien plus qu’un repas : c’est un deal gagnant entre vous, 
   </div>
 </div>
 
-<!-- Modal choix de tacos -->
-<div class="modal" tabindex="-1" id="taco-choice-modal">
-  <div style="background:#fff; margin:5% auto; padding:30px; max-width:450px; border-radius:12px; position:relative;">
-    <h4 class="text-center mb-4" data-translate="modals.taco.title">Composez votre Menu Tacos</h4>
-    
-    <div class="mb-3">
-      <label class="form-label fw-bold" data-translate="modals.taco.garnish">Garniture :</label>
-      <select class="form-select" id="taco-garniture">
-        <!-- Options mises à jour par JS -->
-      </select>
-    </div>
-    
-    <div class="mb-3">
-      <label class="form-label fw-bold" data-translate="modals.taco.drink">Boisson :</label>
-      <select class="form-select" id="taco-boisson">
-        <!-- Options mises à jour par JS -->
-      </select>
-    </div>
-    
-    <div class="text-center">
-      <button class="btn btn-primary me-2" id="add-taco-to-cart" data-translate="modals.taco.add">Ajouter au panier</button>
-      <button class="btn btn-secondary" id="close-taco-modal" data-translate="modals.taco.cancel">Annuler</button>
-    </div>
+<!-- Modal choix menu (réutilisable pour Menu Tacos et Menu Enfant) -->
+<div class="modal" tabindex="-1" id="menu-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div class="cart-modal-content" style="max-width:400px;">
+    <h4 data-translate="modals.menu_choice.title">Choisissez votre burger et boisson</h4>
+    <form id="menu-choice-form">
+      <div class="mb-3">
+        <label for="burger-choice" class="form-label" data-translate="modals.menu_choice.burger_label">Burger/Tacos</label>
+        <select id="burger-choice" class="form-select" required>
+          <!-- Options générées dynamiquement selon le type de menu -->
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="boisson-choice" class="form-label" data-translate="modals.menu_choice.drink_label">Boisson</label>
+        <select id="boisson-choice" class="form-select" required>
+          <!-- Options générées par JavaScript -->
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" data-translate="modals.menu_choice.add_button">Ajouter au panier</button>
+      <button type="button" class="btn btn-secondary w-100 mt-2" id="close-menu-choice" data-translate="modals.menu_choice.cancel_button">Annuler</button>
+    </form>
   </div>
 </div>
 
-<!-- Modal choix menu enfant -->
-<div class="modal" tabindex="-1" id="child-choice-modal">
-  <div style="background:#fff; margin:5% auto; padding:30px; max-width:450px; border-radius:12px; position:relative;">
-    <h4 class="text-center mb-4" data-translate="modals.child.title">Composez votre Menu Enfant</h4>
-    
-    <div class="mb-3">
-      <label class="form-label fw-bold" data-translate="modals.child.main">Plat principal :</label>
-      <select class="form-select" id="child-plat">
-        <!-- Options mises à jour par JS -->
-      </select>
-    </div>
-    
-    <div class="mb-3">
-      <label class="form-label fw-bold" data-translate="modals.child.drink">Boisson :</label>
-      <select class="form-select" id="child-boisson">
-        <!-- Options mises à jour par JS -->
-      </select>
-    </div>
-    
-    <div class="text-center">
-      <button class="btn btn-primary me-2" id="add-child-to-cart" data-translate="modals.child.add">Ajouter au panier</button>
-      <button class="btn btn-secondary" id="close-child-modal" data-translate="modals.child.cancel">Annuler</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal choix assiette tapas -->
+<!-- Modal choix assiette tapas (garde celle-ci car elle est spécifique) -->
 <div class="modal" tabindex="-1" id="tapas-choice-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div style="background:#fff; margin:3% auto; padding:30px; max-width:500px; border-radius:12px; position:relative;">
     <h4 class="text-center mb-4" data-translate="modals.tapas.title">Composez votre Assiette Tacos</h4>
@@ -391,8 +362,8 @@ function updateLanguage() {
     }
   });
   
-  // Met à jour les options des selects
-  updateSelectOptions();
+  // Met à jour les modales ouvertes
+  updateOpenModals();
 }
 
 // Récupère une traduction par clé
@@ -411,52 +382,15 @@ function getTranslation(key) {
   return value;
 }
 
-// Met à jour les options des selects
-function updateSelectOptions() {
-  // Garnitures tacos
-  const tacoGarnitureSelect = document.getElementById('taco-garniture');
-  if (tacoGarnitureSelect) {
-    tacoGarnitureSelect.innerHTML = `
-      <option value="poulet">${getTranslation('modals.taco.garnish_options.poulet')}</option>
-      <option value="boeuf">${getTranslation('modals.taco.garnish_options.boeuf')}</option>
-      <option value="poisson">${getTranslation('modals.taco.garnish_options.poisson')}</option>
-      <option value="agneau">${getTranslation('modals.taco.garnish_options.agneau')}</option>
-    `;
-  }
-  
-  // Boissons
-  const drinkSelects = ['taco-boisson', 'child-boisson'];
-  drinkSelects.forEach(selectId => {
-    const select = document.getElementById(selectId);
-    if (select) {
-      select.innerHTML = `
-        <option value="oasis">${getTranslation('modals.drinks.oasis')}</option>
-        <option value="coca">${getTranslation('modals.drinks.coca')}</option>
-        <option value="icetea">${getTranslation('modals.drinks.icetea')}</option>
-        <option value="sprite">${getTranslation('modals.drinks.sprite')}</option>
-        <option value="fanta">${getTranslation('modals.drinks.fanta')}</option>
-        <option value="eau">${getTranslation('modals.drinks.eau')}</option>
-        <option value="eau-gazeuse">${getTranslation('modals.drinks.eau_gazeuse')}</option>
-        <option value="coca-zero">${getTranslation('modals.drinks.coca_zero')}</option>
-        <option value="jus-orange">${getTranslation('modals.drinks.jus_orange')}</option>
-        <option value="jus-pomme">${getTranslation('modals.drinks.jus_pomme')}</option>
-      `;
-    }
-  });
-  
-  // Plats menu enfant
-  const childPlatSelect = document.getElementById('child-plat');
-  if (childPlatSelect) {
-    childPlatSelect.innerHTML = `
-      <option value="cheeseburger">${getTranslation('modals.child.main_options.cheeseburger')}</option>
-      <option value="nuggets">${getTranslation('modals.child.main_options.nuggets')}</option>
-    `;
-  }
-}
-
 // Gestion du changement de langue
 document.addEventListener('DOMContentLoaded', function() {
   loadTranslations();
+  updateCartCount();
+  
+  // Initialise les selects une fois les traductions chargées
+  setTimeout(() => {
+    updateSelectOptions();
+  }, 100);
   
   document.getElementById('lang-toggle').addEventListener('click', function() {
     currentLang = currentLang === 'fr' ? 'en' : 'fr';
@@ -542,55 +476,62 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
 
 document.getElementById('open-taco-modal').onclick = function(e) {
   e.preventDefault();
-  document.getElementById('taco-choice-modal').style.display = 'block';
-};
-
-document.getElementById('close-taco-modal').onclick = function() {
-  document.getElementById('taco-choice-modal').style.display = 'none';
-};
-
-document.getElementById('add-taco-to-cart').onclick = function() {
-  const selectGarniture = document.getElementById('taco-garniture');
-  const selectBoisson = document.getElementById('taco-boisson');
+  document.getElementById('menu-choice-modal').style.display = 'block';
   
-  const garniture = selectGarniture.value;
-  const boisson = selectBoisson.options[selectBoisson.selectedIndex].text;
+  window.selectedMenu = {
+    name: 'Menu Tacos',
+    price: 10.50,
+    img: 'images/tacos.jpg'
+  };
   
-  const name = `Menu Tacos ${garniture.charAt(0).toUpperCase() + garniture.slice(1)} + ${boisson}`;
-  const price = 10.50; // Prix fixe du menu
-  const img = `images/${garniture === 'boeuf' ? 'tacos-beef.png' : 
-                    garniture === 'poulet' ? 'chicken-tacos.png' : 
-                    garniture === 'poisson' ? 'fish-tacos.jpg' : 'tacos.jpg'}`;
-  
-  let cart = getCart();
-  const found = cart.find(item => item.name === name);
-  if (found) found.qty += 1;
-  else cart.push({name, price, img, qty:1});
-  setCart(cart);
-  
-  // Ferme la modale après ajout
-  document.getElementById('taco-choice-modal').style.display = 'none';
+  // Applique immédiatement les traductions
+  setTimeout(() => {
+    updateMenuChoices();
+  }, 10);
 };
 
 document.getElementById('open-child-modal').onclick = function(e) {
   e.preventDefault();
-  document.getElementById('child-choice-modal').style.display = 'block';
+  document.getElementById('menu-choice-modal').style.display = 'block';
+  
+  window.selectedMenu = {
+    name: 'Menu Enfant',
+    price: 6.50,
+    img: 'images/Menu-enfant.jpg'
+  };
+  
+  // Applique immédiatement les traductions
+  setTimeout(() => {
+    updateMenuChoices();
+  }, 10);
 };
 
-document.getElementById('close-child-modal').onclick = function() {
-  document.getElementById('child-choice-modal').style.display = 'none';
+document.getElementById('close-menu-choice').onclick = function() {
+  document.getElementById('menu-choice-modal').style.display = 'none';
 };
 
-document.getElementById('add-child-to-cart').onclick = function() {
-  const selectPlat = document.getElementById('child-plat');
-  const selectBoisson = document.getElementById('child-boisson');
+// Gestionnaire pour le formulaire de menu
+document.getElementById('menu-choice-form').onsubmit = function(e) {
+  e.preventDefault();
   
-  const plat = selectPlat.options[selectPlat.selectedIndex].text;
-  const boisson = selectBoisson.options[selectBoisson.selectedIndex].text;
+  const burgerSelect = document.getElementById('burger-choice');
+  const drinkSelect = document.getElementById('boisson-choice');
   
-  const name = `Menu Enfant ${plat} + ${boisson}`;
-  const price = 6.50; // Prix fixe du menu enfant
-  const img = 'images/Menu-enfant.jpg';
+  const burgerValue = burgerSelect.value;
+  const drinkValue = drinkSelect.value;
+  
+  if (!burgerValue || !drinkValue) {
+    alert('Veuillez sélectionner tous les éléments');
+    return;
+  }
+  
+  // Récupère les textes traduits
+  const burgerText = burgerSelect.options[burgerSelect.selectedIndex].text;
+  const drinkText = drinkSelect.options[drinkSelect.selectedIndex].text;
+  
+  const name = `${window.selectedMenu.name} ${burgerText} + ${drinkText}`;
+  const price = window.selectedMenu.price;
+  const img = window.selectedMenu.img;
   
   let cart = getCart();
   const found = cart.find(item => item.name === name);
@@ -599,7 +540,7 @@ document.getElementById('add-child-to-cart').onclick = function() {
   setCart(cart);
   
   // Ferme la modale après ajout
-  document.getElementById('child-choice-modal').style.display = 'none';
+  document.getElementById('menu-choice-modal').style.display = 'none';
 };
 
 document.getElementById('open-cart').onclick = function(e) {
@@ -698,7 +639,127 @@ document.getElementById('validate-cart').onclick = function() {
   window.location.href = 'Commandes.html';
 };
 
-updateCartCount();
+// Ajoute ces fonctions dans le script de index.html
+
+function updateMenuChoices() {
+  const modal = document.getElementById('menu-choice-modal');
+  if (modal && modal.style.display === 'block') {
+    const title = modal.querySelector('h4');
+    const burgerLabel = modal.querySelector('label[for="burger-choice"]');
+    const drinkLabel = modal.querySelector('label[for="boisson-choice"]');
+    const submitBtn = modal.querySelector('button[type="submit"]');
+    const cancelBtn = modal.querySelector('#close-menu-choice');
+    const burgerSelect = modal.querySelector('#burger-choice');
+    const drinkSelect = modal.querySelector('#boisson-choice');
+    
+    // Traduit le titre selon le type de menu
+    if (title) {
+      if (window.selectedMenu && window.selectedMenu.name === 'Menu Enfant') {
+        title.textContent = getTranslation('modals.menu_choice.kid_menu.title') || 'Choisissez votre plat et boisson';
+        if (burgerLabel) {
+          burgerLabel.textContent = getTranslation('modals.menu_choice.kid_menu.dish_label') || 'Plat';
+        }
+      } else {
+        title.textContent = getTranslation('modals.menu_choice.title') || 'Choisissez votre burger et boisson';
+        if (burgerLabel) {
+          burgerLabel.textContent = getTranslation('modals.menu_choice.burger_label') || 'Burger/Tacos';
+        }
+      }
+    }
+    
+    // Traduit les labels
+    if (drinkLabel) {
+      drinkLabel.textContent = getTranslation('modals.menu_choice.drink_label') || 'Boisson';
+    }
+    
+    // Traduit les boutons
+    if (submitBtn) {
+      submitBtn.textContent = getTranslation('modals.menu_choice.add_button') || 'Ajouter au panier';
+    }
+    if (cancelBtn) {
+      cancelBtn.textContent = getTranslation('modals.menu_choice.cancel_button') || 'Annuler';
+    }
+    
+    // Traduit les options des selects
+    if (burgerSelect && drinkSelect) {
+      const burgerCurrentValue = burgerSelect.value;
+      const drinkCurrentValue = drinkSelect.value;
+      
+      // Options selon le type de menu
+      if (window.selectedMenu && window.selectedMenu.name === 'Menu Enfant') {
+        const dishPlaceholder = getTranslation('modals.menu_choice.kid_menu.dish_placeholder') || 'Sélectionnez un plat';
+        const cheeseburgerText = getTranslation('modals.menu_choice.kid_menu.choices.cheeseburger') || 'Cheeseburger de boeuf';
+        const nuggetsText = getTranslation('modals.menu_choice.kid_menu.choices.nuggets') || '6 Nuggets de poulet';
+        
+        burgerSelect.innerHTML = `
+          <option value="">${dishPlaceholder}</option>
+          <option value="cheeseburger">${cheeseburgerText}</option>
+          <option value="nuggets">${nuggetsText}</option>
+        `;
+      } else {
+        // Menu Tacos : seulement les garnitures
+        const garniturePlaceholder = getTranslation('modals.menu_choice.burger_placeholder') || 'Sélectionnez une garniture';
+        const pouletText = getTranslation('modals.menu_choice.burger_choices.tacos_poulet') || 'Tacos de Poulet';
+        const boeufText = getTranslation('modals.menu_choice.burger_choices.tacos_boeuf') || 'Tacos de Boeuf';
+        const poissonText = getTranslation('modals.menu_choice.burger_choices.tacos_poisson') || 'Tacos de Poisson';
+        const agneauText = getTranslation('modals.menu_choice.burger_choices.tacos_agneau') || 'Tacos d\'Agneau';
+        
+        burgerSelect.innerHTML = `
+          <option value="">${garniturePlaceholder}</option>
+          <option value="tacos_poulet">${pouletText}</option>
+          <option value="tacos_boeuf">${boeufText}</option>
+          <option value="tacos_poisson">${poissonText}</option>
+          <option value="tacos_agneau">${agneauText}</option>
+        `;
+      }
+      
+      // Traduit les boissons (identique pour tous)
+      const drinkPlaceholder = getTranslation('modals.menu_choice.drink_placeholder') || 'Sélectionnez une boisson';
+      const cocaColaText = getTranslation('modals.menu_choice.drinks.coca_cola') || 'Coca-Cola';
+      const oasisText = getTranslation('modals.menu_choice.drinks.oasis') || 'Oasis';
+      const iceTeaText = getTranslation('modals.menu_choice.drinks.ice_tea') || 'Lipton Ice Tea pêche';
+      const spriteText = getTranslation('modals.menu_choice.drinks.sprite') || 'Sprite';
+      const fantaText = getTranslation('modals.menu_choice.drinks.fanta') || 'Fanta';
+      const eauMineraleText = getTranslation('modals.menu_choice.drinks.eau_minerale') || 'Eau minérale';
+      const eauGazeuseText = getTranslation('modals.menu_choice.drinks.eau_gazeuse') || 'Eau gazeuse';
+      const cocaZeroText = getTranslation('modals.menu_choice.drinks.coca_zero') || 'Coca-Cola Zéro';
+      const jusOrangeText = getTranslation('modals.menu_choice.drinks.jus_orange') || 'Jus d\'orange';
+      const jusPommeText = getTranslation('modals.menu_choice.drinks.jus_pomme') || 'Jus de Pomme';
+      
+      drinkSelect.innerHTML = `
+        <option value="">${drinkPlaceholder}</option>
+        <option value="coca_cola">${cocaColaText}</option>
+        <option value="oasis">${oasisText}</option>
+        <option value="ice_tea">${iceTeaText}</option>
+        <option value="sprite">${spriteText}</option>
+        <option value="fanta">${fantaText}</option>
+        <option value="eau_minerale">${eauMineraleText}</option>
+        <option value="eau_gazeuse">${eauGazeuseText}</option>
+        <option value="coca_zero">${cocaZeroText}</option>
+        <option value="jus_orange">${jusOrangeText}</option>
+        <option value="jus_pomme">${jusPommeText}</option>
+      `;
+      
+      // Restaure les valeurs sélectionnées
+      burgerSelect.value = burgerCurrentValue;
+      drinkSelect.value = drinkCurrentValue;
+    }
+  }
+}
+
+function updateOpenModals() {
+  // Met à jour la modale menu si elle est ouverte
+  const menuModal = document.getElementById('menu-choice-modal');
+  if (menuModal && menuModal.style.display === 'block') {
+    updateMenuChoices();
+  }
+  
+  // Met à jour la modale tapas si elle est ouverte
+  const tapasModal = document.getElementById('tapas-choice-modal');
+  if (tapasModal && tapasModal.style.display === 'block') {
+    // Pas d'options à mettre à jour pour les tapas
+  }
+}
 </script>
 
 <script>
