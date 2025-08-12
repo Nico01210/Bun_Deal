@@ -617,10 +617,10 @@
         "title": "Compose your Tacos Platter",
         "subtitle": "Choose 7 tacos from our fillings",
         "labels": {
-          "poulet": "Chicken Tacos:",
-          "boeuf": "Beef Tacos:",
-          "poisson": "Fish Tacos:",
-          "agneau": "Lamb Tacos:"
+          "poulet": "Chicken Tacos",
+          "boeuf": "Beef Tacos",
+          "poisson": "Fish Tacos",
+          "agneau": "Lamb Tacos"
         },
         "counter": "Total selected:",
         "tacos": "tacos",

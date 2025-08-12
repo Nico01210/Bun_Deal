@@ -364,6 +364,12 @@ function updateLanguage() {
   
   // Met à jour les modales ouvertes
   updateOpenModals();
+  
+  // Met à jour le panier si il est ouvert
+  const cartModal = document.getElementById('cart-modal');
+  if (cartModal && cartModal.style.display === 'block') {
+    renderCart();
+  }
 }
 
 // Récupère une traduction par clé
@@ -403,32 +409,61 @@ document.addEventListener('DOMContentLoaded', function() {
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
+
 function setCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
 }
+
 function updateCartCount() {
   const cart = getCart();
   const el = document.getElementById('cart-count');
   if (el) el.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
 }
+
 function renderCart() {
   const cart = getCart();
   const list = document.getElementById('cart-items');
   list.innerHTML = '';
   let total = 0;
+  
   cart.forEach((item, idx) => {
     total += item.price * item.qty;
+    
+    // Traduit le nom du produit selon la langue actuelle
+    let translatedName = item.name;
+    if (item.translationKey) {
+      const translation = getTranslation(item.translationKey);
+      if (translation) {
+        translatedName = translation;
+        
+        // Ajoute les choix spécifiques s'ils existent
+        if (item.choices) {
+          const translatedChoices = item.choices.map(choice => {
+            if (choice.translationKey) {
+              return getTranslation(choice.translationKey) || choice.value;
+            }
+            return choice.value;
+          });
+          translatedName += ` (${translatedChoices.join(', ')})`;
+        }
+      }
+    }
+    
+    const removeText = getTranslation('modals.cart.remove') || 'Supprimer';
+    
     const li = document.createElement('li');
     li.innerHTML = `
       <img src="${item.img}" width="40" style="vertical-align:middle;"> 
-      ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
-      <button class="btn btn-sm btn-danger" onclick="removeFromCart(${idx})">Supprimer</button>
+      ${translatedName} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
+      <button class="btn btn-sm btn-danger" onclick="removeFromCart(${idx})">${removeText}</button>
     `;
     list.appendChild(li);
   });
+  
   document.getElementById('cart-total').textContent = total.toFixed(2);
 }
+
 function removeFromCart(idx) {
   const cart = getCart();
   cart.splice(idx, 1);
@@ -436,40 +471,31 @@ function removeFromCart(idx) {
   renderCart();
 }
 
-// Event listeners pour les boutons "Ajouter au panier"
+// Remplace les event listeners add-to-cart par :
+
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
-    const name = this.dataset.name;
-    // Gestion Menu Enfant (modale)
-    if (name === 'Menu Enfant') {
-      e.preventDefault();
-      window.selectedMenuEnfant = {
-        name: this.dataset.name,
-        price: parseFloat(this.dataset.price),
-        img: this.dataset.img
-      };
-      document.getElementById('menu-enfant-choice-modal').style.display = 'block';
-      return;
-    }
-    // Gestion Tacos Mixed (modale)
-    if (name === 'Tacos Mixed') {
-      e.preventDefault();
-      window.selectedTacosMixed = {
-        name: this.dataset.name,
-        price: parseFloat(this.dataset.price),
-        img: this.dataset.img
-      };
-      document.getElementById('tacos-mixed-modal').style.display = 'block';
-      return;
-    }
-    // Ajout direct au panier pour les autres produits
     e.preventDefault();
+    const name = this.dataset.name;
     const price = parseFloat(this.dataset.price);
     const img = this.dataset.img;
+    
+    // Détermine la clé de traduction selon le produit
+    let translationKey = getTranslationKeyForProduct(name);
+    
     let cart = getCart();
-    const found = cart.find(item => item.name === name);
-    if (found) found.qty += 1;
-    else cart.push({name, price, img, qty:1});
+    const found = cart.find(item => item.name === name && item.translationKey === translationKey);
+    if (found) {
+      found.qty += 1;
+    } else {
+      cart.push({
+        name, 
+        price, 
+        img, 
+        qty: 1,
+        translationKey: translationKey
+      });
+    }
     setCart(cart);
   });
 });
@@ -510,7 +536,8 @@ document.getElementById('close-menu-choice').onclick = function() {
   document.getElementById('menu-choice-modal').style.display = 'none';
 };
 
-// Gestionnaire pour le formulaire de menu
+// Remplace le gestionnaire menu-choice-form par :
+
 document.getElementById('menu-choice-form').onsubmit = function(e) {
   e.preventDefault();
   
@@ -525,23 +552,48 @@ document.getElementById('menu-choice-form').onsubmit = function(e) {
     return;
   }
   
-  // Récupère les textes traduits
-  const burgerText = burgerSelect.options[burgerSelect.selectedIndex].text;
-  const drinkText = drinkSelect.options[drinkSelect.selectedIndex].text;
+  // Détermine la clé de traduction du menu
+  let menuTranslationKey = getTranslationKeyForProduct(window.selectedMenu.name);
   
-  const name = `${window.selectedMenu.name} ${burgerText} + ${drinkText}`;
-  const price = window.selectedMenu.price;
-  const img = window.selectedMenu.img;
+  // Créé les choix avec leurs clés de traduction
+  const choices = [
+    {
+      value: burgerValue,
+      translationKey: getBurgerTranslationKey(burgerValue)
+    },
+    {
+      value: drinkValue,
+      translationKey: `modals.menu_choice.drinks.${drinkValue}`
+    }
+  ];
   
   let cart = getCart();
-  const found = cart.find(item => item.name === name);
-  if (found) found.qty += 1;
-  else cart.push({name, price, img, qty:1});
+  cart.push({
+    name: window.selectedMenu.name,
+    price: window.selectedMenu.price,
+    img: window.selectedMenu.img,
+    qty: 1,
+    translationKey: menuTranslationKey,
+    choices: choices
+  });
   setCart(cart);
   
   // Ferme la modale après ajout
   document.getElementById('menu-choice-modal').style.display = 'none';
 };
+
+function getBurgerTranslationKey(burgerValue) {
+  const burgerMap = {
+    'cheeseburger': 'modals.menu_choice.kid_menu.choices.cheeseburger',
+    'nuggets': 'modals.menu_choice.kid_menu.choices.nuggets',
+    'tacos_poulet': 'modals.menu_choice.burger_choices.tacos_poulet',
+    'tacos_boeuf': 'modals.menu_choice.burger_choices.tacos_boeuf',
+    'tacos_poisson': 'modals.menu_choice.burger_choices.tacos_poisson',
+    'tacos_agneau': 'modals.menu_choice.burger_choices.tacos_agneau'
+  };
+  
+  return burgerMap[burgerValue] || null;
+}
 
 document.getElementById('open-cart').onclick = function(e) {
   e.preventDefault();
@@ -594,26 +646,49 @@ function updateTapasCounter() {
   document.getElementById(id).addEventListener('change', updateTapasCounter);
 });
 
+// Remplace le gestionnaire add-tapas-to-cart par :
+
 document.getElementById('add-tapas-to-cart').onclick = function() {
   const poulet = parseInt(document.getElementById('tapas-poulet').value);
   const boeuf = parseInt(document.getElementById('tapas-boeuf').value);
   const poisson = parseInt(document.getElementById('tapas-poisson').value);
   const agneau = parseInt(document.getElementById('tapas-agneau').value);
   
-  let composition = [];
-  if (poulet > 0) composition.push(`${poulet} Poulet`);
-  if (boeuf > 0) composition.push(`${boeuf} Bœuf`);
-  if (poisson > 0) composition.push(`${poisson} Poisson`);
-  if (agneau > 0) composition.push(`${agneau} Agneau`);
+  let choices = [];
+  if (poulet > 0) choices.push({
+    value: `${poulet} Poulet`,
+    translationKey: 'modals.tapas.labels.poulet',
+    count: poulet
+  });
+  if (boeuf > 0) choices.push({
+    value: `${boeuf} Bœuf`,
+    translationKey: 'modals.tapas.labels.boeuf',
+    count: boeuf
+  });
+  if (poisson > 0) choices.push({
+    value: `${poisson} Poisson`,
+    translationKey: 'modals.tapas.labels.poisson',
+    count: poisson
+  });
+  if (agneau > 0) choices.push({
+    value: `${agneau} Agneau`,
+    translationKey: 'modals.tapas.labels.agneau',
+    count: agneau
+  });
   
-  const name = `Assiette Tapas (${composition.join(', ')})`;
-  const price = 12.00;
+  const name = 'Tacos Mixed';
+  const price = 45.50;
   const img = 'images/mixed-tacos.jpg';
   
   let cart = getCart();
-  const found = cart.find(item => item.name === name);
-  if (found) found.qty += 1;
-  else cart.push({name, price, img, qty:1});
+  cart.push({
+    name,
+    price,
+    img,
+    qty: 1,
+    translationKey: 'bestsellers.assiette_tapas.title',
+    choices: choices
+  });
   setCart(cart);
   
   // Ferme la modale après ajout
@@ -623,6 +698,7 @@ document.getElementById('add-tapas-to-cart').onclick = function() {
   ['tapas-poulet', 'tapas-boeuf', 'tapas-poisson', 'tapas-agneau'].forEach(id => {
     document.getElementById(id).value = '0';
   });
+  updateTapasCounter();
 };
 
 document.getElementById('validate-cart').onclick = function() {
@@ -759,6 +835,67 @@ function updateOpenModals() {
   if (tapasModal && tapasModal.style.display === 'block') {
     // Pas d'options à mettre à jour pour les tapas
   }
+}
+
+// Ajoute cette fonction dans le script :
+
+function getTranslationKeyForProduct(productName) {
+  const productMap = {
+    // Best-sellers index.html
+    'Burger Spécial': 'bestsellers.burger_special.title',
+    'Menu Tacos': 'bestsellers.menu_tacos.title',
+    'Menu Enfant': 'bestsellers.menu_enfant.title',
+    'Tacos Mixed': 'bestsellers.assiette_tapas.title',
+    'Tenders de poulet': 'bestsellers.tenders.title',
+    
+    // Burgers menu.html
+    'Burger Boeuf': 'menu.burgers.boeuf.title',
+    'Burger Poulet': 'menu.burgers.poulet.title',
+    'Burger Poisson': 'menu.burgers.poisson.title',
+    'Burger Montagnard': 'menu.burgers.montagnard.title',
+    'Burger Pulled-pork': 'menu.burgers.pulled_pork.title',
+    'Burger Végétarien': 'menu.burgers.vegetarien.title',
+    'Smash Burger': 'menu.burgers.smash.title',
+    
+    // Tacos menu.html
+    'Tacos de Boeuf': 'menu.tacos.beef.title',
+    'Tacos de Poulet': 'menu.tacos.chicken.title',
+    'Tacos de Poisson': 'menu.tacos.fish.title',
+    'Tacos d\'Agneau': 'menu.tacos.lamb.title',
+    
+    // Snacks menu.html
+    'Frites': 'menu.snacks.frites.title',
+    'Nuggets de poulet': 'menu.snacks.nuggets.title',
+    'Onion Rings': 'menu.snacks.onion_rings.title',
+    
+    // Boissons menu.html
+    'Oasis': 'menu.drinks.oasis.title',
+    'Coca-Cola': 'menu.drinks.coca_cola.title',
+    'Lipton Ice Tea pêche': 'menu.drinks.ice_tea.title',
+    'Sprite': 'menu.drinks.sprite.title',
+    'Fanta': 'menu.drinks.fanta.title',
+    'Eau minéral': 'menu.drinks.eau_minerale.title',
+    'Eau gazeuse': 'menu.drinks.eau_gazeuse.title',
+    'Coca-Cola Zéro': 'menu.drinks.coca_zero.title',
+    'Jus d\'orange': 'menu.drinks.jus_orange.title',
+    'Jus de Pomme': 'menu.drinks.jus_pomme.title',
+    'Bière Blonde': 'menu.drinks.biere_blonde.title',
+    'Bière Brune': 'menu.drinks.biere_brune.title',
+    
+    // Desserts menu.html
+    'Tiramisu': 'menu.desserts.tiramisu.title',
+    'Brownie': 'menu.desserts.brownie.title',
+    'Yaourt à Boire': 'menu.desserts.yaourt.title',
+    'Gaufre': 'menu.desserts.gaufre.title',
+    'Salade de Fruits': 'menu.desserts.salade_fruits.title',
+    
+    // Menus menu.html
+    'Menu enfant': 'menu.menus.enfant.title',
+    'Menu Small': 'menu.menus.small.title',
+    'Menu XL': 'menu.menus.xl.title'
+  };
+  
+  return productMap[productName] || null;
 }
 </script>
 
