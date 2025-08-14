@@ -1462,6 +1462,38 @@ function translateIceCreamName(fullName) {
   return `${mainTitle} (${scoopText}${translatedFlavors})`;
 }
 
+function translateTacosMixedName(fullName) {
+  // fullName est de la forme "Tacos Mixed (Tacos de Boeuf, Tacos de Poulet, ...)"
+  // On doit traduire "Tacos Mixed" et tous les choix de tacos
+  
+  // Extraire les choix de tacos (partie entre parenthèses)
+  let tacosMatch = fullName.match(/\(([^)]+)\)$/);
+  let tacosChoices = '';
+  if (tacosMatch) {
+    tacosChoices = tacosMatch[1];
+  }
+  
+  // Traduire le titre principal
+  let mainTitle = getTranslation('menu.tacos.mixed.title') || 'Tacos Mixed';
+  
+  // Traduire les choix de tacos
+  let translatedChoices = '';
+  if (tacosChoices) {
+    let choicesList = tacosChoices.split(',').map(choice => choice.trim());
+    const tacosMap = {
+      'Tacos de Boeuf': getTranslation('modals.modal_tacos_mixed.tacos_beef') || 'Tacos de Boeuf',
+      'Tacos de Poulet': getTranslation('modals.modal_tacos_mixed.tacos_chicken') || 'Tacos de Poulet',
+      'Tacos de Poisson': getTranslation('modals.modal_tacos_mixed.tacos_fish') || 'Tacos de Poisson',
+      'Tacos d\'Agneau': getTranslation('modals.modal_tacos_mixed.tacos_lamb') || 'Tacos d\'Agneau'
+    };
+    
+    let translatedChoicesList = choicesList.map(choice => tacosMap[choice] || choice);
+    translatedChoices = translatedChoicesList.join(', ');
+  }
+  
+  return `${mainTitle} (${translatedChoices})`;
+}
+
 function translateMenuOptions(optionsPart) {
   // optionsPart est de la forme " (Burger Boeuf, Coca-Cola)" ou " (cheeseburger, Coca-Cola)"
   if (!optionsPart) return '';
@@ -1626,6 +1658,9 @@ function renderCart() {
           } else if (mainName === 'Boules de Glaces') {
             // Pour les glaces, on utilise une fonction spéciale qui traduit tout
             displayName = translateIceCreamName(item.name);
+          } else if (mainName === 'Tacos Mixed') {
+            // Pour les Tacos Mixed, on utilise une fonction spéciale qui traduit tout
+            displayName = translateTacosMixedName(item.name);
           } else if (mainName === 'Yaourt à Boire') {
             // C'est un yaourt avec parfum
             translatedOptions = translateFlavors(optionsPart, 'yaourt');
