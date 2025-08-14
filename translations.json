@@ -108,10 +108,10 @@
         "title": "Composez votre Assiette Tacos",
         "subtitle": "Choisissez 7 tacos parmi nos garnitures",
         "labels": {
-          "poulet": "Tacos Poulet :",
-          "boeuf": "Tacos Bœuf :",
-          "poisson": "Tacos Poisson :",
-          "agneau": "Tacos Agneau :"
+          "poulet": "Tacos Poulet ",
+          "boeuf": "Tacos Bœuf ",
+          "poisson": "Tacos Poisson ",
+          "agneau": "Tacos Agneau "
         },
         "counter": "Total sélectionné :",
         "tacos": "tacos",

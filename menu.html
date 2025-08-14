@@ -1367,6 +1367,176 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 // Gestion du panier et des modales (clean code)
+function translateFlavors(optionsPart, productType) {
+  // optionsPart est de la forme " (fraise, pistache)" ou " (original)"
+  if (!optionsPart) return '';
+  
+  // Enlève les parenthèses et divise par la virgule
+  let cleanOptions = optionsPart.replace(/[()]/g, '').trim();
+  let flavors = cleanOptions.split(',').map(flavor => flavor.trim().toLowerCase());
+  
+  let translatedFlavors = [];
+  
+  if (productType === 'glace') {
+    // Mapping pour les parfums de glace
+    const flavorMap = {
+      'fraise': getTranslation('modals.glace_choice.flavors.fraise') || 'Fraise',
+      'pistache': getTranslation('modals.glace_choice.flavors.pistache') || 'Pistache',
+      'chocolat': getTranslation('modals.glace_choice.flavors.chocolat') || 'Chocolat',
+      'mangue': getTranslation('modals.glace_choice.flavors.mangue') || 'Mangue',
+      'melon': getTranslation('modals.glace_choice.flavors.melon') || 'Melon',
+      'vanille': getTranslation('modals.glace_choice.flavors.vanille') || 'Vanille',
+      'rhubarbe': getTranslation('modals.glace_choice.flavors.rhubarbe') || 'Rhubarbe',
+      'lavande': getTranslation('modals.glace_choice.flavors.lavande') || 'Lavande',
+      'noix_coco': getTranslation('modals.glace_choice.flavors.noix_coco') || 'Noix de coco',
+      'noix de coco': getTranslation('modals.glace_choice.flavors.noix_coco') || 'Noix de coco',
+      'citron': getTranslation('modals.glace_choice.flavors.citron') || 'Citron'
+    };
+    
+    translatedFlavors = flavors.map(flavor => flavorMap[flavor] || flavor);
+    
+  } else if (productType === 'yaourt') {
+    // Mapping pour les parfums de yaourt
+    const flavorMap = {
+      'original': getTranslation('modals.yaourt_choice.flavors.original') || 'Original',
+      'banane': getTranslation('modals.yaourt_choice.flavors.banane') || 'Banane',
+      'green_tea': getTranslation('modals.yaourt_choice.flavors.green_tea') || 'Green Tea',
+      'green tea': getTranslation('modals.yaourt_choice.flavors.green_tea') || 'Green Tea'
+    };
+    
+    translatedFlavors = flavors.map(flavor => flavorMap[flavor] || flavor);
+  }
+  
+  return ' (' + translatedFlavors.join(', ') + ')';
+}
+
+function translateIceCreamName(fullName) {
+  // fullName est de la forme "Boules de Glaces (1 boule) (fraise, chocolat)"
+  // On doit traduire "Boules de Glaces" et "X boule(s)" et les parfums
+  
+  // Extraire le nombre de boules et les parfums
+  let nbBoules = 1;
+  if (fullName.includes('2 boules')) nbBoules = 2;
+  else if (fullName.includes('3 boules')) nbBoules = 3;
+  
+  // Extraire les parfums (dernière partie entre parenthèses)
+  let flavorsMatch = fullName.match(/\(([^)]+)\)$/);
+  let flavors = '';
+  if (flavorsMatch) {
+    flavors = flavorsMatch[1];
+  }
+  
+  // Traduire le titre principal
+  let mainTitle = getTranslation('menu.desserts.glaces.title') || 'Boules de Glaces';
+  
+  // Traduire "X scoop(s)" selon la langue
+  let scoopText = '';
+  if (currentLang === 'en') {
+    scoopText = nbBoules === 1 ? '1 scoop' : `${nbBoules} scoops`;
+  } else {
+    scoopText = nbBoules === 1 ? '1 boule' : `${nbBoules} boules`;
+  }
+  
+  // Traduire les parfums
+  let translatedFlavors = '';
+  if (flavors) {
+    let flavorsList = flavors.split(',').map(f => f.trim().toLowerCase());
+    const flavorMap = {
+      'fraise': getTranslation('modals.glace_choice.flavors.fraise') || 'Fraise',
+      'pistache': getTranslation('modals.glace_choice.flavors.pistache') || 'Pistache',
+      'chocolat': getTranslation('modals.glace_choice.flavors.chocolat') || 'Chocolat',
+      'mangue': getTranslation('modals.glace_choice.flavors.mangue') || 'Mangue',
+      'melon': getTranslation('modals.glace_choice.flavors.melon') || 'Melon',
+      'vanille': getTranslation('modals.glace_choice.flavors.vanille') || 'Vanille',
+      'rhubarbe': getTranslation('modals.glace_choice.flavors.rhubarbe') || 'Rhubarbe',
+      'lavande': getTranslation('modals.glace_choice.flavors.lavande') || 'Lavande',
+      'noix_coco': getTranslation('modals.glace_choice.flavors.noix_coco') || 'Noix de coco',
+      'noix de coco': getTranslation('modals.glace_choice.flavors.noix_coco') || 'Noix de coco',
+      'citron': getTranslation('modals.glace_choice.flavors.citron') || 'Citron'
+    };
+    
+    let translatedFlavorsList = flavorsList.map(flavor => flavorMap[flavor] || flavor);
+    translatedFlavors = ' ' + translatedFlavorsList.join(', ');
+  }
+  
+  return `${mainTitle} (${scoopText}${translatedFlavors})`;
+}
+
+function translateMenuOptions(optionsPart) {
+  // optionsPart est de la forme " (Burger Boeuf, Coca-Cola)" ou " (cheeseburger, Coca-Cola)"
+  if (!optionsPart) return '';
+  
+  // Enlève les parenthèses et divise par la virgule
+  let cleanOptions = optionsPart.replace(/[()]/g, '').trim();
+  let parts = cleanOptions.split(',').map(part => part.trim());
+  
+  // Mapping pour traduire les options des menus
+  const optionMap = {
+    // Choix menu enfant
+    'cheeseburger': currentLang === 'en' ? 'Beef Cheeseburger' : 'Cheeseburger de boeuf',
+    'nuggets': currentLang === 'en' ? '6 Chicken Nuggets' : '6 Nuggets de poulet',
+    
+    // Burgers
+    'burger_boeuf': getTranslation('modals.menu_choice.burger_choices.burger_boeuf') || 'Burger Boeuf',
+    'burger_poulet': getTranslation('modals.menu_choice.burger_choices.burger_poulet') || 'Burger Poulet',
+    'burger_poisson': getTranslation('modals.menu_choice.burger_choices.burger_poisson') || 'Burger Poisson',
+    'burger_special': getTranslation('modals.menu_choice.burger_choices.burger_special') || 'Burger Spécial',
+    'burger_montagnard': getTranslation('modals.menu_choice.burger_choices.burger_montagnard') || 'Burger Montagnard',
+    'burger_pulled_pork': getTranslation('modals.menu_choice.burger_choices.burger_pulled_pork') || 'Burger Pulled-pork',
+    'burger_vegetarien': getTranslation('modals.menu_choice.burger_choices.burger_vegetarien') || 'Burger Végétarien',
+    'smash_burger': getTranslation('modals.menu_choice.burger_choices.smash_burger') || 'Smash Burger',
+    
+    // Tacos
+    'tacos_boeuf': getTranslation('modals.menu_choice.burger_choices.tacos_boeuf') || 'Tacos de Boeuf',
+    'tacos_poulet': getTranslation('modals.menu_choice.burger_choices.tacos_poulet') || 'Tacos de Poulet',
+    'tacos_poisson': getTranslation('modals.menu_choice.burger_choices.tacos_poisson') || 'Tacos de Poisson',
+    'tacos_agneau': getTranslation('modals.menu_choice.burger_choices.tacos_agneau') || 'Tacos d\'Agneau',
+    
+    // Boissons
+    'coca_cola': getTranslation('modals.menu_choice.drinks.coca_cola') || 'Coca-Cola',
+    'oasis': getTranslation('modals.menu_choice.drinks.oasis') || 'Oasis',
+    'ice_tea': getTranslation('modals.menu_choice.drinks.ice_tea') || 'Lipton Ice Tea pêche',
+    'sprite': getTranslation('modals.menu_choice.drinks.sprite') || 'Sprite',
+    'fanta': getTranslation('modals.menu_choice.drinks.fanta') || 'Fanta',
+    'eau_minerale': getTranslation('modals.menu_choice.drinks.eau_minerale') || 'Eau minérale',
+    'eau_gazeuse': getTranslation('modals.menu_choice.drinks.eau_gazeuse') || 'Eau gazeuse',
+    'coca_zero': getTranslation('modals.menu_choice.drinks.coca_zero') || 'Coca-Cola Zéro',
+    'jus_orange': getTranslation('modals.menu_choice.drinks.jus_orange') || 'Jus d\'orange',
+    'jus_pomme': getTranslation('modals.menu_choice.drinks.jus_pomme') || 'Jus de Pomme',
+    
+    // Noms directs (pour compatibilité)
+    'Burger Boeuf': getTranslation('modals.menu_choice.burger_choices.burger_boeuf') || 'Burger Boeuf',
+    'Burger Poulet': getTranslation('modals.menu_choice.burger_choices.burger_poulet') || 'Burger Poulet',
+    'Burger Poisson': getTranslation('modals.menu_choice.burger_choices.burger_poisson') || 'Burger Poisson',
+    'Burger Spécial': getTranslation('modals.menu_choice.burger_choices.burger_special') || 'Burger Spécial',
+    'Burger Montagnard': getTranslation('modals.menu_choice.burger_choices.burger_montagnard') || 'Burger Montagnard',
+    'Burger Pulled-pork': getTranslation('modals.menu_choice.burger_choices.burger_pulled_pork') || 'Burger Pulled-pork',
+    'Burger Végétarien': getTranslation('modals.menu_choice.burger_choices.burger_vegetarien') || 'Burger Végétarien',
+    'Smash Burger': getTranslation('modals.menu_choice.burger_choices.smash_burger') || 'Smash Burger',
+    'Tacos de Boeuf': getTranslation('modals.menu_choice.burger_choices.tacos_boeuf') || 'Tacos de Boeuf',
+    'Tacos de Poulet': getTranslation('modals.menu_choice.burger_choices.tacos_poulet') || 'Tacos de Poulet',
+    'Tacos de Poisson': getTranslation('modals.menu_choice.burger_choices.tacos_poisson') || 'Tacos de Poisson',
+    'Tacos d\'Agneau': getTranslation('modals.menu_choice.burger_choices.tacos_agneau') || 'Tacos d\'Agneau',
+    'Coca-Cola': getTranslation('modals.menu_choice.drinks.coca_cola') || 'Coca-Cola',
+    'Oasis': getTranslation('modals.menu_choice.drinks.oasis') || 'Oasis',
+    'Lipton Ice Tea pêche': getTranslation('modals.menu_choice.drinks.ice_tea') || 'Lipton Ice Tea pêche',
+    'Sprite': getTranslation('modals.menu_choice.drinks.sprite') || 'Sprite',
+    'Fanta': getTranslation('modals.menu_choice.drinks.fanta') || 'Fanta',
+    'Eau minérale': getTranslation('modals.menu_choice.drinks.eau_minerale') || 'Eau minérale',
+    'Eau gazeuse': getTranslation('modals.menu_choice.drinks.eau_gazeuse') || 'Eau gazeuse',
+    'Coca-Cola Zéro': getTranslation('modals.menu_choice.drinks.coca_zero') || 'Coca-Cola Zéro',
+    'Jus d\'orange': getTranslation('modals.menu_choice.drinks.jus_orange') || 'Jus d\'orange',
+    'Jus de Pomme': getTranslation('modals.menu_choice.drinks.jus_pomme') || 'Jus de Pomme'
+  };
+  
+  // Traduit chaque partie
+  let translatedParts = parts.map(part => {
+    return optionMap[part] || part;
+  });
+  
+  return ' (' + translatedParts.join(', ') + ')';
+}
+
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
@@ -1392,6 +1562,8 @@ function renderCart() {
     // Si le nom du produit correspond à un produit du menu, on tente de le traduire
     // On extrait le nom principal (avant parenthèses)
     let mainName = displayName.split(' (')[0];
+    let optionsPart = displayName.includes(' (') ? displayName.substring(displayName.indexOf(' (')) : '';
+    
     // On tente de trouver une clé de traduction pour ce produit
     let translationKey = null;
     // Mapping rapide pour les principaux produits du menu
@@ -1435,15 +1607,34 @@ function renderCart() {
       'Bière Blonde': 'menu.drinks.biere_blonde.title',
       'Bière Brune': 'menu.drinks.biere_brune.title'
     };
+    
     if (nameMap[mainName]) {
       translationKey = nameMap[mainName];
       let translated = getTranslation(translationKey);
       if (translated) {
-        // Si le produit a des options (parfums, etc), on garde le reste
-        if (displayName.includes(' (')) {
-          displayName = translated + displayName.substring(displayName.indexOf(' ('));
-        } else {
-          displayName = translated;
+        displayName = translated;
+        
+        // Si le produit a des options (menus avec choix), on traduit aussi les options
+        if (optionsPart) {
+          let translatedOptions = '';
+          
+          // Détermine le type de produit pour traduire les options appropriées
+          if (mainName.includes('Menu')) {
+            // C'est un menu (Menu enfant, Menu Small, Menu XL)
+            translatedOptions = translateMenuOptions(optionsPart);
+            displayName = displayName + translatedOptions;
+          } else if (mainName === 'Boules de Glaces') {
+            // Pour les glaces, on utilise une fonction spéciale qui traduit tout
+            displayName = translateIceCreamName(item.name);
+          } else if (mainName === 'Yaourt à Boire') {
+            // C'est un yaourt avec parfum
+            translatedOptions = translateFlavors(optionsPart, 'yaourt');
+            displayName = displayName + translatedOptions;
+          } else {
+            // Autres produits, garde les options telles quelles
+            translatedOptions = optionsPart;
+            displayName = displayName + translatedOptions;
+          }
         }
       }
     }
