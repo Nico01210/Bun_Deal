@@ -34,7 +34,10 @@
       <li><a href="/Contact.html" data-translate="nav.contact">Contact</a></li>
       <li><a href="#" id="open-cart" style="font-weight:bold;">🛒 <span data-translate="nav.cart">Panier</span> (<span id="cart-count">0</span>)</a></li>
       <li>
-        <button id="lang-toggle" class="btn btn-outline-light btn-sm">🇬🇧 EN</button>
+        <button id="lang-toggle" class="btn btn-outline-light btn-sm">
+          <img src="images/flag-en.svg" alt="English" style="width: 16px; height: 12px; margin-right: 4px;">
+          EN
+        </button>
       </li>
     </ul>
   </div>
@@ -165,11 +168,11 @@ async function loadTranslations() {
 function updateLanguage() {
   const langButton = document.getElementById('lang-toggle');
   
-  // Met à jour le bouton de langue
+  // Met à jour le bouton de langue avec les drapeaux
   if (currentLang === 'fr') {
-    langButton.innerHTML = '🇬🇧 EN';
+    langButton.innerHTML = '<img src="images/flag-en.svg" alt="English" style="width: 16px; height: 12px; margin-right: 4px;"> EN';
   } else {
-    langButton.innerHTML = '🇫🇷 FR';
+    langButton.innerHTML = '<img src="images/flag-fr.svg" alt="Français" style="width: 16px; height: 12px; margin-right: 4px;"> FR';
   }
   
   // Met à jour tous les éléments avec data-translate
