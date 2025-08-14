@@ -878,13 +878,13 @@
 <!-- Modal Panier -->
 <div class="modal" tabindex="-1" id="cart-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999;">
   <div class="cart-modal-content">
-    <h4>Votre panier</h4>
+    <h4 data-translate="modals.cart.title">Votre panier</h4>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
-    <p>Total : <span id="cart-total">0.00</span> €</p>
+    <p><span data-translate="modals.cart.total">Total</span> : <span id="cart-total">0.00</span> €</p>
     <div class="d-flex justify-content-between gap-2 mt-3">
-      <button class="btn btn-danger flex-fill" id="clear-cart">Vider le panier</button>
-      <button class="btn btn-success flex-fill" id="validate-cart">Valider le panier</button>
-      <button class="btn btn-secondary flex-fill" id="close-cart">Fermer</button>
+      <button class="btn btn-danger flex-fill" id="clear-cart" data-translate="modals.cart.clear">Vider le panier</button>
+      <button class="btn btn-success flex-fill" id="validate-cart" data-translate="modals.cart.validate">Valider le panier</button>
+      <button class="btn btn-secondary flex-fill" id="close-cart" data-translate="modals.cart.close">Fermer</button>
     </div>
   </div>
 </div>
@@ -1078,6 +1078,140 @@ function updateLanguage() {
   updateMenuChoices();
   updateGlaceChoices(); // Ajoute cette ligne
   updateYaourtChoices(); // Ajoute cette ligne
+  updateCartModal(); // Ajoute cette ligne pour le panier
+}
+
+function updateCartModal() {
+  const modal = document.getElementById('cart-modal');
+  if (modal && modal.style.display === 'block') {
+    // Met à jour les traductions des éléments de la modal panier
+    const title = modal.querySelector('h4');
+    const totalText = modal.querySelector('p span[data-translate="modals.cart.total"]');
+    const clearBtn = modal.querySelector('#clear-cart');
+    const validateBtn = modal.querySelector('#validate-cart');
+    const closeBtn = modal.querySelector('#close-cart');
+    
+    if (title) {
+      title.textContent = getTranslation('modals.cart.title') || 'Votre panier';
+    }
+    if (totalText) {
+      totalText.textContent = getTranslation('modals.cart.total') || 'Total';
+    }
+    if (clearBtn) {
+      clearBtn.textContent = getTranslation('modals.cart.clear') || 'Vider le panier';
+    }
+    if (validateBtn) {
+      validateBtn.textContent = getTranslation('modals.cart.validate') || 'Valider le panier';
+    }
+    if (closeBtn) {
+      closeBtn.textContent = getTranslation('modals.cart.close') || 'Fermer';
+    }
+  }
+}
+
+function updateGlaceChoices() {
+  const modal = document.getElementById('glace-choice-modal');
+  if (modal && modal.style.display === 'block') {
+    // Met à jour les traductions des éléments de la modal glace
+    const title = modal.querySelector('h4');
+    const labels = modal.querySelectorAll('label');
+    const selects = modal.querySelectorAll('select');
+    const submitBtn = modal.querySelector('button[type="submit"]');
+    const cancelBtn = modal.querySelector('#close-glace-choice');
+    
+    if (title) {
+      title.textContent = getTranslation('modals.glace_choice.title') || 'Choisissez vos parfum(s) de glace';
+    }
+    
+    if (submitBtn) {
+      submitBtn.textContent = getTranslation('modals.glace_choice.add_button') || 'Ajouter au panier';
+    }
+    if (cancelBtn) {
+      cancelBtn.textContent = getTranslation('modals.glace_choice.cancel_button') || 'Annuler';
+    }
+    
+    // Met à jour les labels et options des selects
+    labels.forEach(label => {
+      const flavorText = getTranslation('modals.glace_choice.flavor_label') || 'Parfum';
+      if (label.textContent.includes('Parfum') || label.textContent.includes('Flavor')) {
+        const number = label.textContent.match(/\d+/);
+        label.textContent = `${flavorText} ${number ? number[0] : ''}`;
+      }
+    });
+    
+    selects.forEach(select => {
+      const currentValue = select.value;
+      const placeholder = getTranslation('modals.glace_choice.flavor_placeholder') || 'Sélectionnez un parfum';
+      const fraiseText = getTranslation('modals.glace_choice.flavors.fraise') || 'Fraise';
+      const pistacheText = getTranslation('modals.glace_choice.flavors.pistache') || 'Pistache';
+      const chocolatText = getTranslation('modals.glace_choice.flavors.chocolat') || 'Chocolat';
+      const mangueText = getTranslation('modals.glace_choice.flavors.mangue') || 'Mangue';
+      const melonText = getTranslation('modals.glace_choice.flavors.melon') || 'Melon';
+      const vanilleText = getTranslation('modals.glace_choice.flavors.vanille') || 'Vanille';
+      const rhubarbeText = getTranslation('modals.glace_choice.flavors.rhubarbe') || 'Rhubarbe';
+      const lavandeText = getTranslation('modals.glace_choice.flavors.lavande') || 'Lavande';
+      const noixCocoText = getTranslation('modals.glace_choice.flavors.noix_coco') || 'Noix de coco';
+      const citronText = getTranslation('modals.glace_choice.flavors.citron') || 'Citron';
+      
+      select.innerHTML = `
+        <option value=''>${placeholder}</option>
+        <option value='fraise'>${fraiseText}</option>
+        <option value='pistache'>${pistacheText}</option>
+        <option value='chocolat'>${chocolatText}</option>
+        <option value='mangue'>${mangueText}</option>
+        <option value='melon'>${melonText}</option>
+        <option value='vanille'>${vanilleText}</option>
+        <option value='rhubarbe'>${rhubarbeText}</option>
+        <option value='lavande'>${lavandeText}</option>
+        <option value='noix_coco'>${noixCocoText}</option>
+        <option value='citron'>${citronText}</option>
+      `;
+      select.value = currentValue;
+    });
+  }
+}
+
+function updateYaourtChoices() {
+  const modal = document.getElementById('yaourt-choice-modal');
+  if (modal && modal.style.display === 'block') {
+    // Met à jour les traductions des éléments de la modal yaourt
+    const title = modal.querySelector('h4');
+    const label = modal.querySelector('label[for="yaourt-parfum-choice"]');
+    const select = modal.querySelector('#yaourt-parfum-choice');
+    const submitBtn = modal.querySelector('button[type="submit"]');
+    const cancelBtn = modal.querySelector('#close-yaourt-choice');
+    
+    if (title) {
+      title.textContent = getTranslation('modals.yaourt_choice.title') || 'Choisissez le parfum du yaourt à boire';
+    }
+    
+    if (label) {
+      label.textContent = getTranslation('modals.yaourt_choice.flavor_label') || 'Parfum';
+    }
+    
+    if (submitBtn) {
+      submitBtn.textContent = getTranslation('modals.yaourt_choice.add_button') || 'Ajouter au panier';
+    }
+    if (cancelBtn) {
+      cancelBtn.textContent = getTranslation('modals.yaourt_choice.cancel_button') || 'Annuler';
+    }
+    
+    if (select) {
+      const currentValue = select.value;
+      const placeholder = getTranslation('modals.yaourt_choice.flavor_placeholder') || 'Sélectionnez un parfum';
+      const originalText = getTranslation('modals.yaourt_choice.flavors.original') || 'Original';
+      const bananeText = getTranslation('modals.yaourt_choice.flavors.banane') || 'Banane';
+      const greenTeaText = getTranslation('modals.yaourt_choice.flavors.green_tea') || 'Green Tea';
+      
+      select.innerHTML = `
+        <option value="">${placeholder}</option>
+        <option value="original">${originalText}</option>
+        <option value="banane">${bananeText}</option>
+        <option value="green_tea">${greenTeaText}</option>
+      `;
+      select.value = currentValue;
+    }
+  }
 }
 
 function updateMenuChoices() {
@@ -1253,10 +1387,72 @@ function renderCart() {
   cart.forEach((item, idx) => {
     total += item.price * item.qty;
     const li = document.createElement('li');
+    // Traduction du nom du produit si possible
+    let displayName = item.name;
+    // Si le nom du produit correspond à un produit du menu, on tente de le traduire
+    // On extrait le nom principal (avant parenthèses)
+    let mainName = displayName.split(' (')[0];
+    // On tente de trouver une clé de traduction pour ce produit
+    let translationKey = null;
+    // Mapping rapide pour les principaux produits du menu
+    const nameMap = {
+      'Menu enfant': 'menu.menus.enfant.title',
+      'Menu Small': 'menu.menus.small.title',
+      'Menu XL': 'menu.menus.xl.title',
+      'Burger Boeuf': 'menu.burgers.boeuf.title',
+      'Burger Poulet': 'menu.burgers.poulet.title',
+      'Burger Poisson': 'menu.burgers.poisson.title',
+      'Burger Spécial': 'menu.burgers.special.title',
+      'Burger Montagnard': 'menu.burgers.montagnard.title',
+      'Burger Pulled-pork': 'menu.burgers.pulled_pork.title',
+      'Burger Végétarien': 'menu.burgers.vegetarien.title',
+      'Smash Burger': 'menu.burgers.smash.title',
+      'Tacos de Boeuf': 'menu.tacos.beef.title',
+      'Tacos de Poulet': 'menu.tacos.chicken.title',
+      'Tacos de Poisson': 'menu.tacos.fish.title',
+      "Tacos d'Agneau": 'menu.tacos.lamb.title',
+      'Tacos Mixed': 'menu.tacos.mixed.title',
+      'Frites': 'menu.snacks.frites.title',
+      'Nuggets de poulet': 'menu.snacks.nuggets.title',
+      'Tenders de poulet': 'menu.snacks.tenders.title',
+      'Onion Rings': 'menu.snacks.onion_rings.title',
+      'Boules de Glaces': 'menu.desserts.glaces.title',
+      'Brownie': 'menu.desserts.brownie.title',
+      'Tiramisu': 'menu.desserts.tiramisu.title',
+      'Yaourt à Boire': 'menu.desserts.yaourt.title',
+      'Gaufre': 'menu.desserts.gaufre.title',
+      'Salade de Fruits': 'menu.desserts.salade_fruits.title',
+      'Oasis': 'menu.drinks.oasis.title',
+      'Coca-Cola': 'menu.drinks.coca_cola.title',
+      'Lipton Ice Tea pêche': 'menu.drinks.ice_tea.title',
+      'Sprite': 'menu.drinks.sprite.title',
+      'Fanta': 'menu.drinks.fanta.title',
+      'Eau minéral': 'menu.drinks.eau_minerale.title',
+      'Eau gazeuse': 'menu.drinks.eau_gazeuse.title',
+      'Coca-Cola Zéro': 'menu.drinks.coca_zero.title',
+      "Jus d'orange": 'menu.drinks.jus_orange.title',
+      'Jus de Pomme': 'menu.drinks.jus_pomme.title',
+      'Bière Blonde': 'menu.drinks.biere_blonde.title',
+      'Bière Brune': 'menu.drinks.biere_brune.title'
+    };
+    if (nameMap[mainName]) {
+      translationKey = nameMap[mainName];
+      let translated = getTranslation(translationKey);
+      if (translated) {
+        // Si le produit a des options (parfums, etc), on garde le reste
+        if (displayName.includes(' (')) {
+          displayName = translated + displayName.substring(displayName.indexOf(' ('));
+        } else {
+          displayName = translated;
+        }
+      }
+    }
+    // Traduction du bouton "Supprimer"
+    let removeText = getTranslation('modals.cart.remove') || 'Supprimer';
     li.innerHTML = `
       <img src="${item.img}" width="40" style="vertical-align:middle;"> 
-      ${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
-      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">Supprimer</button>
+      ${displayName} x${item.qty} - ${(item.price * item.qty).toFixed(2)} €
+      <button class="btn-remove-cart" onclick="removeFromCart(${idx})">${removeText}</button>
     `;
     list.appendChild(li);
   });
@@ -1620,6 +1816,7 @@ if (openCartBtn) {
     e.preventDefault();
     document.getElementById('cart-modal').style.display = 'block';
     renderCart();
+    updateCartModal(); // Met à jour les traductions quand on ouvre le panier
   };
 }
 const closeCartBtn = document.getElementById('close-cart');
