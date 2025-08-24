@@ -92,18 +92,6 @@
         "add": "Ajouter au panier",
         "cancel": "Annuler"
       },
-      "drinks": {
-        "oasis": "Oasis",
-        "coca": "Coca-Cola",
-        "icetea": "Lipton Ice Tea pêche",
-        "sprite": "Sprite",
-        "fanta": "Fanta",
-        "eau": "Eau minérale",
-        "eau-gazeuse": "Eau gazeuse",
-        "coca-zero": "Coca-Cola Zéro",
-        "jus-orange": "Jus d'orange",
-        "jus-pomme": "Jus de pomme"
-      },
       "tapas": {
         "title": "Composez votre Assiette Tacos",
         "subtitle": "Choisissez 7 tacos parmi nos garnitures",
@@ -600,18 +588,6 @@
         },
         "add": "Add to cart",
         "cancel": "Cancel"
-      },
-      "drinks": {
-        "oasis": "Oasis",
-        "coca": "Coca-Cola",
-        "icetea": "Lipton Ice Tea Peach",
-        "sprite": "Sprite",
-        "fanta": "Fanta",
-        "eau": "Mineral Water",
-        "eau-gazeuse": "Sparkling Water",
-        "coca-zero": "Coca-Cola Zero",
-        "jus-orange": "Orange Juice",
-        "jus-pomme": "Apple Juice"
       },
       "tapas": {
         "title": "Compose your Tacos Platter",
