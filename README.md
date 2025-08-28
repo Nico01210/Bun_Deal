@@ -39,6 +39,7 @@ cd BUNDEAL
 
 ## 📸 Aperçu
 
+<img src="images/Capture d’écran du 2025-08-28 16-16-52.png" alt="Aperçu de l'application" width="600">
 
 
 ## 👤 Auteur
