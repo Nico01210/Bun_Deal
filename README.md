@@ -31,7 +31,6 @@ Il permet de découvrir le menu, consulter les prestations disponibles, et passe
 ## 🚀 Installation et utilisation
 1. Cloner le dépôt :
 git clone https://github.com/votre-utilisateur/BUNDEAL.git
-cd BUNDEAL
 
 3. Ouvrir le fichier index.html dans votre navigateur préféré.
 
