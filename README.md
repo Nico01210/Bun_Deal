@@ -48,3 +48,8 @@ Perret Nicolas
 ## 📄 Licence
 Ce projet est sous licence MIT.
 Voir le fichier LICENSE pour plus de détails.
+
+## Lien 
+
+Le site est déployé sur Github Pages 
+[Le lien du site](https://nico01210.github.io/Bun_Deal/)
