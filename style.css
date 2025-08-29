@@ -280,12 +280,13 @@ h1 {
     width: 300px;
     background-color: #10222e;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
-    padding-top: 100px;
+    gap: 20px;
+    padding: 80px 20px;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    overflow-y: auto;
   }
   
   .nav-links.active {
@@ -312,10 +313,10 @@ h1 {
   .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
   
   .nav-links a {
-    font-size: 1.2rem;
-    padding: 15px 20px;
+    font-size: 1.1rem;
+    padding: 12px 20px;
     border-radius: 8px;
-    width: 200px;
+    width: 180px;
     text-align: center;
     transition: background-color 0.3s ease;
   }
@@ -329,15 +330,16 @@ h1 {
     background-color: transparent;
     border: 2px solid #ecca06;
     color: #ecca06;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 8px 15px;
+    border-radius: 20px;
     font-size: 1rem;
     font-weight: bold;
-    width: 120px;
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    margin-top: 10px;
   }
   
   .nav-links #lang-toggle:hover {
@@ -359,18 +361,46 @@ h1 {
 @media (max-width: 480px) {
   .nav-links {
     width: 280px;
+    gap: 15px;
+    padding: 60px 15px;
+  }
+  
+  .nav-links a {
+    font-size: 1rem;
+    padding: 10px 15px;
+    width: 160px;
   }
   
   .nav-links #lang-toggle {
-    width: 100px;
-    padding: 8px 15px;
+    width: 80px;
+    padding: 6px 10px;
     font-size: 0.9rem;
+    margin-top: 5px;
   }
   
   .nav-links #lang-toggle img {
-    width: 14px;
-    height: 10px;
-    margin-right: 6px;
+    width: 12px;
+    height: 9px;
+    margin-right: 4px;
+  }
+}
+
+/* Styles pour écrans très hauts (téléphones pliables ou paysage) */
+@media (max-height: 600px) and (max-width: 1024px) {
+  .nav-links {
+    gap: 10px;
+    padding: 40px 20px;
+    justify-content: space-evenly;
+  }
+  
+  .nav-links a {
+    padding: 8px 15px;
+    font-size: 0.95rem;
+  }
+  
+  .nav-links #lang-toggle {
+    padding: 6px 12px;
+    margin-top: 0;
   }
 }
 
