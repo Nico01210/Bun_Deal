@@ -25,6 +25,7 @@ Il permet de découvrir le menu, consulter les prestations disponibles, et passe
 - Consulter les prestations disponibles
 - Passer des commandes fictives
 - Interface intuitive et responsive
+- Traduction français/anglais de tous le site
 
 ---
 
