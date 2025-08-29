@@ -277,16 +277,18 @@ h1 {
     top: 0;
     right: -100%;
     height: 100vh;
+    height: 100dvh; /* Support pour les navigateurs modernes */
     width: 300px;
     background-color: #10222e;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 20px;
-    padding: 80px 20px;
+    gap: 15px;
+    padding: 60px 20px 40px 20px;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav-links.active {
@@ -340,6 +342,9 @@ h1 {
     justify-content: center;
     transition: all 0.3s ease;
     margin-top: 10px;
+    flex-shrink: 0; /* Empêche la compression */
+    order: 999; /* Force l'élément à être en dernier */
+    position: relative;
   }
   
   .nav-links #lang-toggle:hover {
@@ -354,6 +359,23 @@ h1 {
   
   .navbar-container {
     justify-content: space-between;
+  }
+}
+
+/* Fix spécifique pour Chrome Android */
+@media (max-width: 1024px) {
+  .nav-links {
+    /* Force l'affichage correct sur Chrome mobile */
+    contain: layout style;
+    will-change: transform;
+  }
+  
+  .nav-links #lang-toggle {
+    /* S'assure que le bouton est toujours visible */
+    position: sticky;
+    bottom: 20px;
+    z-index: 1001;
+    margin-bottom: 0;
   }
 }
 
