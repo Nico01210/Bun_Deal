@@ -257,6 +257,9 @@
       "find_us": "Nous trouver",
       "copyright": "Bun'Deal © 2025"
     },
+    "notifications": {
+      "added_to_cart": "Produit ajouté au panier !"
+    },
     "commandes": {
       "title": "Finalisation de la commande",
       "summary": "Voici le récapitulatif de votre commande :",
@@ -763,6 +766,9 @@
       "join_us": "Join us",
       "find_us": "Find us",
       "copyright": "Bun'Deal © 2025"
+    },
+    "notifications": {
+      "added_to_cart": "Product added to cart!"
     },
     "commandes": {
       "title": "Order finalization",
