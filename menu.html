@@ -73,6 +73,12 @@
       transform: translate(-50%, -50%) scale(1);
     }
 
+    /* Animation notification panier vidé */
+    .cart-notification.cleared {
+      background: linear-gradient(135deg, #dc3545, #fd7e14);
+      box-shadow: 0 10px 30px rgba(220, 53, 69, 0.3);
+    }
+
     .cart-notification .cart-icon {
       font-size: 24px;
       margin-bottom: 10px;
@@ -186,7 +192,7 @@
 
 <!-- Notification ajout au panier -->
 <div class="cart-notification" id="cart-notification">
-  <span class="cart-icon">🛒</span>
+  <span class="cart-icon" id="cart-icon">🛒</span>
   <div class="notification-text" data-translate="notifications.added_to_cart">Produit ajouté au panier !</div>
 </div>
 
@@ -1714,7 +1720,10 @@ function getCart() {
 function setCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
-  showCartNotification(); // Affiche la notification d'ajout
+  // Ne pas afficher la notification d'ajout si le panier est vidé
+  if (cart.length > 0) {
+    showCartNotification(); // Affiche la notification d'ajout
+  }
 }
 
 function updateCartCount() {
@@ -1732,11 +1741,18 @@ function showCartNotification() {
   const notification = document.getElementById('cart-notification');
   if (!notification) return;
   
-  // Met à jour le texte selon la langue
+  // Retire la classe cleared si elle existe
+  notification.classList.remove('cleared');
+  
+  // Met à jour le texte et l'icône pour l'ajout
   const notificationText = notification.querySelector('.notification-text');
+  const cartIcon = notification.querySelector('#cart-icon');
   if (notificationText) {
     const text = getTranslation('notifications.added_to_cart') || 'Produit ajouté au panier !';
     notificationText.textContent = text;
+  }
+  if (cartIcon) {
+    cartIcon.textContent = '🛒';
   }
   
   // Affiche la notification
@@ -1745,6 +1761,35 @@ function showCartNotification() {
   // Cache la notification après 2 secondes
   setTimeout(() => {
     notification.classList.remove('show');
+  }, 2000);
+}
+
+function showCartClearedNotification() {
+  const notification = document.getElementById('cart-notification');
+  if (!notification) return;
+  
+  // Ajoute la classe cleared pour le style rouge
+  notification.classList.add('cleared');
+  
+  // Met à jour le texte et l'icône pour le vidage
+  const notificationText = notification.querySelector('.notification-text');
+  const cartIcon = notification.querySelector('#cart-icon');
+  if (notificationText) {
+    const text = getTranslation('notifications.cart_cleared') || 'Panier vidé !';
+    notificationText.textContent = text;
+  }
+  if (cartIcon) {
+    cartIcon.textContent = '🗑️';
+  }
+  
+  // Affiche la notification
+  notification.classList.add('show');
+  
+  // Cache la notification après 2 secondes
+  setTimeout(() => {
+    notification.classList.remove('show');
+    // Retire la classe cleared après l'animation
+    notification.classList.remove('cleared');
   }, 2000);
 }
 
@@ -2251,8 +2296,13 @@ if (closeCartBtn) {
 const clearCartBtn = document.getElementById('clear-cart');
 if (clearCartBtn) {
   clearCartBtn.onclick = function() {
-    setCart([]);
-    renderCart();
+    const cart = getCart();
+    // Ne montrer la notification que si le panier n'est pas déjà vide
+    if (cart.length > 0) {
+      setCart([]);
+      renderCart();
+      showCartClearedNotification();
+    }
   };
 }
 const validateCartBtn = document.getElementById('validate-cart');

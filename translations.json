@@ -258,7 +258,8 @@
       "copyright": "Bun'Deal © 2025"
     },
     "notifications": {
-      "added_to_cart": "Produit ajouté au panier !"
+      "added_to_cart": "Produit ajouté au panier !",
+      "cart_cleared": "Panier vidé !"
     },
     "commandes": {
       "title": "Finalisation de la commande",
@@ -768,7 +769,8 @@
       "copyright": "Bun'Deal © 2025"
     },
     "notifications": {
-      "added_to_cart": "Product added to cart!"
+      "added_to_cart": "Product added to cart!",
+      "cart_cleared": "Cart cleared!"
     },
     "commandes": {
       "title": "Order finalization",
