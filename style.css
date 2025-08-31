@@ -275,20 +275,19 @@ h1 {
   
   .nav-links {
     position: fixed;
-    top: 10%;
+    top: 10px;
     right: -100%;
-    height: auto;
-    max-height: 80vh;
+    height: 50vh;
     width: 250px;
     background-color: #10222e;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    gap: 2px;
-    padding: 10px 20px;
+    gap: 8px;
+    padding: 20px 20px;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-    border-radius: 15px 0 0 15px; /* Coins arrondis à gauche */
+    border-radius: 0 0 0 15px; /* Coins arrondis seulement en bas à gauche */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -389,31 +388,30 @@ h1 {
 @media (max-width: 480px) {
   .nav-links {
     width: 220px;
-    gap: 1px;
-    padding: 8px;
-    height: auto;
-    max-height: 85vh;
-    top: 5%;
+    gap: 6px;
+    padding: 20px 8px;
+    height: 50vh;
+    top: 10px;
     justify-content: space-evenly;
   }
   
   .nav-links a {
     font-size: 0.85rem;
-    padding: 4px 12px;
+    padding: 6px 12px;
     width: 130px;
   }
   
   /* Marge spéciale pour le premier élément (Accueil) sur petits écrans */
   .nav-links li:first-child {
-    margin-top: 10px;
+    margin-top: 0px;
   }
   
   .nav-links #lang-toggle {
-    width: 70px;
-    padding: 3px 6px;
-    font-size: 0.75rem;
-    margin-top: 1px;
-    margin-bottom: 10px; /* Marge en dessous pour petits écrans */
+    width: 75px;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    margin-top: 0px;
+    margin-bottom: 0px; /* Marge en dessous pour petits écrans */
   }
   
   .nav-links #lang-toggle img {
@@ -453,35 +451,69 @@ h1 {
   
   .nav-links {
     width: 230px;
-    gap: 1px;
-    padding: 5px;
-    max-height: 90vh;
-    top: 5%;
+    gap: 8px;
+    padding: 20px 8px;
+    height: 50vh;
+    top: 10px;
     justify-content: space-evenly;
   }
   
   .nav-links a {
     font-size: 0.9rem;
-    padding: 5px 15px;
+    padding: 8px 15px;
   }
   
   /* Marge spéciale pour le premier élément (Accueil) sur écrans moyens */
   .nav-links li:first-child {
-    margin-top: 12px;
+    margin-top: 0px;
   }
   
   .nav-links #lang-toggle {
-    padding: 3px 8px;
-    font-size: 0.8rem;
-    width: 75px;
-    margin-top: 1px;
-    margin-bottom: 12px; /* Marge en dessous pour écrans moyens */
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    width: 80px;
+    margin-top: 0px;
+    margin-bottom: 0px; /* Marge en dessous pour écrans moyens */
   }
   
   .logo-navbar {
     width: 80px;
     height: 80px;
     border-radius: 10px; /* Coins arrondis */
+  }
+}
+
+/* Optimisation équilibrée pour mobiles en mode portrait */
+@media (max-width: 600px) and (orientation: portrait) {
+  .nav-links {
+    gap: 7px !important;
+    padding: 20px 5px !important;
+    height: 50vh !important;
+    top: 10px !important;
+    justify-content: space-evenly !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.85rem !important;
+    padding: 5px 10px !important;
+  }
+  
+  .nav-links li:first-child {
+    margin-top: 0px !important;
+  }
+  
+  .nav-links #lang-toggle {
+    width: 75px !important;
+    padding: 5px 6px !important;
+    font-size: 0.75rem !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  
+  .nav-links #lang-toggle img {
+    width: 14px !important;
+    height: 10px !important;
+    margin-right: 4px !important;
   }
 }
 
