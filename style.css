@@ -152,6 +152,7 @@ h1 {
   padding: 0;
   margin: 0;
   margin-right: 100px;
+  border-radius: 10px; /* Coins arrondis */
 }
 .navbar-transparent {
   background: transparent !important;
@@ -278,12 +279,12 @@ h1 {
     right: -100%;
     height: 100vh;
     height: 100dvh; /* Support pour les navigateurs modernes */
-    width: 300px;
+    width: 250px;
     background-color: #10222e;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     padding: 60px 20px 40px 20px;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
@@ -318,7 +319,7 @@ h1 {
     font-size: 1.1rem;
     padding: 12px 20px;
     border-radius: 8px;
-    width: 180px;
+    width: 150px;
     text-align: center;
     transition: background-color 0.3s ease;
   }
@@ -382,15 +383,15 @@ h1 {
 /* Styles supplémentaires pour très petits écrans */
 @media (max-width: 480px) {
   .nav-links {
-    width: 280px;
-    gap: 15px;
+    width: 230px;
+    gap: 8px;
     padding: 60px 15px;
   }
   
   .nav-links a {
     font-size: 1rem;
     padding: 10px 15px;
-    width: 160px;
+    width: 140px;
   }
   
   .nav-links #lang-toggle {
@@ -410,7 +411,7 @@ h1 {
 /* Styles pour écrans très hauts (téléphones pliables ou paysage) */
 @media (max-height: 600px) and (max-width: 1024px) {
   .nav-links {
-    gap: 10px;
+    gap: 6px;
     padding: 40px 20px;
     justify-content: space-evenly;
   }
@@ -433,12 +434,13 @@ h1 {
   }
   
   .nav-links {
-    width: 280px;
+    width: 230px;
   }
   
   .logo-navbar {
     width: 80px;
     height: 80px;
+    border-radius: 10px; /* Coins arrondis */
   }
 }
 
@@ -485,6 +487,7 @@ h1 {
     width: 100px;
   height: 100px;
   width: auto;
+  border-radius: 10px; /* Coins arrondis */
 }
 
 .nav-links {
