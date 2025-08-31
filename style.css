@@ -275,19 +275,20 @@ h1 {
   
   .nav-links {
     position: fixed;
-    top: 0;
+    top: 10%;
     right: -100%;
-    height: 100vh;
-    height: 100dvh; /* Support pour les navigateurs modernes */
+    height: auto;
+    max-height: 80vh;
     width: 250px;
     background-color: #10222e;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
-    padding: 60px 20px 40px 20px;
+    gap: 2px;
+    padding: 10px 20px;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    border-radius: 15px 0 0 15px; /* Coins arrondis à gauche */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -308,7 +309,10 @@ h1 {
   }
   
   /* Animation séquentielle des liens */
-  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(1) { 
+    transition-delay: 0.1s; 
+    margin-top: 15px; /* Marge au-dessus d'Accueil */
+  }
   .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
   .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
   .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
@@ -316,8 +320,8 @@ h1 {
   .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
   
   .nav-links a {
-    font-size: 1.1rem;
-    padding: 12px 20px;
+    font-size: 0.95rem;
+    padding: 6px 20px;
     border-radius: 8px;
     width: 150px;
     text-align: center;
@@ -333,16 +337,17 @@ h1 {
     background-color: transparent;
     border: 2px solid #ecca06;
     color: #ecca06;
-    padding: 8px 15px;
+    padding: 4px 8px;
     border-radius: 20px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
-    width: 100px;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 2px;
+    margin-bottom: 15px; /* Marge en dessous du bouton de traduction */
     flex-shrink: 0; /* Empêche la compression */
     order: 999; /* Force l'élément à être en dernier */
     position: relative;
@@ -383,22 +388,32 @@ h1 {
 /* Styles supplémentaires pour très petits écrans */
 @media (max-width: 480px) {
   .nav-links {
-    width: 230px;
-    gap: 8px;
-    padding: 60px 15px;
+    width: 220px;
+    gap: 1px;
+    padding: 8px;
+    height: auto;
+    max-height: 85vh;
+    top: 5%;
+    justify-content: space-evenly;
   }
   
   .nav-links a {
-    font-size: 1rem;
-    padding: 10px 15px;
-    width: 140px;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    width: 130px;
+  }
+  
+  /* Marge spéciale pour le premier élément (Accueil) sur petits écrans */
+  .nav-links li:first-child {
+    margin-top: 10px;
   }
   
   .nav-links #lang-toggle {
-    width: 80px;
-    padding: 6px 10px;
-    font-size: 0.9rem;
-    margin-top: 5px;
+    width: 70px;
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    margin-top: 1px;
+    margin-bottom: 10px; /* Marge en dessous pour petits écrans */
   }
   
   .nav-links #lang-toggle img {
@@ -411,14 +426,17 @@ h1 {
 /* Styles pour écrans très hauts (téléphones pliables ou paysage) */
 @media (max-height: 600px) and (max-width: 1024px) {
   .nav-links {
-    gap: 6px;
-    padding: 40px 20px;
-    justify-content: space-evenly;
+    gap: 2px;
+    padding: 10px 20px;
+    justify-content: center;
+    height: auto;
+    max-height: 50vh;
+    top: 25%;
   }
   
   .nav-links a {
-    padding: 8px 15px;
-    font-size: 0.95rem;
+    padding: 5px 15px;
+    font-size: 0.85rem;
   }
   
   .nav-links #lang-toggle {
@@ -435,6 +453,29 @@ h1 {
   
   .nav-links {
     width: 230px;
+    gap: 1px;
+    padding: 5px;
+    max-height: 90vh;
+    top: 5%;
+    justify-content: space-evenly;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 5px 15px;
+  }
+  
+  /* Marge spéciale pour le premier élément (Accueil) sur écrans moyens */
+  .nav-links li:first-child {
+    margin-top: 12px;
+  }
+  
+  .nav-links #lang-toggle {
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    width: 75px;
+    margin-top: 1px;
+    margin-bottom: 12px; /* Marge en dessous pour écrans moyens */
   }
   
   .logo-navbar {
