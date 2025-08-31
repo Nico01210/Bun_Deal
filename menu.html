@@ -79,6 +79,12 @@
       box-shadow: 0 10px 30px rgba(220, 53, 69, 0.3);
     }
 
+    /* Animation notification produit supprimé */
+    .cart-notification.removed {
+      background: linear-gradient(135deg, #ffc107, #fd7e14);
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+    }
+
     .cart-notification .cart-icon {
       font-size: 24px;
       margin-bottom: 10px;
@@ -1717,12 +1723,23 @@ function translateMenuOptions(optionsPart) {
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
-function setCart(cart) {
+function setCart(cart, action = 'add') {
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
-  // Ne pas afficher la notification d'ajout si le panier est vidé
-  if (cart.length > 0) {
-    showCartNotification(); // Affiche la notification d'ajout
+  
+  // Affiche la notification selon l'action
+  switch(action) {
+    case 'add':
+      if (cart.length > 0) {
+        showCartNotification(); // Notification d'ajout
+      }
+      break;
+    case 'remove':
+      showCartRemovedNotification(); // Notification de suppression
+      break;
+    case 'clear':
+      // Pour le vidage, on gère la notification séparément
+      break;
   }
 }
 
@@ -1741,8 +1758,8 @@ function showCartNotification() {
   const notification = document.getElementById('cart-notification');
   if (!notification) return;
   
-  // Retire la classe cleared si elle existe
-  notification.classList.remove('cleared');
+  // Retire les autres classes si elles existent
+  notification.classList.remove('cleared', 'removed');
   
   // Met à jour le texte et l'icône pour l'ajout
   const notificationText = notification.querySelector('.notification-text');
@@ -1790,6 +1807,35 @@ function showCartClearedNotification() {
     notification.classList.remove('show');
     // Retire la classe cleared après l'animation
     notification.classList.remove('cleared');
+  }, 2000);
+}
+
+function showCartRemovedNotification() {
+  const notification = document.getElementById('cart-notification');
+  if (!notification) return;
+  
+  // Ajoute la classe removed pour le style orange/jaune
+  notification.classList.add('removed');
+  
+  // Met à jour le texte et l'icône pour la suppression
+  const notificationText = notification.querySelector('.notification-text');
+  const cartIcon = notification.querySelector('#cart-icon');
+  if (notificationText) {
+    const text = getTranslation('notifications.product_removed') || 'Produit supprimé !';
+    notificationText.textContent = text;
+  }
+  if (cartIcon) {
+    cartIcon.textContent = '❌';
+  }
+  
+  // Affiche la notification
+  notification.classList.add('show');
+  
+  // Cache la notification après 2 secondes
+  setTimeout(() => {
+    notification.classList.remove('show');
+    // Retire la classe removed après l'animation
+    notification.classList.remove('removed');
   }, 2000);
 }
 
@@ -1910,7 +1956,7 @@ function renderCart() {
 function removeFromCart(idx) {
   const cart = getCart();
   cart.splice(idx, 1);
-  setCart(cart);
+  setCart(cart, 'remove'); // Spécifie l'action 'remove'
   renderCart();
 }
 // Boules de Glaces : gestion modale et ajout au panier uniquement après choix parfums
@@ -2299,7 +2345,7 @@ if (clearCartBtn) {
     const cart = getCart();
     // Ne montrer la notification que si le panier n'est pas déjà vide
     if (cart.length > 0) {
-      setCart([]);
+      setCart([], 'clear'); // Spécifie l'action 'clear'
       renderCart();
       showCartClearedNotification();
     }
