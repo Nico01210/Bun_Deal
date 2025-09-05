@@ -271,6 +271,40 @@ h1 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
+/* Styles généraux pour le bouton de traduction */
+#lang-toggle {
+  background-color: transparent;
+  border: 2px solid #ecca06;
+  color: #ecca06;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  width: 85px !important;
+  min-width: 85px !important;
+  max-width: 85px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#lang-toggle:hover {
+  background-color: #ecca06;
+  color: #10222e;
+  transform: scale(1.02);
+}
+
+#lang-toggle img {
+  width: 14px;
+  height: 10px;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
 /* Responsive pour tablettes et mobiles */
 @media (max-width: 1024px) {
   .burger-menu {
@@ -329,6 +363,7 @@ h1 {
     width: 150px;
     text-align: center;
     transition: background-color 0.3s ease;
+    white-space: nowrap;
   }
   
   .nav-links a:hover {
@@ -337,18 +372,8 @@ h1 {
   
   /* Styles spéciaux pour le bouton de traduction sur mobile */
   .nav-links #lang-toggle {
-    background-color: transparent;
-    border: 2px solid #ecca06;
-    color: #ecca06;
-    padding: 4px 8px;
-    border-radius: 20px;
+    width: 80px !important;
     font-size: 0.8rem;
-    font-weight: bold;
-    width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
     margin-top: 2px;
     margin-bottom: 15px; /* Marge en dessous du bouton de traduction */
     flex-shrink: 0; /* Empêche la compression */
@@ -403,6 +428,7 @@ h1 {
     font-size: 0.85rem;
     padding: 6px 12px;
     width: 130px;
+    white-space: nowrap;
   }
   
   /* Marge spéciale pour le premier élément (Accueil) sur petits écrans */
@@ -411,7 +437,7 @@ h1 {
   }
   
   .nav-links #lang-toggle {
-    width: 75px;
+    width: 75px !important;
     padding: 6px 8px;
     font-size: 0.8rem;
     margin-top: 0px;
@@ -439,6 +465,7 @@ h1 {
   .nav-links a {
     padding: 5px 15px;
     font-size: 0.85rem;
+    white-space: nowrap;
   }
   
   .nav-links #lang-toggle {
@@ -465,6 +492,7 @@ h1 {
   .nav-links a {
     font-size: 0.9rem;
     padding: 8px 15px;
+    white-space: nowrap;
   }
   
   /* Marge spéciale pour le premier élément (Accueil) sur écrans moyens */
@@ -475,7 +503,7 @@ h1 {
   .nav-links #lang-toggle {
     padding: 6px 10px;
     font-size: 0.85rem;
-    width: 80px;
+    width: 80px !important;
     margin-top: 0px;
     margin-bottom: 0px; /* Marge en dessous pour écrans moyens */
   }
@@ -500,6 +528,7 @@ h1 {
   .nav-links a {
     font-size: 0.85rem !important;
     padding: 5px 10px !important;
+    white-space: nowrap !important;
   }
   
   .nav-links li:first-child {
@@ -576,11 +605,17 @@ h1 {
   justify-content: flex-start;
 }
 
+.nav-links li {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .nav-links a {
   text-decoration: none;
   color: white;
   font-weight: bold;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
