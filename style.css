@@ -87,6 +87,10 @@
   opacity:0.6;
 }
 
+.footer-clean .container {
+  padding-left: 60px;
+}
+
 .footer-social-logo {
     width: 70%;
     height: 70%;
@@ -650,6 +654,19 @@ h1 {
     border-radius: 10px;
     box-shadow: 5px 5px 15px    rgba(0, 0, 0, 0.3);
 }
+
+#pourquoi-nous {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#pourquoi-nous .product-img {
+    flex-shrink: 0;
+    float: none;
+    margin: 0;
+}
+
 .container h2 {
     margin-bottom: 10px;
 }
@@ -657,14 +674,27 @@ h1 {
     line-height: 1.4;
 }
 .product-img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     border-radius: 50%;
     float: left;
     shape-outside: margin-box;
-    margin: 0 20px 5px 0;
+    margin: 20px 20px 20px 10px;
+    padding: 10px;
+    box-sizing: border-box;
 }
+
+#pourquoi-nous .content {
+    flex: 1;
+}
+
+article.container#pourquoi-nous h2,
+article.container#pourquoi-nous p {
+    text-indent: px !important;
+    padding-left: -400px !important;
+}
+
 /* FORMULAIRE */
 
 .contact-form {
