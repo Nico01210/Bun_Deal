@@ -730,6 +730,75 @@ article.container#pourquoi-nous p {
     padding-left: -400px !important;
 }
 
+/* Version mobile pour la section Pourquoi nous ? */
+@media (max-width: 768px) {
+    #pourquoi-nous {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 30px 15px;
+        margin: 20px auto;
+        max-width: 100%;
+    }
+    
+    #pourquoi-nous .product-img {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 20px auto;
+        float: none;
+        shape-outside: none;
+    }
+    
+    #pourquoi-nous h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #10222e;
+        font-weight: bold;
+    }
+    
+    #pourquoi-nous p {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: justify;
+        margin: 0;
+        padding: 0 15px;
+        text-indent: 0 !important;
+    }
+    
+    /* Espacement entre les paragraphes pour mobile */
+    #pourquoi-nous p br {
+        display: block;
+        content: "";
+        margin: 10px 0;
+    }
+}
+
+/* Version très petits écrans */
+@media (max-width: 480px) {
+    #pourquoi-nous {
+        padding: 20px 10px;
+        gap: 15px;
+        margin: 15px auto;
+    }
+    
+    #pourquoi-nous .product-img {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 15px;
+    }
+    
+    #pourquoi-nous h2 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+    
+    #pourquoi-nous p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+}
+
 /* FORMULAIRE */
 
 .contact-form {
